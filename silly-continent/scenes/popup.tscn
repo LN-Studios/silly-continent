@@ -1,0 +1,328 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2p7ta7w0rlu"]
+
+[ext_resource type="Script" path="res://main/popup_main.gd" id="1_1v40w"]
+[ext_resource type="Script" path="res://menu/pause.gd" id="1_5bjwv"]
+[ext_resource type="Script" path="res://menu/help.gd" id="2_7dbqs"]
+[ext_resource type="Script" path="res://menu/spawn_exodus.gd" id="3_rjblv"]
+[ext_resource type="Script" path="res://menu/war.gd" id="5_1ty14"]
+
+[node name="popup" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
+script = ExtResource("1_1v40w")
+
+[node name="pause" type="PopupPanel" parent="Control"]
+title = "Paused"
+initial_position = 1
+size = Vector2i(160, 400)
+script = ExtResource("1_5bjwv")
+
+[node name="ColorRect" type="ColorRect" parent="Control/pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 156.0
+offset_bottom = 396.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.168561, 1.54018e-06, 0.787564, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/pause/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/pause/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "
+Paused
+
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/pause/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Resume
+"
+
+[node name="help" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 426.0
+offset_top = 176.0
+offset_right = 726.0
+offset_bottom = 416.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.168561, 1.54018e-06, 0.787564, 1)
+script = ExtResource("2_7dbqs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/help"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -136.0
+offset_right = 136.0
+offset_bottom = 214.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control/help/VBoxContainer"]
+layout_mode = 2
+text = "
+-Select territory: left click
+-Select country: right click
+-Move map: arrow keys/WASD
+-Pause: space
+-Open help menu: esc
+
+"
+
+[node name="close" type="Button" parent="Control/help/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[node name="spawn_exodus" type="ColorRect" parent="Control"]
+visible = false
+custom_minimum_size = Vector2(420, 460)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 426.0
+offset_top = 176.0
+offset_right = 726.0
+offset_bottom = 476.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.168561, 1.54018e-06, 0.787564, 1)
+script = ExtResource("3_rjblv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/spawn_exodus"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -136.0
+offset_right = 136.0
+offset_bottom = 214.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control/spawn_exodus/VBoxContainer"]
+layout_mode = 2
+text = "
+The Spawn Exodus
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/spawn_exodus/VBoxContainer"]
+layout_mode = 2
+text = "
+Several years ago, many prominent
+figures in the overcrowded city of Doofania left to
+found new nations all across Sboob, bringing their 
+followers with them.
+
+These territories will lose population over the next 
+5 years:
+Doofania, Pootopia, Cagliostro, Petoria,
+Mudtown, Worl Map
+
+These territories will gain population:
+Cummington, Slamong City, Energylanda, Squam, 
+Autobot City
+"
+
+[node name="close" type="Button" parent="Control/spawn_exodus/VBoxContainer"]
+layout_mode = 2
+text = "Ok"
+
+[node name="war" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 335.0
+offset_top = 64.0
+offset_right = 835.0
+offset_bottom = 584.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0, 0.305882, 1)
+script = ExtResource("5_1ty14")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/war"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="war_title" type="Label" parent="Control/war/VBoxContainer"]
+layout_mode = 2
+text = "Cummington Invasion of Sexico
+
+"
+horizontal_alignment = 1
+
+[node name="info" type="HBoxContainer" parent="Control/war/VBoxContainer"]
+custom_minimum_size = Vector2(125, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="country_L" type="ColorRect" parent="Control/war/VBoxContainer/info"]
+custom_minimum_size = Vector2(125, 200)
+layout_mode = 2
+color = Color(0, 0, 1, 1)
+
+[node name="vbox" type="VBoxContainer" parent="Control/war/VBoxContainer/info/country_L"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Control/war/VBoxContainer/info/country_L/vbox"]
+layout_mode = 2
+text = "
+Cummington
+
+"
+horizontal_alignment = 1
+
+[node name="army" type="Label" parent="Control/war/VBoxContainer/info/country_L/vbox"]
+layout_mode = 2
+text = "Army:
+10000
+
+"
+horizontal_alignment = 1
+
+[node name="terrs" type="Label" parent="Control/war/VBoxContainer/info/country_L/vbox"]
+layout_mode = 2
+text = "Territories:
+10
+
+"
+horizontal_alignment = 1
+
+[node name="vs" type="Label" parent="Control/war/VBoxContainer/info"]
+layout_mode = 2
+text = " VS "
+
+[node name="country_R" type="ColorRect" parent="Control/war/VBoxContainer/info"]
+custom_minimum_size = Vector2(125, 200)
+layout_mode = 2
+color = Color(0.638478, 0.485706, 0.052779, 1)
+
+[node name="vbox" type="VBoxContainer" parent="Control/war/VBoxContainer/info/country_R"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="Control/war/VBoxContainer/info/country_R/vbox"]
+layout_mode = 2
+text = "
+Sexico
+
+"
+horizontal_alignment = 1
+
+[node name="army" type="Label" parent="Control/war/VBoxContainer/info/country_R/vbox"]
+layout_mode = 2
+text = "Army:
+9999
+
+"
+horizontal_alignment = 1
+
+[node name="terrs" type="Label" parent="Control/war/VBoxContainer/info/country_R/vbox"]
+layout_mode = 2
+text = "Territories:
+9
+
+"
+horizontal_alignment = 1
+
+[node name="padding" type="CenterContainer" parent="Control/war/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="battle" type="ColorRect" parent="Control/war/VBoxContainer"]
+custom_minimum_size = Vector2(175, 65)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.133333, 0.133333, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/war/VBoxContainer/battle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="day" type="Label" parent="Control/war/VBoxContainer/battle/VBoxContainer"]
+layout_mode = 2
+text = "Day 100"
+horizontal_alignment = 1
+
+[node name="casualties" type="Label" parent="Control/war/VBoxContainer/battle/VBoxContainer"]
+layout_mode = 2
+text = "125-100"
+horizontal_alignment = 1
+
+[node name="padding2" type="CenterContainer" parent="Control/war/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="surrender" type="Button" parent="Control/war/VBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Surrender"
+
+[node name="padding3" type="CenterContainer" parent="Control/war/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="close" type="Button" parent="Control/war/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Close"
+
+[connection signal="pressed" from="Control/help/VBoxContainer/close" to="Control/help" method="_on_hide"]
+[connection signal="pressed" from="Control/spawn_exodus/VBoxContainer/close" to="Control/spawn_exodus" method="_on_hide"]
+[connection signal="pressed" from="Control/war/VBoxContainer/surrender" to="Control/war" method="_on_surrender"]
+[connection signal="pressed" from="Control/war/VBoxContainer/close" to="Control/war" method="_on_hide"]
