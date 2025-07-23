@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends Container
 
 const main = preload("res://main/main.gd")
 
@@ -24,6 +24,7 @@ func _ready():
 	_reputation(0, null)
 	_army(0, null)
 	_unpause()
+	visible = true
 
 func _start(country):
 	box.color = country.get_color()
