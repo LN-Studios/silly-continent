@@ -22,8 +22,7 @@ var armyMod: Modifier
 const army_pop_scale = 0.2 
 
 func _ready() -> void:
-	SignalBus.new_day.connect(_day)
-	SignalBus.new_year.connect(_year)
+	SignalBus.new_turn.connect(_turn)
 	profitMod = Modifier.new()
 	repMod = Modifier.new()
 	approvalMod = Modifier.new()
@@ -32,14 +31,11 @@ func _ready() -> void:
 	if (!capital): set_capital(get_largest_terr())
 	govtType.set_effects(self)
 	
-func _day(day):
+func _turn(turn):
 	compile_terr_tax()
 	set_profit()
 	add_balance(profit)
 	set_army()
-
-func _year(year):
-	pass
 
 func get_color():
 	return color

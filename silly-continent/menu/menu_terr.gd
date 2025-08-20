@@ -15,7 +15,7 @@ var today: int
 func _ready() -> void:
 	_on_close()
 	SignalBus.open_terr_menu.connect(_on_open)
-	SignalBus.new_day.connect(_refresh)
+	SignalBus.new_turn.connect(_refresh)
 
 func _process(_delta: float) -> void:
 	if (box.visible && Input.is_action_pressed('tab')):

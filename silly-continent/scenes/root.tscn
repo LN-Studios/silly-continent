@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://tj3ccedc1v48"]
+[gd_scene load_steps=19 format=3 uid="uid://tj3ccedc1v48"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_f5blk"]
 [ext_resource type="Texture2D" uid="uid://c5m1cm5vgv8j4" path="res://Screenshot 2025-01-03 013136.png" id="2_bg3r2"]
@@ -13,50 +13,15 @@
 [ext_resource type="Script" path="res://territories/autobot_city.gd" id="11_mdv08"]
 [ext_resource type="Script" path="res://territories/cagliostro.gd" id="12_tpqxi"]
 [ext_resource type="Script" path="res://territories/mudtown.gd" id="13_ui247"]
-[ext_resource type="Script" path="res://terrain/default.gd" id="13_wmqt0"]
 [ext_resource type="Script" path="res://territories/slamongflobo_city.gd" id="14_5vhmy"]
-[ext_resource type="Script" path="res://terrain/coastal.gd" id="14_qi7m4"]
-[ext_resource type="Script" path="res://terrain/desert.gd" id="15_ln4yd"]
 [ext_resource type="Script" path="res://territories/squam.gd" id="15_mqf4l"]
-[ext_resource type="Script" path="res://terrain/forest.gd" id="16_c54xy"]
 [ext_resource type="Script" path="res://util/camera.gd" id="16_xvdfb"]
-[ext_resource type="Script" path="res://terrain/grassland.gd" id="17_dsqu5"]
 [ext_resource type="PackedScene" uid="uid://nkcjwbsh84yu" path="res://scenes/hud.tscn" id="17_pfjmn"]
-[ext_resource type="Script" path="res://terrain/hills.gd" id="18_dfbbm"]
-[ext_resource type="Script" path="res://terrain/mountains.gd" id="19_d04ai"]
-[ext_resource type="Script" path="res://terrain/swamp.gd" id="20_s45ie"]
-[ext_resource type="Script" path="res://events/events.gd" id="28_ylomo"]
 [ext_resource type="PackedScene" uid="uid://d2p7ta7w0rlu" path="res://scenes/popup.tscn" id="29_bs6ov"]
 
 [node name="main" type="Node" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_f5blk")
 camera = NodePath("camera")
-
-[node name="terrain" type="Node" parent="."]
-
-[node name="default" type="Node" parent="terrain"]
-script = ExtResource("13_wmqt0")
-
-[node name="coastal" type="Node" parent="terrain"]
-script = ExtResource("14_qi7m4")
-
-[node name="desert" type="Node" parent="terrain"]
-script = ExtResource("15_ln4yd")
-
-[node name="forest" type="Node" parent="terrain"]
-script = ExtResource("16_c54xy")
-
-[node name="grassland" type="Node" parent="terrain"]
-script = ExtResource("17_dsqu5")
-
-[node name="hills" type="Node" parent="terrain"]
-script = ExtResource("18_dfbbm")
-
-[node name="mountains" type="Node" parent="terrain"]
-script = ExtResource("19_d04ai")
-
-[node name="swamp" type="Node" parent="terrain"]
-script = ExtResource("20_s45ie")
 
 [node name="map" type="Node2D" parent="."]
 position = Vector2(1, -1)
@@ -71,11 +36,9 @@ z_index = -1
 position = Vector2(916, 1181)
 texture = ExtResource("3_mlogu")
 
-[node name="default" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="default" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("4_eggwt")
-territoryName = "default"
-country = NodePath("")
-terrain = NodePath("../../terrain/default")
+population = null
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -95,12 +58,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="cummington" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cummington" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("5_l5oje")
-territoryName = "Cummington"
 population = 7500
-country = NodePath("")
-terrain = NodePath("../../terrain/swamp")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -123,12 +83,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="bussyville" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="bussyville" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 650
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -151,12 +108,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="chupavilla" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="chupavilla" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 270
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -179,12 +133,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sexico_city" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="sexico_city" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 2750
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -207,12 +158,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="medio_sexico" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="medio_sexico" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 30
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -237,12 +185,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="whackopolis" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="whackopolis" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 720
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -265,12 +210,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="zazaland" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="zazaland" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 105
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -293,12 +235,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sprinklspram" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="sprinklspram" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 3500
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -321,12 +260,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="yurmom" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="yurmom" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 220
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -351,12 +287,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="morbistan" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="morbistan" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 790
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -379,12 +312,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="uppercum" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="uppercum" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 1300
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -408,12 +338,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sexville" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="sexville" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 5500
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -436,12 +363,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sandwich_west" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="sandwich_west" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 150
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -465,12 +389,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sandwich_central" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="sandwich_central" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 60
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -494,12 +415,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sandwich_east" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="sandwich_east" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 80
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -523,12 +441,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="bumblyburg" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="bumblyburg" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 5800
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -551,12 +466,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="jacrispy_beach" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="jacrispy_beach" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 670
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -579,12 +491,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="aauugh" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="aauugh" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 340
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -608,12 +517,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="fleshuis" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="fleshuis" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 1200
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -634,12 +540,9 @@ vertical_alignment = 1
 [node name="border" type="Line2D" parent="map/fleshuis/shape"]
 default_color = Color(0, 0, 0, 1)
 
-[node name="doofania" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="doofania" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("7_587by")
-territoryName = "Doofania"
 population = 12000
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -662,12 +565,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="petoria" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="petoria" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("8_x5qk3")
-territoryName = "default"
 population = 8500
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -690,12 +590,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="pootopia" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="pootopia" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("9_n3bdh")
-territoryName = "default"
 population = 1500
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -719,12 +616,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="map" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="map" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("10_kldv2")
-territoryName = "default"
 population = 500
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -747,12 +641,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="autobot_city" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="autobot_city" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("11_mdv08")
-territoryName = "default"
 population = 7200
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -775,12 +666,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="cagliostro" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cagliostro" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("12_tpqxi")
-territoryName = "default"
 population = 450
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -803,12 +691,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="hhgregg" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="hhgregg" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 1
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -826,12 +711,9 @@ text = "HHGregg"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="mechia" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="mechia" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 4000
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -854,12 +736,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="arentrabia" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="arentrabia" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 35
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -882,12 +761,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="quahog" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="quahog" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 250
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -910,12 +786,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="undertale" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="undertale" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 169
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -938,12 +811,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="gumball_north" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="gumball_north" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 240
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -966,12 +836,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="gumball_south" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="gumball_south" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 350
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -995,12 +862,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="idiot" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="idiot" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 40
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1023,12 +887,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="autisthmus" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="autisthmus" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 180
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1042,7 +903,7 @@ offset_left = 672.0
 offset_top = 227.0
 offset_right = 761.0
 offset_bottom = 250.0
-text = "Autisthmus"
+text = "Hartuget"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1051,11 +912,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="mudtown" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="mudtown" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("13_ui247")
-territoryName = "default"
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1078,12 +936,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="shapoopi" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="shapoopi" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 125
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1106,12 +961,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="robin" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="robin" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 450
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1134,12 +986,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="galahad" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="galahad" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 60
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1162,12 +1011,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="nincompoop" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="nincompoop" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 25
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1190,12 +1036,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="brunclo" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="brunclo" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "Brunclo"
 population = 1250
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1209,7 +1052,7 @@ offset_left = 700.0
 offset_top = 265.0
 offset_right = 771.0
 offset_bottom = 288.0
-text = "Camelot"
+text = "Brunclo"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1218,12 +1061,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="pukisti" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="pukisti" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 4200
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1246,12 +1086,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="hooligan" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="hooligan" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 45
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1274,12 +1111,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="ekki" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="ekki" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "Ekki Ekki Ptang"
 population = 1470
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1302,12 +1136,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="lancealot" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="lancealot" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 32
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1321,7 +1152,7 @@ offset_left = 709.0
 offset_top = 216.0
 offset_right = 785.0
 offset_bottom = 239.0
-text = "Lancealot"
+text = "Camelot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1330,12 +1161,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="bedivere" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="bedivere" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "defaul"
 population = 15
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1349,7 +1177,7 @@ offset_left = 697.0
 offset_top = 277.0
 offset_right = 768.0
 offset_bottom = 300.0
-text = "Bedivere"
+text = "Bedevere"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1358,12 +1186,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="wonkadonk" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="wonkadonk" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 1360
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1387,12 +1212,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="amerigay" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="amerigay" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 21
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1416,12 +1238,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="chudizona" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="chudizona" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 35
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1445,12 +1264,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="jeb" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="jeb" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 640
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1474,12 +1290,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="taxes1" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="taxes1" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 20
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1503,12 +1316,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="taxes2" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="taxes2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 10
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1532,12 +1342,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="aimes_gettin" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="aimes_gettin" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 2900
-country = NodePath("")
-terrain = NodePath("../../terrain/swamp")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1561,12 +1368,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="slamongflobo_city" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="slamongflobo_city" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("14_5vhmy")
-territoryName = "default"
 population = 7800
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1590,12 +1394,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="casa_zola" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="casa_zola" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 590
-country = NodePath("")
-terrain = NodePath("../../terrain/mountains")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1619,12 +1420,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="hottenredi" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="hottenredi" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 200
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1648,12 +1446,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="earl_sweatshirt" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="earl_sweatshirt" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 4800
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1677,12 +1472,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="viva_rock_vegas" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="viva_rock_vegas" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 480
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1706,12 +1498,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="kirby_griffin" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="kirby_griffin" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 24
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1735,12 +1524,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="doodoo" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="doodoo" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 12
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1764,11 +1550,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="default2" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="default2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
-country = NodePath("")
-terrain = NodePath("../../terrain/default")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1787,12 +1570,9 @@ text = "default"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="bruhzil" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="bruhzil" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 35
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1817,12 +1597,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="taxes3" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="taxes3" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 5
-country = NodePath("")
-terrain = NodePath("../../terrain/desert")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1846,12 +1623,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="dinosaurus" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="dinosaurus" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 1100
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1875,12 +1649,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="obama" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="obama" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 22
-country = NodePath("")
-terrain = NodePath("../../terrain/mountains")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1904,12 +1675,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="squam" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="squam" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("15_mqf4l")
-territoryName = "default"
 population = 8000
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1933,12 +1701,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="cybertron" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cybertron" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 67
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1962,12 +1727,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="flobo1" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="flobo1" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 180
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -1991,12 +1753,9 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="jaboogus" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="jaboogus" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 3500
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2015,12 +1774,9 @@ text = "Jaboogus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="flobo2" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="flobo2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 210
-country = NodePath("")
-terrain = NodePath("../../terrain/mountains")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2040,12 +1796,9 @@ text = "House of Flan"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="omnichad" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="omnichad" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 350
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2064,12 +1817,9 @@ rotation = -0.602139
 text = "Omnichad"
 vertical_alignment = 1
 
-[node name="swooce" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="swooce" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 1100
-country = NodePath("")
-terrain = NodePath("../../terrain/mountains")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2088,12 +1838,9 @@ text = "Swooce"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="soup1" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="soup1" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 24
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2111,12 +1858,9 @@ text = "soup1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="espuma" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="espuma" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 3400
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2135,12 +1879,9 @@ text = "Espuma"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="senor_brap" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="senor_brap" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 2700
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2159,12 +1900,9 @@ text = "Senor Brap"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="north_fart" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="north_fart" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 4000
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2183,12 +1921,9 @@ text = "Fort"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="south_fart" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="south_fart" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 4000
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2207,12 +1942,9 @@ text = "Fart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="falafel" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="falafel" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 1900
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2231,12 +1963,9 @@ text = "Falafel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pantaloon" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="pantaloon" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 2350
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2255,12 +1984,9 @@ text = "Pantaloon"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="jatwogus" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="jatwogus" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 333
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2279,12 +2005,9 @@ text = "Jatwogus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis1" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cretuis1" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("4_eggwt")
-territoryName = "default"
 population = 40
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2304,12 +2027,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="funnyville" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="funnyville" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("4_eggwt")
-territoryName = "default"
 population = 2100
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2329,12 +2049,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="arlen" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="arlen" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("4_eggwt")
-territoryName = "default"
 population = 800
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2354,12 +2071,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="trollolol" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="trollolol" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 250
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2377,12 +2091,9 @@ text = "Trollolol"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="energylanda" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="energylanda" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 420
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2400,12 +2111,9 @@ text = "Energylanda"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="new_portland" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="new_portland" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 1900
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2423,12 +2131,9 @@ text = "New Portland"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="dewoka" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="dewoka" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 5600
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2446,12 +2151,9 @@ text = "Dewoka"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="manzana" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="manzana" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 850
-country = NodePath("")
-terrain = NodePath("../../terrain/coastal")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2469,12 +2171,9 @@ text = "Manzana"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="kong_hong" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="kong_hong" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "Kong Hong"
 population = 8200
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2492,12 +2191,9 @@ text = "Kong Hong"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis2" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cretuis2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 120
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2515,12 +2211,9 @@ text = "cretuis2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis3" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cretuis3" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 230
-country = NodePath("")
-terrain = NodePath("../../terrain/mountains")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2538,12 +2231,9 @@ text = "cretuis3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis4" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cretuis4" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "forest"
 population = 110
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2561,12 +2251,9 @@ text = "cretuis4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis5" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cretuis5" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 456
-country = NodePath("")
-terrain = NodePath("../../terrain/mountains")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2584,12 +2271,9 @@ text = "cretuis5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="dagrambra" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="dagrambra" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 63
-country = NodePath("")
-terrain = NodePath("../../terrain/hills")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2608,11 +2292,8 @@ text = "Dagrambra"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="dagrambra2" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="dagrambra2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2632,12 +2313,9 @@ text = "dagrambra2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis6" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cretuis6" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 40
-country = NodePath("")
-terrain = NodePath("../../terrain/mountains")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2655,12 +2333,9 @@ text = "cretuis6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis7" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cretuis7" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 780
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2678,12 +2353,9 @@ text = "cretuis7"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="soup2" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="soup2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 26
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2702,12 +2374,9 @@ text = "soup2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis8" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="cretuis8" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("4_eggwt")
-territoryName = "default"
 population = 60
-country = NodePath("")
-terrain = NodePath("../../terrain/forest")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2727,12 +2396,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="uprot" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="uprot" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 2000
-country = NodePath("")
-terrain = NodePath("../../terrain/grassland")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2751,12 +2417,9 @@ text = "Uprot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="flobo3" type="Node" parent="map" node_paths=PackedStringArray("country", "terrain", "shape", "label")]
+[node name="flobo3" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
 script = ExtResource("6_7tgt8")
-territoryName = "default"
 population = 84
-country = NodePath("")
-terrain = NodePath("../../terrain/mountains")
 shape = NodePath("shape")
 label = NodePath("shape/label")
 
@@ -2774,9 +2437,6 @@ offset_bottom = 371.0
 text = "flobo3"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="events" type="Node" parent="."]
-script = ExtResource("28_ylomo")
 
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2(2, -2)

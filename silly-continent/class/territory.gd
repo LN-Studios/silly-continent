@@ -3,7 +3,7 @@ class_name Territory extends Node
 const default_color = Color(0.157, 0.537, 0.22) #288938
 
 @export_group("data")
-@export var territoryName = ""
+@export var territ_name = ""
 @export_range(0, 100000) var population = 100
 @export var country: Country
 @export var terrain: Terrain
@@ -23,6 +23,13 @@ const cost_dist_scale = .0001
 const cost_pop_scale = .005
 const pop_local_econ_scale = 0.1
 const pop_natl_econ_scale = 0.15
+
+var data = {
+	name = territ_name,
+	population = population,
+	country = country,
+	terrain = terrain,
+}
 
 func get_size():
 	var size = ""
@@ -59,22 +66,19 @@ func _ready():
 	border.points = shape.polygon
 		
 	#connect signals
-	SignalBus.new_day.connect(_day)
-	SignalBus.new_year.connect(_year)
+	SignalBus.new_turn.connect(_turn)
 	
 	#set values
 	set_country(country)
-	territoryName = label.text.c_unescape()
+	territ_name = label.text.c_unescape()
 	taxMod = Modifier.new()
 	popMod = Modifier.new()
 	terrain.set_effects(self)
 	
-func _day(day): 
+func _turn(turn): 
 	set_population()
-
-func _year(year): pass
 	
-func get_terrName(): return territoryName
+func get_terrName(): return territ_name
 
 func get_terrain(): return terrain.get_terrainName()
 
