@@ -8,6 +8,13 @@ const default_color = Color(0.157, 0.537, 0.22) #288938
 @export var country: Country
 @export var terrain: Terrain
 
+var data = {
+	name = "abc",
+	population =  -1,
+	country = null,
+	terrain = null,
+}
+
 @export_group("ui")
 @export var shape: Polygon2D
 @export var label: Label
