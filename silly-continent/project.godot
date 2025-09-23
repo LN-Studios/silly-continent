@@ -17,7 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SignalBus="*res://events/signal_bus.gd"
+SignalBus="*res://global/signal_bus.gd"
+Terms="*res://global/terms.gd"
 
 [gui]
 

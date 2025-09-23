@@ -23,14 +23,14 @@ func _ready() -> void:
 	SignalBus.pause.connect(_pause)
 	SignalBus.unpause.connect(_unpause)
 	
-	SignalBus.new_day.emit(day)
+	SignalBus.new_turn.emit(day)
 	SignalBus.new_year.emit(year)
 	SignalBus.finish_ready.emit()
 	
 func _start(country):
 	gameStarted = true
 	SignalBus.pause.emit()
-	SignalBus.new_day.emit(day)
+	SignalBus.new_turn.emit(day)
 	SignalBus.new_year.emit(year)
 
 func _process(_delta: float) -> void:
@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 		if (tick % gameSpeed["slow"] == 0):
 			tick = 0
 			day += 1
-			SignalBus.new_day.emit(day)
+			SignalBus.new_turn.emit(day)
 			if (day % 366 == 0):
 				day = 1
 				year += 1

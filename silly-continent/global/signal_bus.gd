@@ -4,9 +4,8 @@ extends Node
 signal open_country_menu(c: Country)
 signal open_terr_menu(t: Territory)
 
-#clock
-signal new_day(day)
-signal new_year(year)
+#new turn
+signal new_turn(day)
 
 #top hud
 signal new_balance(new)
@@ -20,8 +19,6 @@ signal open_help()
 #game signals
 signal finish_ready()
 signal game_start(country)
-signal pause()
-signal unpause()
 
 #scripted events
 signal spawn_exodus(rate)

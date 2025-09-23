@@ -2,18 +2,15 @@ extends Container
 
 const main = preload("res://main/main.gd")
 
-@export var balanceLabel: Label
-@export var dayLabel: Label
-@export var yearLabel: Label
-@export var approvalLabel: Label
-@export var repLabel: Label
-@export var armyLabel: Label
-@export var pausedLabel: Label
+@export var balance_label: Label
+@export var day_label: Label
+@export var approval_label: Label
+@export var rep_label: Label
+@export var army_label: Label
 @export var box: ColorRect
 
 func _ready():
-	SignalBus.new_day.connect(_day)
-	SignalBus.new_year.connect(_year)
+	SignalBus.new_turn.connect(_turn)
 	SignalBus.new_balance.connect(_balance)
 	SignalBus.new_approval.connect(_approval)
 	SignalBus.new_reputation.connect(_reputation)
@@ -23,45 +20,36 @@ func _ready():
 	_approval(0, null)
 	_reputation(0, null)
 	_army(0, null)
-	_unpause()
 	visible = true
 
 func _start(country):
 	box.color = country.get_color()
-	SignalBus.pause.connect(_pause)
-	SignalBus.unpause.connect(_unpause)
 
-func _day(day):
-	dayLabel.text = "Day " + str(day)
-	
-func _year(year):
-		yearLabel.text = "Year " + str(year)
-
-func _pause():
-	pausedLabel.text = "%6s" % "Paused"
-	
-func _unpause():
-	pausedLabel.text = "%6s" % ""
+func _turn(turn):
+	day_label.text = "Turn " + str(turn)
 
 func _balance(new, mod):
-	balanceLabel.text = "$" + main.format_float(new)
+	balance_label.text = "$" + main.format_float(new)
 	if (mod):
-		mod.set_tooltip(balanceLabel, true)
+		mod.set_tooltip(balance_label, true)
 
 func _approval(new, mod):
-	approvalLabel.text = "Approval: " + main.format_percent(new)
+	approval_label.text = "Approval: " + main.format_percent(new)
 	if (mod):
-		mod.set_tooltip(approvalLabel, false)
+		mod.set_tooltip(approval_label, false)
 
 func _reputation(new, mod):
-	repLabel.text = "Reputation: " + str(new)
+	rep_label.text = "Reputation: " + str(new)
 	if (mod):
-		mod.set_tooltip(repLabel, false)
+		mod.set_tooltip(rep_label, false)
 
 func _army(new, mod):
-	armyLabel.text = "Army size: " + str(new)
+	army_label.text = "Army size: " + str(new)
 	if (mod):
-		mod.set_tooltip(armyLabel, false)
+		mod.set_tooltip(army_label, false)
+
+func next_turn():
+	SignalBus.next_turn.emit()
 
 func open_help():
 	SignalBus.open_help.emit()

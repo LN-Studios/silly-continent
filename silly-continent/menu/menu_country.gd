@@ -22,7 +22,7 @@ var gameStarted = false
 func _ready():
 	_on_close()
 	SignalBus.open_country_menu.connect(_on_open)
-	SignalBus.new_day.connect(_refresh)
+	SignalBus.new_turn.connect(_refresh)
 
 func _process(_delta: float):
 	if (box.visible && Input.is_action_pressed('tab')):
