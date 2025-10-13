@@ -72,7 +72,7 @@ func _refresh(day):
 		armyLabel.text = "\nArmy size: %.f" % country.get_army()
 		country.get_profitMod().set_tooltip(profitLabel, true)
 		country.get_approvalMod().set_tooltip(approvalLabel, false)
-		country.get_repMod().set_tooltip(repLabel, false)
+		country.get_rep_mod().set_tooltip(repLabel, false)
 		country.get_armyMod().set_tooltip(armyLabel, false)
 
 func _on_country_selected():

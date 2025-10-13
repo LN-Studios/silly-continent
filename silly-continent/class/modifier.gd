@@ -1,11 +1,11 @@
-class_name Modifier extends Node
+class_name Modifier extends Object
 
 const main = preload("res://main/main.gd")
 
 var consts = {}
 var mods = {}
 
-# adds consts together, then adds mods together separately, then multiplies the two
+## adds consts together, then adds mods together separately, then multiplies the two
 func compile():
 	var val = 0.0
 	for con in consts.keys():
@@ -23,8 +23,8 @@ func get_mods(): return mods
 
 func set_mod(name, val): mods[name] = val
 
-#returns a list of all consts and mods as a string
-func get_list(useMoney: bool):
+## returns a list of all consts and mods as a string separated by \n
+func get_list(useMoney: bool) -> String:
 	var str = ""
 	if (useMoney):
 		for con in consts.keys():

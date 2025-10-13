@@ -1,23 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://tj3ccedc1v48"]
+[gd_scene load_steps=9 format=3 uid="uid://tj3ccedc1v48"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_f5blk"]
 [ext_resource type="Texture2D" uid="uid://c5m1cm5vgv8j4" path="res://Screenshot 2025-01-03 013136.png" id="2_bg3r2"]
 [ext_resource type="Texture2D" uid="uid://x5jxw1obu8if" path="res://Screenshot 2025-01-03 013150.png" id="3_mlogu"]
-[ext_resource type="Script" path="res://class/territory.gd" id="4_eggwt"]
-[ext_resource type="Script" path="res://territories/cummington.gd" id="5_l5oje"]
-[ext_resource type="Script" path="res://territories/default.gd" id="6_7tgt8"]
-[ext_resource type="Script" path="res://territories/doofania.gd" id="7_587by"]
-[ext_resource type="Script" path="res://territories/petoria.gd" id="8_x5qk3"]
-[ext_resource type="Script" path="res://territories/pootopia.gd" id="9_n3bdh"]
-[ext_resource type="Script" path="res://territories/map.gd" id="10_kldv2"]
-[ext_resource type="Script" path="res://territories/autobot_city.gd" id="11_mdv08"]
-[ext_resource type="Script" path="res://territories/cagliostro.gd" id="12_tpqxi"]
-[ext_resource type="Script" path="res://territories/mudtown.gd" id="13_ui247"]
-[ext_resource type="Script" path="res://territories/slamongflobo_city.gd" id="14_5vhmy"]
-[ext_resource type="Script" path="res://territories/squam.gd" id="15_mqf4l"]
+[ext_resource type="Script" path="res://util/territory_node.gd" id="4_2iwvr"]
 [ext_resource type="Script" path="res://util/camera.gd" id="16_xvdfb"]
 [ext_resource type="PackedScene" uid="uid://nkcjwbsh84yu" path="res://scenes/hud.tscn" id="17_pfjmn"]
 [ext_resource type="PackedScene" uid="uid://d2p7ta7w0rlu" path="res://scenes/popup.tscn" id="29_bs6ov"]
+
+[sub_resource type="GDScript" id="GDScript_cl7oi"]
+script/source = "extends \"res://class/territory.gd\"
+"
 
 [node name="main" type="Node" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_f5blk")
@@ -36,11 +29,8 @@ z_index = -1
 position = Vector2(916, 1181)
 texture = ExtResource("3_mlogu")
 
-[node name="default" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("4_eggwt")
-population = null
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="default" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/default"]
 position = Vector2(1629, 373)
@@ -58,11 +48,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="cummington" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("5_l5oje")
-population = 7500
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cummington" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cummington"]
 position = Vector2(-50, 38)
@@ -83,11 +70,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="bussyville" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 650
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="bussyville" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/bussyville"]
 position = Vector2(-219, 8)
@@ -108,11 +92,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="chupavilla" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 270
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="chupavilla" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/chupavilla"]
 position = Vector2(-119, -102)
@@ -133,11 +114,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sexico_city" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 2750
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="sexico_city" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/sexico_city"]
 position = Vector2(11, -189)
@@ -158,11 +136,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="medio_sexico" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 30
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="medio_sexico" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/medio_sexico"]
 position = Vector2(-122, -186)
@@ -185,11 +160,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="whackopolis" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 720
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="whackopolis" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/whackopolis"]
 position = Vector2(-75, -310)
@@ -210,11 +182,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="zazaland" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 105
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="zazaland" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/zazaland"]
 position = Vector2(94, -124)
@@ -235,11 +204,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sprinklspram" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 3500
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="sprinklspram" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/sprinklspram"]
 position = Vector2(88, -392)
@@ -260,11 +226,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="yurmom" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 220
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="yurmom" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/yurmom"]
 position = Vector2(-87, -418)
@@ -287,11 +250,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="morbistan" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 790
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="morbistan" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/morbistan"]
 position = Vector2(-138, 141)
@@ -312,11 +272,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="uppercum" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 1300
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="uppercum" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/uppercum"]
 position = Vector2(104, 134)
@@ -338,11 +295,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sexville" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 5500
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="sexville" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/sexville"]
 position = Vector2(199, 166)
@@ -363,11 +317,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sandwich_west" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 150
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="sandwich_west" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/sandwich_west"]
 position = Vector2(162, 6)
@@ -389,11 +340,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sandwich_central" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 60
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="sandwich_central" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/sandwich_central"]
 position = Vector2(387, 173)
@@ -415,11 +363,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="sandwich_east" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 80
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="sandwich_east" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/sandwich_east"]
 position = Vector2(489, 257)
@@ -441,11 +386,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="bumblyburg" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 5800
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="bumblyburg" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/bumblyburg"]
 position = Vector2(268, -64)
@@ -466,11 +408,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="jacrispy_beach" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 670
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="jacrispy_beach" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/jacrispy_beach"]
 position = Vector2(400, 50)
@@ -491,11 +430,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="aauugh" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 340
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="aauugh" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/aauugh"]
 position = Vector2(74, 283)
@@ -517,11 +453,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="fleshuis" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 1200
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="fleshuis" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/fleshuis"]
 position = Vector2(-205, 255)
@@ -540,11 +473,8 @@ vertical_alignment = 1
 [node name="border" type="Line2D" parent="map/fleshuis/shape"]
 default_color = Color(0, 0, 0, 1)
 
-[node name="doofania" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("7_587by")
-population = 12000
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="doofania" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/doofania"]
 position = Vector2(300, 412)
@@ -565,11 +495,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="petoria" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("8_x5qk3")
-population = 8500
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="petoria" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/petoria"]
 position = Vector2(355, 511)
@@ -590,11 +517,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="pootopia" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("9_n3bdh")
-population = 1500
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="pootopia" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/pootopia"]
 position = Vector2(395, 410)
@@ -616,11 +540,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="map" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("10_kldv2")
-population = 500
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="map" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/map"]
 position = Vector2(205, 414)
@@ -641,11 +562,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="autobot_city" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("11_mdv08")
-population = 7200
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="autobot_city" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/autobot_city"]
 position = Vector2(430, 163)
@@ -666,11 +584,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="cagliostro" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("12_tpqxi")
-population = 450
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cagliostro" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cagliostro"]
 position = Vector2(359, 312)
@@ -691,11 +606,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="hhgregg" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 1
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="hhgregg" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/hhgregg"]
 position = Vector2(505, 382)
@@ -711,11 +623,8 @@ text = "HHGregg"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="mechia" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 4000
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="mechia" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/mechia"]
 position = Vector2(614, 220)
@@ -736,11 +645,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="arentrabia" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 35
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="arentrabia" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/arentrabia"]
 position = Vector2(610, 112)
@@ -761,11 +667,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="quahog" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 250
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="quahog" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/quahog"]
 position = Vector2(608, 366)
@@ -786,11 +689,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="undertale" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 169
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="undertale" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/undertale"]
 position = Vector2(191, 294)
@@ -811,11 +711,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="gumball_north" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 240
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="gumball_north" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/gumball_north"]
 position = Vector2(394, -418)
@@ -836,11 +733,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="gumball_south" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 350
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="gumball_south" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/gumball_south"]
 position = Vector2(365.667, -188)
@@ -862,11 +756,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="idiot" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 40
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="idiot" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/idiot"]
 position = Vector2(279, -136)
@@ -887,11 +778,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="autisthmus" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 180
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="autisthmus" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/autisthmus"]
 position = Vector2(135, -348)
@@ -912,10 +800,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="mudtown" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("13_ui247")
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="mudtown" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/mudtown"]
 position = Vector2(261, 515)
@@ -936,11 +822,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="shapoopi" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 125
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="shapoopi" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/shapoopi"]
 position = Vector2(253, -412)
@@ -961,11 +844,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="robin" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 450
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="robin" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/robin"]
 position = Vector2(547, -122)
@@ -986,11 +866,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="galahad" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 60
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="galahad" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/galahad"]
 position = Vector2(582, -240)
@@ -1011,11 +888,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="nincompoop" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 25
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="nincompoop" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/nincompoop"]
 position = Vector2(328, -258)
@@ -1036,11 +910,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="brunclo" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 1250
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="brunclo" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/brunclo"]
 position = Vector2(655, -386)
@@ -1061,11 +932,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="pukisti" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 4200
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="pukisti" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/pukisti"]
 position = Vector2(883, -220)
@@ -1086,11 +954,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="hooligan" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 45
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="hooligan" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/hooligan"]
 position = Vector2(459, -324)
@@ -1111,11 +976,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="ekki" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 1470
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="ekki" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/ekki"]
 position = Vector2(822, -449)
@@ -1136,11 +998,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="lancealot" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 32
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="lancealot" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/lancealot"]
 position = Vector2(576, -492)
@@ -1161,11 +1020,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="bedivere" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 15
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="bedivere" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/bedivere"]
 position = Vector2(898, -549)
@@ -1186,11 +1042,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="wonkadonk" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 1360
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="wonkadonk" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/wonkadonk"]
 position = Vector2(848, -625)
@@ -1212,11 +1065,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="amerigay" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 21
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="amerigay" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/amerigay"]
 position = Vector2(1097, -487)
@@ -1238,11 +1088,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="chudizona" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 35
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="chudizona" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/chudizona"]
 position = Vector2(1087, -702)
@@ -1264,11 +1111,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="jeb" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 640
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="jeb" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/jeb"]
 position = Vector2(1241, -791)
@@ -1290,11 +1134,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="taxes1" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 20
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="taxes1" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/taxes1"]
 position = Vector2(1215, -658)
@@ -1316,11 +1157,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="taxes2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 10
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="taxes2" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/taxes2"]
 position = Vector2(1212, -566)
@@ -1342,11 +1180,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="aimes_gettin" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 2900
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="aimes_gettin" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/aimes_gettin"]
 position = Vector2(-346, -151)
@@ -1368,11 +1203,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="slamongflobo_city" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("14_5vhmy")
-population = 7800
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="slamongflobo_city" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/slamongflobo_city"]
 position = Vector2(-465, -28)
@@ -1394,11 +1226,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="casa_zola" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 590
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="casa_zola" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/casa_zola"]
 position = Vector2(-691, -89)
@@ -1420,11 +1249,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="hottenredi" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 200
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="hottenredi" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/hottenredi"]
 position = Vector2(-707, -299)
@@ -1446,11 +1272,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="earl_sweatshirt" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 4800
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="earl_sweatshirt" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/earl_sweatshirt"]
 position = Vector2(-543, -511)
@@ -1472,11 +1295,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="viva_rock_vegas" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 480
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="viva_rock_vegas" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/viva_rock_vegas"]
 position = Vector2(-329, -341)
@@ -1498,11 +1318,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="kirby_griffin" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 24
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="kirby_griffin" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/kirby_griffin"]
 position = Vector2(-260, 56)
@@ -1524,11 +1341,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="doodoo" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 12
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="doodoo" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/doodoo"]
 position = Vector2(-214, -113)
@@ -1550,10 +1364,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="default2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="default2" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/default2"]
 position = Vector2(-1133, 102)
@@ -1570,11 +1382,8 @@ text = "default"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="bruhzil" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 35
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="bruhzil" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/bruhzil"]
 position = Vector2(-296, -22)
@@ -1597,11 +1406,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="taxes3" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 5
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="taxes3" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/taxes3"]
 position = Vector2(1364, -611)
@@ -1623,11 +1429,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="dinosaurus" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 1100
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="dinosaurus" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/dinosaurus"]
 position = Vector2(-943, -998)
@@ -1649,11 +1452,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="obama" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 22
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="obama" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/obama"]
 position = Vector2(15, 390)
@@ -1675,11 +1475,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="squam" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("15_mqf4l")
-population = 8000
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="squam" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/squam"]
 position = Vector2(-197, 904)
@@ -1701,11 +1498,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="cybertron" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 67
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cybertron" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cybertron"]
 position = Vector2(430, 164)
@@ -1727,11 +1521,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="flobo1" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 180
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="flobo1" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/flobo1"]
 position = Vector2(-490, -165)
@@ -1753,11 +1544,8 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="jaboogus" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 3500
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="jaboogus" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/jaboogus"]
 position = Vector2(-673, 649)
@@ -1774,11 +1562,8 @@ text = "Jaboogus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="flobo2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 210
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="flobo2" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/flobo2"]
 position = Vector2(-400, -431)
@@ -1796,11 +1581,8 @@ text = "House of Flan"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="omnichad" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 350
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="omnichad" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/omnichad"]
 position = Vector2(-634, -553)
@@ -1817,11 +1599,8 @@ rotation = -0.602139
 text = "Omnichad"
 vertical_alignment = 1
 
-[node name="swooce" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 1100
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="swooce" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/swooce"]
 position = Vector2(26, 607)
@@ -1838,11 +1617,8 @@ text = "Swooce"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="soup1" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 24
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="soup1" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/soup1"]
 position = Vector2(-137, 678)
@@ -1858,11 +1634,8 @@ text = "soup1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="espuma" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 3400
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="espuma" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/espuma"]
 position = Vector2(-769, -3)
@@ -1879,11 +1652,8 @@ text = "Espuma"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="senor_brap" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 2700
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="senor_brap" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/senor_brap"]
 position = Vector2(-773, 187)
@@ -1900,11 +1670,8 @@ text = "Senor Brap"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="north_fart" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 4000
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="north_fart" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/north_fart"]
 position = Vector2(-684, 359)
@@ -1921,11 +1688,8 @@ text = "Fort"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="south_fart" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 4000
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="south_fart" type="Node" parent="map"]
+script = SubResource("GDScript_cl7oi")
 
 [node name="shape" type="Polygon2D" parent="map/south_fart"]
 position = Vector2(-683, 416)
@@ -1942,11 +1706,8 @@ text = "Fart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="falafel" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 1900
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="falafel" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/falafel"]
 position = Vector2(-777, 465)
@@ -1963,11 +1724,8 @@ text = "Falafel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="pantaloon" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 2350
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="pantaloon" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/pantaloon"]
 position = Vector2(-535, 673)
@@ -1984,11 +1742,8 @@ text = "Pantaloon"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="jatwogus" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 333
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="jatwogus" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/jatwogus"]
 position = Vector2(-816, 626)
@@ -2005,11 +1760,8 @@ text = "Jatwogus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis1" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("4_eggwt")
-population = 40
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cretuis1" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cretuis1"]
 position = Vector2(266, 580)
@@ -2027,11 +1779,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="funnyville" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("4_eggwt")
-population = 2100
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="funnyville" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/funnyville"]
 position = Vector2(446, 650)
@@ -2049,11 +1798,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="arlen" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("4_eggwt")
-population = 800
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="arlen" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/arlen"]
 position = Vector2(471, 767)
@@ -2071,11 +1817,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="trollolol" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 250
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="trollolol" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/trollolol"]
 position = Vector2(537, 770)
@@ -2091,11 +1834,8 @@ text = "Trollolol"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="energylanda" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 420
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="energylanda" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/energylanda"]
 position = Vector2(659, 951)
@@ -2111,11 +1851,8 @@ text = "Energylanda"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="new_portland" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 1900
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="new_portland" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/new_portland"]
 position = Vector2(658, 565)
@@ -2131,11 +1868,8 @@ text = "New Portland"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="dewoka" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 5600
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="dewoka" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/dewoka"]
 position = Vector2(811, 546)
@@ -2151,11 +1885,8 @@ text = "Dewoka"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="manzana" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 850
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="manzana" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/manzana"]
 position = Vector2(816, 424)
@@ -2171,11 +1902,8 @@ text = "Manzana"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="kong_hong" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 8200
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="kong_hong" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/kong_hong"]
 position = Vector2(895, 750)
@@ -2191,11 +1919,8 @@ text = "Kong Hong"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 120
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cretuis2" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cretuis2"]
 position = Vector2(581, 482)
@@ -2211,11 +1936,8 @@ text = "cretuis2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis3" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 230
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cretuis3" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cretuis3"]
 position = Vector2(718, 496)
@@ -2231,11 +1953,8 @@ text = "cretuis3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis4" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 110
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cretuis4" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cretuis4"]
 position = Vector2(518, 582)
@@ -2251,11 +1970,8 @@ text = "cretuis4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis5" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 456
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cretuis5" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cretuis5"]
 position = Vector2(453, 620)
@@ -2271,11 +1987,8 @@ text = "cretuis5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="dagrambra" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 63
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="dagrambra" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/dagrambra"]
 position = Vector2(-228, -793)
@@ -2292,32 +2005,27 @@ text = "Dagrambra"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="dagrambra2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="dasnapbra" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
-[node name="shape" type="Polygon2D" parent="map/dagrambra2"]
+[node name="shape" type="Polygon2D" parent="map/dasnapbra"]
 position = Vector2(-329, -681)
 color = Color(0.156863, 0.537255, 0.219608, 1)
 polygon = PackedVector2Array(610, 281, 611, 279, 615, 279, 617, 281, 617, 285, 620, 287, 623, 289, 625, 292, 628, 293, 630, 297, 632, 299, 635, 298, 638, 298, 642, 300, 647, 300, 648, 298, 652, 298, 655, 297, 666, 297, 667, 296, 673, 296, 674, 297, 677, 297, 679, 299, 686, 304, 689, 305, 692, 306, 695, 307, 697, 308, 700, 308, 705, 308, 709, 308, 712, 307, 714, 304, 715, 303, 717, 303, 718, 302, 721, 301, 724, 301, 726, 303, 730, 304, 731, 305, 733, 307, 738, 307, 739, 309, 740, 310, 742, 311, 742, 313, 744, 315, 744, 318, 743, 321, 742, 323, 745, 325, 750, 324, 752, 326, 751, 328, 752, 330, 751, 332, 747, 332, 744, 331, 738, 331, 737, 333, 734, 333, 733, 336, 728, 339, 721, 345, 720, 348, 716, 351, 716, 356, 713, 358, 707, 358, 705, 355, 701, 356, 692, 356, 690, 357, 689, 358, 683, 358, 678, 357, 675, 359, 668, 359, 667, 356, 666, 349, 663, 344, 659, 341, 653, 341, 648, 340, 645, 340, 639, 340, 636, 336, 638, 333, 637, 330, 632, 329, 630, 331, 629, 334, 629, 338, 626, 340, 622, 341, 618, 342, 617, 344, 615, 344, 614, 343, 614, 341.188, 612, 341, 609, 338, 609, 331, 610, 326, 611, 320, 611, 313, 609, 310, 608, 308, 608, 306, 609, 303, 610, 302, 610, 291, 609, 288, 609, 285, 610, 284)
 
-[node name="label" type="Label" parent="map/dagrambra2/shape"]
+[node name="label" type="Label" parent="map/dasnapbra/shape"]
 modulate = Color(1, 0.996078, 1, 1)
 offset_left = 629.0
 offset_top = 306.0
 offset_right = 724.0
 offset_bottom = 329.0
 rotation = 0.139626
-text = "dagrambra2"
+text = "Dasnapbra"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis6" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 40
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cretuis6" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cretuis6"]
 position = Vector2(605, 727)
@@ -2333,11 +2041,8 @@ text = "cretuis6"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis7" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 780
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cretuis7" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cretuis7"]
 position = Vector2(795, 675)
@@ -2353,11 +2058,8 @@ text = "cretuis7"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="soup2" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 26
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="soup2" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/soup2"]
 position = Vector2(-191, 321)
@@ -2374,11 +2076,8 @@ text = "soup2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="cretuis8" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("4_eggwt")
-population = 60
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="cretuis8" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/cretuis8"]
 position = Vector2(266, 580)
@@ -2396,11 +2095,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="uprot" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 2000
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="uprot" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/uprot"]
 position = Vector2(143, 1171)
@@ -2417,11 +2113,8 @@ text = "Uprot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="flobo3" type="Node" parent="map" node_paths=PackedStringArray("shape", "label")]
-script = ExtResource("6_7tgt8")
-population = 84
-shape = NodePath("shape")
-label = NodePath("shape/label")
+[node name="flobo3" type="Node" parent="map"]
+script = ExtResource("4_2iwvr")
 
 [node name="shape" type="Polygon2D" parent="map/flobo3"]
 position = Vector2(-626, -219)

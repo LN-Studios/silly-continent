@@ -1,74 +1,81 @@
-class_name Country extends Node
+class_name Country extends Object
 
-@export var countryName = ""
-@export var color: Color
-@export var govtType: GovtType
-@export var reputation = 0
-@export var approval = 0
-@export var capital: Territory
 
-var isCPU = true
+var data = {
+	name = "country",
+	color = Color.WHITE,
+	govt = null,
+	reputation = 0,
+	approval = 0,
+	capital = null,
+	is_cpu = true,
+	balance = 0,
+	profit = 0,
+	population = 0,
+	army = 0,
+}
+
+var mods = {
+	profit = Modifier.new(),
+	reputation = Modifier.new(),
+	approval = Modifier.new(),
+	army = Modifier.new(),
+}
+
 var territories: Array[Territory] = [] #territories add themselves
-var balance = 0
-var profit = 0
-var population = 0
-var army = 0
-
-var profitMod: Modifier
-var repMod: Modifier
-var approvalMod: Modifier
-var armyMod: Modifier
 
 const army_pop_scale = 0.2 
 
-func _ready() -> void:
+func _ready():
 	SignalBus.new_turn.connect(_turn)
-	profitMod = Modifier.new()
-	repMod = Modifier.new()
-	approvalMod = Modifier.new()
-	armyMod = Modifier.new()
-	approvalMod.set_const("Base", 0.5)
-	if (!capital): set_capital(get_largest_terr())
-	govtType.set_effects(self)
+	mods.approval.set_const("Base", 0.5)
+	if (!get_capital()): set_capital(get_largest_terr())
+	get_govt().set_effects(self)
 	
 func _turn(turn):
 	compile_terr_tax()
 	set_profit()
-	add_balance(profit)
+	add_balance(get_profit())
 	set_army()
 
 func get_color():
-	return color
+	return data.color
 
-func get_countryName():
-	return countryName
+func get_name():
+	return data.name
 	
-func get_govtType():
-	if (govtType): return govtType
+func get_govt():
+	return data.govt
 	
-func get_balance(): return balance
+func get_balance(): 
+	return data.balance
+
+func is_cpu():
+	return data.is_cpu()
 
 #profit
-func get_profit(): return profit
+func get_profit(): 
+	return data.profit
 
-func get_profitMod(): return profitMod
+func get_profit_mod(): 
+	return mods.profit
 
 func set_profit():
 	if (is_unclaimed()): return 0.0
-	profit = profitMod.compile()
+	data.profit = get_profit_mod().compile()
+
+#population
+func get_population():
+	data.population = compile_pop()
+	return data.population
 
 func compile_pop():
 	var total = 0
 	for terr in territories:
 		total += terr.get_population()
 	return total
-
-#population
-func get_population():
-	population = compile_pop()
-	return population
 	
-func compile_popChange():
+func compile_pop_change():
 	var total = 0
 	for terr in territories:
 		total += terr.get_popChange()
@@ -78,64 +85,69 @@ func compile_terr_tax():
 	var total = 0.0
 	for terr in territories:
 		total += terr.get_profit()
-	profitMod.set_const("Tax", total)
+	get_profit_mod().set_const("Tax", total)
 	
 # reputation
 func get_reputation(): 
 	set_reputation()
-	return reputation
+	return data.reputation
 
 func set_reputation():
-	reputation = repMod.compile()
-	if !isCPU:
-		SignalBus.new_reputation.emit(reputation, repMod)
+	data.reputation = get_rep_mod().compile()
+	if !is_cpu():
+		SignalBus.new_reputation.emit(get_reputation(), get_rep_mod())
 
-func get_repMod(): return repMod
+func get_rep_mod(): 
+	return data.reputation
+
+func get_reputation_mod():
+	return get_rep_mod()
 	
 #approval
 func get_approval(): 
 	set_approval()
-	return approval
+	return data.approval
 
 func set_approval():
-	approval = approvalMod.compile()
-	if !isCPU:
-		SignalBus.new_approval.emit(approval, approvalMod)
+	data.approval = get_approval_mod().compile()
+	if !is_cpu():
+		SignalBus.new_approval.emit(data.approval, get_approval_mod())
 		
-func get_approvalMod(): return approvalMod
-
+func get_approval_mod(): 
+	return mods.approval
 
 #army
 func get_army():
 	set_army()
-	return army
+	return data.army
 
 func set_army():
-	armyMod.set_const("Population", population * army_pop_scale)
-	army = round(armyMod.compile())
-	if !isCPU:
-		SignalBus.new_army.emit(army, armyMod)
+	get_army_mod().set_const("Population", get_population() * army_pop_scale)
+	data.army = round(get_army_mod().compile())
+	if !is_cpu():
+		SignalBus.new_army.emit(data.army, get_army_mod())
 
-func get_armyMod(): return armyMod
+func get_army_mod(): 
+	return mods.army
 
 # capital
 func get_capital(): 
-	return capital
+	return data.capital
 
 func set_capital(t: Territory):
-	if (capital):
-		capital.get_popMod().erase("Capital")
+	if (get_capital()):
+		data.capital.get_pop_mod().erase("Capital")
 	else:
-		t.get_popMod().set_mod("Capital", 0.15)
-	capital = t
+		t.get_pop_mod().set_mod("Capital", 0.15)
+	data.capital = t
 
-func set_CPU(val):
-	isCPU = val
+func set_CPU(val: bool):
+	data.is_cpu = val
 	
 func add_balance(new):
-	balance += new
-	if !isCPU && new != 0 :
-		SignalBus.new_balance.emit(balance, profitMod)
+	data.balance += new
+	if !is_cpu() && new != 0 :
+		SignalBus.new_balance.emit(data.balance, get_profit_mod())
 
 func add_terr(terr: Territory):
 	territories.append(terr)
@@ -151,10 +163,8 @@ func get_largest_terr():
 	return largest
 
 func is_unclaimed():
-	return get_govtType().get_gtName() == "Unclaimed"
+	return get_govt().get_gtName() == "Unclaimed"
 	
 func mod_purge(name: String):
-	profitMod.erase(name)
-	approvalMod.erase(name)
-	repMod.erase(name)
-	armyMod.erase(name)
+	for mod in mods:
+		mod.erase(name)

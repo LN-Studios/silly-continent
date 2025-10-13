@@ -1,7 +1,7 @@
 extends Terrain
 
 func _ready() -> void:
-	set_terrainName("Hills")
+	set_name("Hills")
 
-func set_effects(t:Territory):
-	t.get_taxMod().set_mod(terrainName, -0.1)
+func set_effects(ty:Territory):
+	ty.get_tax_mod().set_mod(get_name(), -0.1)

@@ -1,15 +1,14 @@
-class_name Terrain extends Node
+class_name Terrain extends Object
 
-var terrainName: String
-
-func _ready() -> void:
-	pass
+var data = {
+	name = "terrain"
+}
 	
-func get_terrainName():
-	return terrainName
+func get_name():
+	return data.name
 
-func set_terrainName(name):
-	terrainName = name
+func set_name(name: String):
+	data.name = name
 
-func set_effects(t: Territory):
+func set_effects(_ty: Territory):
 	pass
