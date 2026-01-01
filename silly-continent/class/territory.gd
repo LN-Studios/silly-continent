@@ -1,6 +1,6 @@
-class_name Territory extends Object
+class_name Territory extends Entity
 
-var popChange: float
+var pop_change: float
 
 const tax_pop_scale = .0003
 const cost_dist_scale = .0001
@@ -10,11 +10,11 @@ const pop_natl_econ_scale = 0.15
 
 var node: TerrainNode
 
-var data = {
-	name = "",
-	population = 99,
-	country = null,
-	terrain = null,
+var territ_data = {
+	name = "territory",
+	population = 0,
+	country_id = 0,
+	terrain_id = 0,
 }
 
 var mods = {
@@ -25,27 +25,34 @@ var mods = {
 func get_size():
 	var size = ""
 	var pop_mod = get_pop_mod()
-	if (get_population() < 250): #0-249
+	if (get_population() < 250):	#0-249
 		size = "Wilderness"
 		pop_mod.set_mod(size, -0.2)
-	elif(get_population() < 1000): #250-999
+	elif(get_population() < 1000):	#250-999
 		size = "Outskirts"
 		pop_mod.set_mod(size, -0.1)
-	elif(get_population() < 10000): #1000-9999
+	elif(get_population() < 10000):	#1000-9999
 		size = "Village"
 		pop_mod.set_mod(size, 0.1)
 	else: 
-		size = "City" #10,000+
+		size = "City"				#10,000+
 		pop_mod.set_mod(size, 0.2)
 	return size.to_lower()
 
-func _init():
-	#connect signals
-	SignalBus.new_turn.connect(_turn)
-	data.terrain.set_effects(self)
+func _init(in_data = {}):
+	data.merge(territ_data, true)
+	data.merge(in_data, true)
+	var terr = data.get("terrain")
+	if (terr):
+		terr.set_effects(self)
+	super(Lib.territs)
 	
 func _turn(turn): 
 	set_population()
+
+func connect_entities():
+	data.country = Lib.get_country(data.country_id)
+	data.terrain = Lib.get_terrain(data.terrain_id)
 	
 func get_name() -> String: 
 	return data.name
@@ -57,16 +64,16 @@ func get_terrain_name() -> String:
 	return get_terrain().get_name()
 
 func get_country() -> Country: 
-	return data.country
+	return data.get("country", null)
 
 # population modifiers
 func get_pop_mod() -> Modifier: 
 	return mods.pop
 
-func get_pop():
-	return data.population
+func get_pop() -> int:
+	return data.get("population", 0)
 
-func get_population(): 
+func get_population() -> int: 
 	return get_pop()
 	
 func get_pop_change(): 
@@ -74,7 +81,7 @@ func get_pop_change():
 
 func set_population():
 	var pop_mod = get_pop_mod()
-	pop_mod.set_const("National economy", get_country().get_profit() * pop_natl_econ_scale)
+	pop_mod.set_const("National economy", get_country().get_profit() * pop_natl_econ_scale if has_country() else 0)
 	pop_mod.set_const("Local economy", get_profit() * pop_local_econ_scale)
 	data.population += pop_mod.compile()
 	if get_population() < 0: 
@@ -93,12 +100,11 @@ func set_tax():
 	tax_mod.set_const("Population", get_population() * tax_pop_scale)
 	tax_mod.set_const("Distance to capital", -(get_capital_distance() * cost_dist_scale * (get_population() * cost_pop_scale)))
 
-
 func get_position(): 
 	return node.get_position()
 
 func get_capital_distance():
-	if (get_country().is_unclaimed()): return 0
+	if (!has_country()): return 0
 	return get_position().distance_to(get_country().get_capital().get_position())
 	
 func set_country(c):
@@ -107,9 +113,12 @@ func set_country(c):
 	if (c):
 		c.add_terr(self)
 	
-
-func is_capital():
-	if (get_country().is_unclaimed()): return false
+func has_country() -> bool:
+	if (get_country() == null): return false
+	return get_country().is_unclaimed()
+	
+func is_capital() -> bool:
+	if (!has_country()): return false
 	return get_country().get_capital() == self
 	
 func mod_purge(effect_name: String):

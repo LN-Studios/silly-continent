@@ -90,13 +90,14 @@ text = ">>"
 layout_mode = 2
 text = " ? "
 
-[node name="info boxes" type="PanelContainer" parent="Control/VBoxContainer"]
+[node name="info boxes" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="right box" type="PanelContainer" parent="Control/VBoxContainer/info boxes"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 
 [node name="terr_box" type="ColorRect" parent="Control/VBoxContainer/info boxes/right box"]
 custom_minimum_size = Vector2(200, 0)
@@ -165,7 +166,7 @@ vertical_alignment = 1
 
 [node name="left box" type="PanelContainer" parent="Control/VBoxContainer/info boxes"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 10
 size_flags_vertical = 3
 
 [node name="country_box" type="ColorRect" parent="Control/VBoxContainer/info boxes/left box"]

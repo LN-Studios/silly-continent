@@ -15,6 +15,7 @@ var gameSpeed = {
 var tick: = 0
 var day = 1
 var year = 1
+var turn = 0
 var clockTicking = false
 var gameStarted = false
 
@@ -22,9 +23,8 @@ func _ready() -> void:
 	SignalBus.game_start.connect(_start)
 	SignalBus.pause.connect(_pause)
 	SignalBus.unpause.connect(_unpause)
-	
-	SignalBus.new_turn.emit(day)
-	SignalBus.new_year.emit(year)
+	Lib.add_defaults()
+	#load default file data
 	SignalBus.finish_ready.emit()
 	
 func _start(country):

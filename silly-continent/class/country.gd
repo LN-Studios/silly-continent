@@ -1,18 +1,17 @@
-class_name Country extends Object
+class_name Country extends Entity
 
-
-var data = {
+var country_data = {
 	name = "country",
 	color = Color.WHITE,
-	govt = null,
+	capital_id = 0,
+	govt_id = 0,
 	reputation = 0,
 	approval = 0,
-	capital = null,
-	is_cpu = true,
 	balance = 0,
 	profit = 0,
 	population = 0,
 	army = 0,
+	is_cpu = true,
 }
 
 var mods = {
@@ -26,11 +25,17 @@ var territories: Array[Territory] = [] #territories add themselves
 
 const army_pop_scale = 0.2 
 
-func _ready():
-	SignalBus.new_turn.connect(_turn)
+func _init(in_data = {}):
+	data.merge(country_data, true)
+	data.merge(in_data, true)
 	mods.approval.set_const("Base", 0.5)
-	if (!get_capital()): set_capital(get_largest_terr())
-	get_govt().set_effects(self)
+	#if (!get_capital()): set_capital(get_largest_terr())
+	#get_govt().set_effects(self)
+	super(Lib.countries)
+
+func connect_entities():
+	data.capital = Lib.get_territ(data.capital_id)
+	data.govt = Lib.get_govt(data.govt_id)
 	
 func _turn(turn):
 	compile_terr_tax()
@@ -163,7 +168,7 @@ func get_largest_terr():
 	return largest
 
 func is_unclaimed():
-	return get_govt().get_gtName() == "Unclaimed"
+	return get_govt().get_name() == "Unclaimed"
 	
 func mod_purge(name: String):
 	for mod in mods:

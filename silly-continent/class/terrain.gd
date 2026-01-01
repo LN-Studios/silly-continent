@@ -1,14 +1,13 @@
-class_name Terrain extends Object
+class_name Terrain extends Entity
 
-var data = {
+var terrain_data = {
 	name = "terrain"
 }
 	
-func get_name():
-	return data.name
-
-func set_name(name: String):
-	data.name = name
+func _init(in_data = {}):
+	data.merge(terrain_data, true)
+	data.merge(in_data, true)
+	super(Lib.terrains)
 
 func set_effects(_ty: Territory):
 	pass

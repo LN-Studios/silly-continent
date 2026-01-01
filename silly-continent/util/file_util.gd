@@ -47,17 +47,18 @@ func do_each_line(action: Callable, path: String = save_path, limit = -1):
 func set_save_path(file_name = ""):
 	if (file_name.is_empty()):
 		file_name = default_name
-	save_path = "%s/%s" % [data_path, save_dir_name(file_name)]
+	#save_path = "%s/%s" % [data_path, save_dir_name(file_name)]
 	print("/ save path: %s" % save_path)
 
 func save_dir_exists(create_if_not = false) -> bool:
-	var dirs = get_save_dirs()
-	var dir_name = save_dir_name()
-	var has_dir = dirs.has(dir_name)
-	if (!has_dir && create_if_not):
-		set_save_path(dir_name)
-		create_dir(save_path)
-	return has_dir
+	return false
+	#var dirs = get_save_dirs()
+	#var dir_name = save_dir_name()
+	#var has_dir = dirs.has(dir_name)
+	#if (!has_dir && create_if_not):
+	#	set_save_path(dir_name)
+	#	create_dir(save_path)
+	#return has_dir
 
 func write_config(config: ConfigFile, path: String):
 	var result = config.save(path)

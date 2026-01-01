@@ -33,7 +33,7 @@ func _on_open(c: Country):
 		country = c
 		box.color = c.get_color()
 		nameLabel.text = "\n" + c.get_countryName() + "\n"
-		govtLabel.text = "\n" + c.get_govtType().get_gtName().capitalize()
+		govtLabel.text = "\n" + c.get_govtType().get_name().capitalize()
 		box.set_visible(true)
 		if (c.is_unclaimed()):
 			balanceLabel.set_visible(false)

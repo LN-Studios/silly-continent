@@ -19,6 +19,8 @@ signal open_help()
 #game signals
 signal finish_ready()
 signal game_start(country)
+signal pause()
+signal unpause()
 
 #scripted events
 signal spawn_exodus(rate)

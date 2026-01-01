@@ -20,6 +20,19 @@ config/icon="res://icon.svg"
 SignalBus="*res://global/signal_bus.gd"
 Terms="*res://global/terms.gd"
 
+[file_customization]
+
+folder_colors={
+"res://class/": "pink",
+"res://countries/": "gray",
+"res://data/": "teal",
+"res://events/": "red",
+"res://global/": "blue",
+"res://menu/": "green",
+"res://scenes/": "purple",
+"res://util/": "orange"
+}
+
 [gui]
 
 fonts/custom=""
