@@ -21,10 +21,9 @@ var gameStarted = false
 
 func _ready() -> void:
 	SignalBus.game_start.connect(_start)
-	SignalBus.pause.connect(_pause)
-	SignalBus.unpause.connect(_unpause)
 	Lib.add_defaults()
-	#load default file data
+	save_state()
+	load_state()
 	SignalBus.finish_ready.emit()
 	
 func _start(country):
@@ -52,11 +51,11 @@ func _process(_delta: float) -> void:
 				year += 1
 				SignalBus.new_year.emit(year)
 
-func _pause():
-	clockTicking = false
+func save_state():
+	Lib.save_state()
 
-func _unpause():
-	clockTicking = true
+func load_state():
+	Lib.load_state()
 	
 func get_camera():
 	return camera

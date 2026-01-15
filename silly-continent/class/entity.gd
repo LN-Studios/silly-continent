@@ -21,3 +21,6 @@ func get_id() -> int:
 
 func get_name() -> String:
 	return data.get("name", "name not found")
+
+func get_data() -> Dictionary:
+	return data

@@ -25,7 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="top hud" type="PanelContainer" parent="Control/VBoxContainer" node_paths=PackedStringArray("balance_label", "day_label", "approval_label", "rep_label", "army_label")]
+[node name="top hud" type="PanelContainer" parent="Control/VBoxContainer" node_paths=PackedStringArray("balance_label", "day_label", "approval_label", "rep_label", "army_label", "box")]
 layout_mode = 2
 script = ExtResource("3_6ywyt")
 balance_label = NodePath("top_hud/balance")
@@ -33,6 +33,7 @@ day_label = NodePath("top_hud/day")
 approval_label = NodePath("top_hud/approval")
 rep_label = NodePath("top_hud/rep")
 army_label = NodePath("top_hud/army")
+box = NodePath("../info boxes/left box/country_box")
 
 [node name="top_hud_box" type="ColorRect" parent="Control/VBoxContainer/top hud"]
 layout_mode = 2

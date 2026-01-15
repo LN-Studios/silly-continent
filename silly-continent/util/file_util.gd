@@ -1,10 +1,9 @@
-class_name FileUtil extends Object
+extends Node
 
 const data_path = "res://data"
 const default_name = "default"
+const ext = ".save"
 var default_path = "%s/%s" % [data_path, default_name]
-const SAVE_ID = "save_"
-const BACKUP_EXT = "_backup"
 var save_path = default_path
 
 func open_file(path = save_path, write = true) -> FileAccess:
@@ -32,6 +31,10 @@ func read_from_file(path: String = save_path) -> Variant:
 	var data = json.data
 	return data
 
+func write_dict(dict: Dictionary, path: String = save_path):
+	write_to_file(dict, path)
+
+##performs `action` on each line of file at `path`, where the file line is the param as a string
 func do_each_line(action: Callable, path: String = save_path, limit = -1):
 	var file = open_file(path, false)
 	if (!file): print("Failed to open %s" + path)
@@ -40,7 +43,6 @@ func do_each_line(action: Callable, path: String = save_path, limit = -1):
 		var line = file.get_line()
 		action.call(line)
 		reps += 1
-		#Err.print("/ " + str(reps))
 
 ## set save path to res://data/`file_name`
 ## if left blank, sets to default
@@ -49,6 +51,9 @@ func set_save_path(file_name = ""):
 		file_name = default_name
 	#save_path = "%s/%s" % [data_path, save_dir_name(file_name)]
 	print("/ save path: %s" % save_path)
+
+func get_save_path() -> String:
+	return save_path
 
 func save_dir_exists(create_if_not = false) -> bool:
 	return false
@@ -65,12 +70,12 @@ func write_config(config: ConfigFile, path: String):
 	if (result != OK): 
 		print("Error saving config file: error code %d" % result)
 
-func create_dir(path: String):
-	var error = DirAccess.make_dir_recursive_absolute(path)
+func create_dir(abs_path: String):
+	var error = DirAccess.make_dir_recursive_absolute(abs_path)
 	if (error != OK): 
 		print("Error creating dir: error code %d" % error)
 
-##absolute paths
+##use absolute paths
 func copy_file(from: String, to: String):
 	var error = DirAccess.copy_absolute(from, to)
 	if (error != OK):

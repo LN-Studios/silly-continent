@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 func _on_open(ty: Territory):
 	if (ty):
 		box.set_color(ty.get_country().get_color())
-		nameLabel.text = "\n" + ty.get_terrName()
+		nameLabel.text = "\n" + ty.get_name()
 		if (ty.is_capital()):
 			nameLabel.text += "\nCapital of " + ty.get_country().get_countryName()
 		terrainLabel.text = "\n" + ty.get_terrain_name() + " " + ty.get_size()
@@ -41,7 +41,7 @@ func _refresh(day):
 		populationLabel.text = "\nPopulation: %.f\n" % territory.get_population()
 		taxLabel.text = "\nRevenue: $" + main.format_float(territory.get_profit()) + "/day\n"
 		territory.get_tax_mod().set_tooltip(taxLabel, true)
-		populationLabel.tooltip_text = "Daily change: " + main.format_float(territory.get_popChange())  + "\n" + territory.get_pop_mod().get_list(false)
+		populationLabel.tooltip_text = "Daily change: " + main.format_float(territory.get_pop_change())  + "\n" + territory.get_pop_mod().get_list(false)
 
 func _on_close():
 	box.set_visible(false)
