@@ -12,10 +12,9 @@ var game_started = false
 
 func _ready() -> void:
 	SignalBus.game_start.connect(_start)
-	Lib.add_defaults()
+	#Lib.add_defaults()
 	save_state()
 	load_state()
-	SignalBus.finish_ready.emit()
 	
 func _start(country):
 	game_started = true
@@ -28,6 +27,7 @@ func save_state():
 
 func load_state():
 	Lib.load_state()
+	SignalBus.finish_loading.emit()
 	
 func get_camera():
 	return camera

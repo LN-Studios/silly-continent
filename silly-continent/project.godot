@@ -26,7 +26,6 @@ Lib="*res://library/lib.gd"
 
 folder_colors={
 "res://class/": "pink",
-"res://countries/": "gray",
 "res://data/": "teal",
 "res://events/": "red",
 "res://global/": "blue",

@@ -7,8 +7,8 @@ var data = {
 
 func _init(lib_dict: Dictionary):
 	SignalBus.new_turn.connect(_turn)
-	SignalBus.finish_ready.connect(connect_entities)
-	Lib.add_item(self, lib_dict)
+	SignalBus.finish_loading.connect(connect_entities)
+	#Lib.add_item(self, lib_dict)
 
 func _turn(_turn_number):
 	pass

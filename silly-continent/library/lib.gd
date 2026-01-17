@@ -13,11 +13,11 @@ var Dicts = {
 }
 
 func add_item(item: Entity, dict: Dictionary, overwrite = false):
-	var key = item.data.name
+	var key = item.get_id()
 	if dict.has(key):
 		print("WARNING: %s already in lib" % key)
 		if (!overwrite): return
-	dict[item.get_id()] = item
+	dict[key] = item
 
 func get_item(id: int, dict: Dictionary) -> Entity:
 	var item = dict.get(id, null)
@@ -59,7 +59,7 @@ func save_state():
 
 func load_state():
 	for dict_name in Dicts.keys():
-		var entities_arr = FileUtil.read_from_file(get_entity_save_path(dict_name))
+		var entities_arr = FileUtil.read_from_file(get_entity_load_path(dict_name))
 		#forgive me for using a match statement here :(
 		match dict_name:
 			"Countries": load_countries(entities_arr)

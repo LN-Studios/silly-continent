@@ -17,7 +17,7 @@ signal new_army(new)
 signal open_help()
 
 #game signals
-signal finish_ready()
+signal finish_loading()
 signal game_start(country)
 signal pause()
 signal unpause()

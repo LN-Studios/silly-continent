@@ -11,6 +11,7 @@ var mouse_selected = false
 var territory: Territory
 
 func _ready():
+	SignalBus.finish_loading.connect(set_territory)
 	shape = get_child(0)
 	label = shape.get_child(0)
 	#add collision area
@@ -28,7 +29,10 @@ func _ready():
 	border.width = 2.25
 	border.default_color = Color.BLACK
 	border.points = shape.polygon
+
+func set_territory():
 	territory = Lib.get_territ(territory_id)
+	label.text = territory.get_name()
 
 func set_country_color(c):
 	if (c):

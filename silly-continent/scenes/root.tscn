@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tj3ccedc1v48"]
+[gd_scene load_steps=8 format=3 uid="uid://tj3ccedc1v48"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_f5blk"]
 [ext_resource type="Texture2D" uid="uid://c5m1cm5vgv8j4" path="res://Screenshot 2025-01-03 013136.png" id="2_bg3r2"]
@@ -7,10 +7,6 @@
 [ext_resource type="Script" path="res://util/camera.gd" id="16_xvdfb"]
 [ext_resource type="PackedScene" uid="uid://nkcjwbsh84yu" path="res://scenes/hud.tscn" id="17_pfjmn"]
 [ext_resource type="PackedScene" uid="uid://d2p7ta7w0rlu" path="res://scenes/popup.tscn" id="29_bs6ov"]
-
-[sub_resource type="GDScript" id="GDScript_cl7oi"]
-script/source = "extends \"res://class/territory.gd\"
-"
 
 [node name="main" type="Node" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_f5blk")
@@ -26,7 +22,7 @@ texture = ExtResource("2_bg3r2")
 
 [node name="Screenshot2025-01-03013150" type="Sprite2D" parent="map"]
 z_index = -1
-position = Vector2(916, 1181)
+position = Vector2(917, 1181)
 texture = ExtResource("3_mlogu")
 
 [node name="default" type="Node" parent="map"]
@@ -50,6 +46,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="cummington" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 25
 
 [node name="shape" type="Polygon2D" parent="map/cummington"]
 position = Vector2(-50, 38)
@@ -72,6 +69,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="bussyville" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 27
 
 [node name="shape" type="Polygon2D" parent="map/bussyville"]
 position = Vector2(-219, 8)
@@ -94,6 +92,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="chupavilla" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 28
 
 [node name="shape" type="Polygon2D" parent="map/chupavilla"]
 position = Vector2(-119, -102)
@@ -116,17 +115,18 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="sexico_city" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 29
 
 [node name="shape" type="Polygon2D" parent="map/sexico_city"]
 position = Vector2(11, -189)
 color = Color(0.156863, 0.537255, 0.219608, 1)
-polygon = PackedVector2Array(630, 328, 628, 291, 641, 277, 641, 262, 659, 263, 671, 274, 677, 272, 680, 268, 682, 264, 686, 259, 689, 258, 692, 261, 693, 265, 695, 270, 699, 269, 704, 266, 706, 270, 706, 276, 704, 283, 705, 287, 710, 289, 715, 293, 715, 305, 718, 307, 723, 307, 726, 306, 723, 314, 729, 316, 723, 328, 715, 337, 702, 338, 688, 361, 651, 370, 632, 371)
+polygon = PackedVector2Array(564, 395, 526, 399, 521, 391, 515, 385, 506, 381, 493, 377, 486, 372, 485, 360, 492, 344, 493, 336, 496, 331, 501, 329, 503, 322, 508, 320, 511, 322, 518, 325, 522, 331, 526, 335, 530, 339, 532, 341, 536, 345, 536, 349, 541, 351, 542, 355, 541, 361, 545, 365, 550, 365, 553, 362, 553, 352, 555, 347, 560, 343, 563, 342, 565, 334, 564, 327, 557, 326, 560, 322, 564, 318, 566, 314, 562, 308, 558, 303, 559, 296, 555, 291, 554, 278, 558, 270, 563, 265, 564, 256, 566, 251, 585, 251, 595, 272, 604, 275, 612, 262, 626, 264, 641, 262, 659, 263, 671, 274, 677, 272, 680, 268, 682, 264, 686, 259, 689, 258, 692, 261, 693, 265, 695, 270, 699, 269, 704, 266, 706, 270, 706, 276, 704, 283, 705, 287, 710, 289, 715, 293, 715, 305, 718, 307, 723, 307, 726, 306, 723, 314, 729, 316, 723, 328, 715, 337, 702, 338, 688, 361, 651, 370, 632, 371, 579, 376)
 
 [node name="label" type="Label" parent="map/sexico_city/shape"]
-offset_left = 637.0
-offset_top = 304.0
-offset_right = 720.0
-offset_bottom = 327.0
+offset_left = 595.0
+offset_top = 289.0
+offset_right = 678.0
+offset_bottom = 312.0
 text = "Sexico City"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -136,25 +136,26 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="medio_sexico" type="Node" parent="map"]
+[node name="bajookieland" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 30
 
-[node name="shape" type="Polygon2D" parent="map/medio_sexico"]
-position = Vector2(-122, -186)
+[node name="shape" type="Polygon2D" parent="map/bajookieland"]
+position = Vector2(329, -790)
 color = Color(0.156863, 0.537255, 0.219608, 1)
 polygon = PackedVector2Array(619, 370, 618, 358, 622, 348, 625, 341, 626, 335, 629, 328, 637, 321, 637, 316, 644, 317, 654, 329, 659, 332, 665, 337, 667, 344, 674, 351, 674, 358, 676, 362, 684, 362, 686, 352, 687, 346, 691, 343, 698, 337, 698, 327, 697, 323, 690, 323, 693, 318, 696, 316, 698, 310, 692, 303, 689, 289, 686, 279, 689, 269, 699, 248, 718, 248, 728, 269, 737, 272, 745, 259, 759, 260, 774, 259, 774, 275, 761, 288, 765, 368, 712, 372, 696, 393, 660, 396, 651, 385, 642, 379, 628, 376)
 
-[node name="label" type="Label" parent="map/medio_sexico/shape"]
+[node name="label" type="Label" parent="map/bajookieland/shape"]
 z_index = 2
 offset_left = 643.0
 offset_top = 311.0
 offset_right = 745.0
 offset_bottom = 334.0
-text = "Medio Sexico"
+text = "Bajookieland"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="border" type="Line2D" parent="map/medio_sexico/shape"]
+[node name="border" type="Line2D" parent="map/bajookieland/shape"]
 z_index = 1
 closed = true
 width = 2.0
@@ -162,6 +163,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="whackopolis" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 31
 
 [node name="shape" type="Polygon2D" parent="map/whackopolis"]
 position = Vector2(-75, -310)
@@ -184,6 +186,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="zazaland" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 32
 
 [node name="shape" type="Polygon2D" parent="map/zazaland"]
 position = Vector2(94, -124)
@@ -206,6 +209,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="sprinklspram" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 33
 
 [node name="shape" type="Polygon2D" parent="map/sprinklspram"]
 position = Vector2(88, -392)
@@ -228,6 +232,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="yurmom" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 34
 
 [node name="shape" type="Polygon2D" parent="map/yurmom"]
 position = Vector2(-87, -418)
@@ -252,6 +257,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="morbistan" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 26
 
 [node name="shape" type="Polygon2D" parent="map/morbistan"]
 position = Vector2(-138, 141)
@@ -274,6 +280,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="uppercum" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 35
 
 [node name="shape" type="Polygon2D" parent="map/uppercum"]
 position = Vector2(104, 134)
@@ -297,6 +304,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="sexville" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 36
 
 [node name="shape" type="Polygon2D" parent="map/sexville"]
 position = Vector2(199, 166)
@@ -319,6 +327,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="sandwich_west" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 8
 
 [node name="shape" type="Polygon2D" parent="map/sandwich_west"]
 position = Vector2(162, 6)
@@ -342,6 +351,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="sandwich_central" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 9
 
 [node name="shape" type="Polygon2D" parent="map/sandwich_central"]
 position = Vector2(387, 173)
@@ -365,6 +375,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="sandwich_east" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 10
 
 [node name="shape" type="Polygon2D" parent="map/sandwich_east"]
 position = Vector2(489, 257)
@@ -388,6 +399,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="bumblyburg" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 11
 
 [node name="shape" type="Polygon2D" parent="map/bumblyburg"]
 position = Vector2(268, -64)
@@ -410,6 +422,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="jacrispy_beach" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 12
 
 [node name="shape" type="Polygon2D" parent="map/jacrispy_beach"]
 position = Vector2(400, 50)
@@ -432,6 +445,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="aauugh" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 37
 
 [node name="shape" type="Polygon2D" parent="map/aauugh"]
 position = Vector2(74, 283)
@@ -455,6 +469,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="fleshuis" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 38
 
 [node name="shape" type="Polygon2D" parent="map/fleshuis"]
 position = Vector2(-205, 255)
@@ -498,6 +513,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="petoria" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 2
 
 [node name="shape" type="Polygon2D" parent="map/petoria"]
 position = Vector2(355, 511)
@@ -520,6 +536,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="pootopia" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 4
 
 [node name="shape" type="Polygon2D" parent="map/pootopia"]
 position = Vector2(395, 410)
@@ -543,6 +560,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="map" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 3
 
 [node name="shape" type="Polygon2D" parent="map/map"]
 position = Vector2(205, 414)
@@ -565,6 +583,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="autobot_city" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 13
 
 [node name="shape" type="Polygon2D" parent="map/autobot_city"]
 position = Vector2(430, 163)
@@ -587,6 +606,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="cagliostro" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 5
 
 [node name="shape" type="Polygon2D" parent="map/cagliostro"]
 position = Vector2(359, 312)
@@ -609,6 +629,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="hhgregg" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 7
 
 [node name="shape" type="Polygon2D" parent="map/hhgregg"]
 position = Vector2(505, 382)
@@ -626,6 +647,7 @@ vertical_alignment = 1
 
 [node name="mechia" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 15
 
 [node name="shape" type="Polygon2D" parent="map/mechia"]
 position = Vector2(614, 220)
@@ -648,6 +670,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="arentrabia" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 16
 
 [node name="shape" type="Polygon2D" parent="map/arentrabia"]
 position = Vector2(610, 112)
@@ -670,6 +693,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="quahog" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 17
 
 [node name="shape" type="Polygon2D" parent="map/quahog"]
 position = Vector2(608, 366)
@@ -692,6 +716,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="undertale" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 39
 
 [node name="shape" type="Polygon2D" parent="map/undertale"]
 position = Vector2(191, 294)
@@ -703,7 +728,7 @@ offset_left = 675.0
 offset_top = 274.0
 offset_right = 753.0
 offset_bottom = 297.0
-text = "Undertale"
+text = "Underton"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -714,6 +739,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="gumball_north" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 40
 
 [node name="shape" type="Polygon2D" parent="map/gumball_north"]
 position = Vector2(394, -418)
@@ -736,6 +762,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="gumball_south" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 41
 
 [node name="shape" type="Polygon2D" parent="map/gumball_south"]
 position = Vector2(365.667, -188)
@@ -759,6 +786,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="idiot" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 42
 
 [node name="shape" type="Polygon2D" parent="map/idiot"]
 position = Vector2(279, -136)
@@ -779,15 +807,16 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="autisthmus" type="Node" parent="map"]
+[node name="hartuget" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 43
 
-[node name="shape" type="Polygon2D" parent="map/autisthmus"]
+[node name="shape" type="Polygon2D" parent="map/hartuget"]
 position = Vector2(135, -348)
 color = Color(0.156863, 0.537255, 0.219608, 1)
 polygon = PackedVector2Array(704, 220, 711, 219, 715, 215, 717, 210, 716, 205, 717, 201, 716, 198, 711, 197, 710, 194, 708, 192, 711, 191, 714, 191, 716, 189, 716, 183, 720, 184, 722, 189, 720, 196, 725, 199, 729, 204, 732, 207, 740, 209, 748, 211, 756, 210, 761, 206, 765, 205, 768, 208, 773, 209, 777, 206, 782, 200, 782, 334, 781, 336, 780, 336, 777, 334, 772, 332, 768, 334, 767, 336, 765, 342, 761, 344, 757, 344, 754, 348, 752, 344, 748, 342, 742, 337, 734, 330, 729, 321, 728, 309, 729, 304, 726, 299, 723, 297, 721, 295, 720, 288, 716, 283, 716, 278, 716, 269, 718, 264, 717, 259, 715, 256, 711, 253, 707, 256, 703, 255, 700, 253, 696, 257, 694, 261, 691, 264, 689, 268, 686, 266, 684, 263, 682, 260, 681, 256, 678, 255, 675, 252, 669, 252, 667, 252, 666, 247, 666, 243, 663, 241, 660, 239, 655, 237, 653, 235, 653, 232, 651, 229, 649, 228, 647, 229, 645, 231, 641, 230, 638, 228, 649, 222, 654, 211, 672, 205, 675, 211, 678, 214, 682, 215, 686, 220, 689, 223, 692, 226, 695, 225, 697, 221, 700, 219)
 
-[node name="label" type="Label" parent="map/autisthmus/shape"]
+[node name="label" type="Label" parent="map/hartuget/shape"]
 offset_left = 672.0
 offset_top = 227.0
 offset_right = 761.0
@@ -796,13 +825,14 @@ text = "Hartuget"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="border" type="Line2D" parent="map/autisthmus/shape"]
+[node name="border" type="Line2D" parent="map/hartuget/shape"]
 closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="mudtown" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 6
 
 [node name="shape" type="Polygon2D" parent="map/mudtown"]
 position = Vector2(261, 515)
@@ -825,6 +855,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="shapoopi" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 44
 
 [node name="shape" type="Polygon2D" parent="map/shapoopi"]
 position = Vector2(253, -412)
@@ -847,6 +878,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="robin" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 45
 
 [node name="shape" type="Polygon2D" parent="map/robin"]
 position = Vector2(547, -122)
@@ -869,6 +901,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="galahad" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 46
 
 [node name="shape" type="Polygon2D" parent="map/galahad"]
 position = Vector2(582, -240)
@@ -889,30 +922,32 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="nincompoop" type="Node" parent="map"]
+[node name="dunce" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 47
 
-[node name="shape" type="Polygon2D" parent="map/nincompoop"]
+[node name="shape" type="Polygon2D" parent="map/dunce"]
 position = Vector2(328, -258)
 color = Color(0.156863, 0.537255, 0.219608, 1)
 polygon = PackedVector2Array(711, 212, 721, 215, 727, 210, 728, 191, 730, 183, 737, 177, 739, 170, 739, 161, 750, 160, 761, 160, 793, 160, 784, 179, 787, 200, 791, 211, 799, 218, 798, 232, 791, 238, 784, 247, 791, 258, 801, 271, 786, 286, 774, 299, 757, 310, 756, 323, 747, 339, 738, 345, 726, 343, 708, 336, 686, 324, 672, 313, 668, 320, 658, 319, 651, 317, 644, 323, 644, 328, 633, 331, 628, 326, 623, 321, 622, 314, 625, 309, 633, 303, 639, 298, 649, 288, 647, 278, 642, 271, 635, 268, 629, 267, 625, 270, 620, 270, 619, 266, 616, 263, 615, 258, 613, 255, 618, 253, 628, 240, 619, 227, 626, 223, 633, 220, 639, 215, 648, 219, 672, 210, 689, 223, 697, 223)
 
-[node name="label" type="Label" parent="map/nincompoop/shape"]
+[node name="label" type="Label" parent="map/dunce/shape"]
 offset_left = 665.0
 offset_top = 251.0
 offset_right = 765.0
 offset_bottom = 274.0
-text = "Nincompoop"
+text = "Dunce"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="border" type="Line2D" parent="map/nincompoop/shape"]
+[node name="border" type="Line2D" parent="map/dunce/shape"]
 closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="brunclo" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 48
 
 [node name="shape" type="Polygon2D" parent="map/brunclo"]
 position = Vector2(655, -386)
@@ -935,6 +970,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="pukisti" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 49
 
 [node name="shape" type="Polygon2D" parent="map/pukisti"]
 position = Vector2(883, -220)
@@ -957,6 +993,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="hooligan" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 51
 
 [node name="shape" type="Polygon2D" parent="map/hooligan"]
 position = Vector2(459, -324)
@@ -979,6 +1016,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="ekki" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 50
 
 [node name="shape" type="Polygon2D" parent="map/ekki"]
 position = Vector2(822, -449)
@@ -999,15 +1037,16 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="lancealot" type="Node" parent="map"]
+[node name="camelot" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 52
 
-[node name="shape" type="Polygon2D" parent="map/lancealot"]
+[node name="shape" type="Polygon2D" parent="map/camelot"]
 position = Vector2(576, -492)
 color = Color(0.156863, 0.537255, 0.219608, 1)
 polygon = PackedVector2Array(791, 251, 776, 259, 771, 270, 774, 281, 778, 285, 776, 301, 758, 316, 753, 324, 757, 332, 728, 338, 689, 323, 636, 317, 636, 215, 650, 216, 650, 198, 653, 180, 662, 181, 670, 187, 676, 192, 685, 192, 687, 181, 694, 170, 700, 176, 699, 183, 707, 186, 715, 188, 726, 191, 730, 195, 741, 196, 747, 188, 749, 177, 740, 170, 749, 164, 756, 157, 765, 159, 778, 159, 780, 150, 789, 147, 790, 139, 791, 126, 802, 125, 808, 133, 815, 131, 819, 134, 829, 142, 831, 154, 835, 166, 849, 166, 856, 168, 858, 177, 869, 175, 870, 162, 879, 161, 887, 147, 891, 149, 894, 157, 899, 161, 897, 166, 890, 171, 889, 180, 889, 183, 885, 186, 879, 190, 873, 193, 875, 201, 876, 211, 870, 223, 857, 233, 856, 240, 852, 248, 846, 251, 837, 252, 829, 252, 824, 254, 819, 255, 819, 259, 801, 256)
 
-[node name="label" type="Label" parent="map/lancealot/shape"]
+[node name="label" type="Label" parent="map/camelot/shape"]
 offset_left = 709.0
 offset_top = 216.0
 offset_right = 785.0
@@ -1016,13 +1055,14 @@ text = "Camelot"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="border" type="Line2D" parent="map/lancealot/shape"]
+[node name="border" type="Line2D" parent="map/camelot/shape"]
 closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="bedivere" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 53
 
 [node name="shape" type="Polygon2D" parent="map/bedivere"]
 position = Vector2(898, -549)
@@ -1045,6 +1085,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="wonkadonk" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 54
 
 [node name="shape" type="Polygon2D" parent="map/wonkadonk"]
 position = Vector2(848, -625)
@@ -1066,31 +1107,33 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="amerigay" type="Node" parent="map"]
+[node name="armagedda" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 55
 
-[node name="shape" type="Polygon2D" parent="map/amerigay"]
+[node name="shape" type="Polygon2D" parent="map/armagedda"]
 position = Vector2(1097, -487)
 color = Color(0.156863, 0.537255, 0.219608, 1)
 polygon = PackedVector2Array(592, 265, 594, 261, 607, 259, 607, 254, 605, 249, 601, 246, 602, 240, 604, 232, 605, 228, 600, 223, 603, 218, 606, 214, 606, 209, 603, 204, 620, 199, 636, 194, 641, 198, 650, 200, 661, 193, 667, 188, 688, 191, 686, 197, 681, 200, 678.79, 204.725, 673, 208, 674, 215, 681, 220, 691, 220, 694, 224, 692, 229, 686, 233, 679, 235, 672, 237, 671, 243, 674, 249, 680, 253, 690, 259, 696, 266, 701, 276, 707, 282, 711, 288, 714, 294, 716, 299, 715, 308, 714, 313, 710, 314, 707, 318, 704, 322, 703, 325, 707, 332, 705, 337, 703, 343, 697, 343, 695, 340, 688, 337, 682, 333, 678, 328, 675, 327, 671, 330, 670, 335, 667, 339, 663, 338, 653, 338, 648, 343, 648, 346, 646, 347, 646, 350, 645, 357, 642, 362, 642, 367, 647, 369, 646, 376, 647, 382, 647, 387, 651, 391, 645, 392, 643, 389, 639, 389, 636, 397, 638, 400, 642, 400, 647, 401, 648, 404, 652, 405, 655, 407, 650, 412, 648, 416, 645, 420, 639, 422, 639, 427, 642, 429, 642, 433, 640, 436, 638, 441, 633, 444, 629, 451, 624, 452, 619, 452, 612, 448, 615, 445, 619, 443, 618, 436, 619, 426, 619, 422, 615, 419, 605, 419, 599, 421, 596, 425, 590, 430, 589, 433, 588, 439, 586, 444, 582, 445, 579, 443, 577, 439, 573, 439, 570, 437, 572, 434, 578, 431, 584, 427, 585, 422, 587, 417, 585, 415, 580, 409, 575, 404, 570, 402, 566, 398, 560, 398, 553, 397, 549, 393, 550, 384, 546, 379, 540, 370, 540, 366, 542, 363, 550, 357, 553, 352, 557, 354, 564, 353, 566, 349, 558, 346, 562, 345, 570, 341, 574, 337, 575, 333, 584, 325, 586, 322, 583, 309, 583, 303, 585, 296, 587, 291, 583, 286, 580, 283, 581, 279, 585, 277, 586, 271, 588, 268)
 
-[node name="label" type="Label" parent="map/amerigay/shape"]
+[node name="label" type="Label" parent="map/armagedda/shape"]
 modulate = Color(1, 0.996078, 1, 1)
 offset_left = 607.0
 offset_top = 293.0
 offset_right = 681.0
 offset_bottom = 316.0
-text = "Amerigay"
+text = "Armagedda"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="border" type="Line2D" parent="map/amerigay/shape"]
+[node name="border" type="Line2D" parent="map/armagedda/shape"]
 closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="chudizona" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 56
 
 [node name="shape" type="Polygon2D" parent="map/chudizona"]
 position = Vector2(1087, -702)
@@ -1114,6 +1157,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="jeb" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 57
 
 [node name="shape" type="Polygon2D" parent="map/jeb"]
 position = Vector2(1241, -791)
@@ -1137,6 +1181,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="taxes1" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 58
 
 [node name="shape" type="Polygon2D" parent="map/taxes1"]
 position = Vector2(1215, -658)
@@ -1160,6 +1205,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="taxes2" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 59
 
 [node name="shape" type="Polygon2D" parent="map/taxes2"]
 position = Vector2(1212, -566)
@@ -1183,6 +1229,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="aimes_gettin" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 61
 
 [node name="shape" type="Polygon2D" parent="map/aimes_gettin"]
 position = Vector2(-346, -151)
@@ -1206,6 +1253,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="slamongflobo_city" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 60
 
 [node name="shape" type="Polygon2D" parent="map/slamongflobo_city"]
 position = Vector2(-465, -28)
@@ -1229,6 +1277,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="casa_zola" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 62
 
 [node name="shape" type="Polygon2D" parent="map/casa_zola"]
 position = Vector2(-691, -89)
@@ -1252,6 +1301,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="hottenredi" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 63
 
 [node name="shape" type="Polygon2D" parent="map/hottenredi"]
 position = Vector2(-707, -299)
@@ -1275,6 +1325,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="earl_sweatshirt" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 64
 
 [node name="shape" type="Polygon2D" parent="map/earl_sweatshirt"]
 position = Vector2(-543, -511)
@@ -1298,6 +1349,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="viva_rock_vegas" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 65
 
 [node name="shape" type="Polygon2D" parent="map/viva_rock_vegas"]
 position = Vector2(-329, -341)
@@ -1321,6 +1373,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="kirby_griffin" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 66
 
 [node name="shape" type="Polygon2D" parent="map/kirby_griffin"]
 position = Vector2(-260, 56)
@@ -1342,25 +1395,26 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="doodoo" type="Node" parent="map"]
+[node name="laurflo" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 67
 
-[node name="shape" type="Polygon2D" parent="map/doodoo"]
+[node name="shape" type="Polygon2D" parent="map/laurflo"]
 position = Vector2(-214, -113)
 color = Color(0.156863, 0.537255, 0.219608, 1)
 polygon = PackedVector2Array(639, 318, 640, 308, 644, 304, 646, 298, 647, 292, 651, 290, 653, 286, 658, 288, 665, 288, 665, 284, 662, 279, 662, 274, 663, 269, 666, 268, 670, 269, 670, 273, 671, 277, 672, 282, 677, 283, 682, 280, 686, 280, 692, 285, 696, 283, 694, 278, 691, 276, 690, 267, 685, 266, 684, 261, 687, 256, 691, 256, 694, 260, 701, 263, 708, 261, 714, 260, 718, 260, 717, 268, 710, 284, 711, 296, 718, 301, 719, 369, 720, 379, 698, 376, 681, 383, 661, 385, 651, 371, 637, 360, 631, 346, 630, 321)
 
-[node name="label" type="Label" parent="map/doodoo/shape"]
+[node name="label" type="Label" parent="map/laurflo/shape"]
 modulate = Color(1, 0.996078, 1, 1)
 offset_left = 641.0
 offset_top = 312.0
 offset_right = 714.0
 offset_bottom = 335.0
-text = "Doodoo"
+text = "Laurflo"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="border" type="Line2D" parent="map/doodoo/shape"]
+[node name="border" type="Line2D" parent="map/laurflo/shape"]
 closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
@@ -1385,6 +1439,7 @@ vertical_alignment = 1
 
 [node name="bruhzil" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 68
 
 [node name="shape" type="Polygon2D" parent="map/bruhzil"]
 position = Vector2(-296, -22)
@@ -1409,6 +1464,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="taxes3" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 69
 
 [node name="shape" type="Polygon2D" parent="map/taxes3"]
 position = Vector2(1364, -611)
@@ -1432,6 +1488,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="dinosaurus" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 70
 
 [node name="shape" type="Polygon2D" parent="map/dinosaurus"]
 position = Vector2(-943, -998)
@@ -1455,6 +1512,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="obama" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 71
 
 [node name="shape" type="Polygon2D" parent="map/obama"]
 position = Vector2(15, 390)
@@ -1467,7 +1525,7 @@ offset_left = 630.0
 offset_top = 321.0
 offset_right = 720.0
 offset_bottom = 344.0
-text = "Obamacare"
+text = "Comaba"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1478,6 +1536,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="squam" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 72
 
 [node name="shape" type="Polygon2D" parent="map/squam"]
 position = Vector2(-197, 904)
@@ -1501,6 +1560,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="cybertron" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 73
 
 [node name="shape" type="Polygon2D" parent="map/cybertron"]
 position = Vector2(430, 164)
@@ -1524,6 +1584,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="flobo1" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 74
 
 [node name="shape" type="Polygon2D" parent="map/flobo1"]
 position = Vector2(-490, -165)
@@ -1547,6 +1608,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="jaboogus" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 75
 
 [node name="shape" type="Polygon2D" parent="map/jaboogus"]
 position = Vector2(-673, 649)
@@ -1563,27 +1625,29 @@ text = "Jaboogus"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="flobo2" type="Node" parent="map"]
+[node name="crab rangoon" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 76
 
-[node name="shape" type="Polygon2D" parent="map/flobo2"]
+[node name="shape" type="Polygon2D" parent="map/crab rangoon"]
 position = Vector2(-400, -431)
 color = Color(0.156863, 0.537255, 0.219608, 1)
 polygon = PackedVector2Array(624, 309, 618, 309, 617, 310, 615, 310, 613, 310, 611, 307, 609, 292, 614, 262, 616, 263, 617, 266, 619, 266, 621, 267, 621, 271, 619, 272, 621, 273, 623, 275, 623, 279, 624, 281, 626, 278, 630, 276, 633, 274, 634, 272, 636, 272, 636, 274, 638, 276, 638, 279, 639, 281, 638, 281, 638, 283.005, 638, 284, 637, 285, 637, 287, 637, 289, 641, 289, 644, 292, 646, 295, 649, 298, 651, 301, 655, 303, 656, 307, 658, 309, 660, 309, 663, 310, 666, 311, 666, 313, 669, 314, 671, 316, 673, 317, 673, 320, 674, 323, 677, 326, 680, 326, 681, 324, 682, 322, 684, 321, 683, 318, 683, 314, 684, 312, 685, 310, 687, 309, 687, 306, 687, 301, 687, 299, 686, 298, 686, 297, 688, 296, 690, 295, 693, 294, 695, 293, 698, 292, 700, 290, 701, 288, 701, 286, 704, 284, 706, 282, 710, 280, 711, 282, 713, 281, 715, 279, 715, 277, 717, 274, 719, 273, 722, 270, 723, 268, 724, 265, 724, 260, 729, 261, 731, 262, 734, 264, 736, 266, 738, 267, 740, 268, 743, 269, 744, 268, 747, 268, 751, 268, 751, 273, 753, 275, 756, 281, 758, 282, 761, 284, 764, 285, 766, 287, 766, 292, 767, 295, 767, 298, 765, 300, 761, 301, 760, 303, 757, 304, 755, 309, 755, 314, 758, 315, 758, 317, 761, 320, 765, 319, 770, 318, 775, 317, 777, 319, 776, 320, 772, 320, 768, 322, 767, 326, 766, 329, 764, 331, 762, 333, 762, 336, 760, 338, 755, 339, 751, 335, 747, 336, 746, 340, 744, 341, 740, 344, 739, 349, 748, 357, 743, 362, 737, 369, 734, 376, 724, 373, 708, 375, 691, 374, 682, 377, 665, 376, 649, 368, 626, 365, 613, 366, 612, 364, 612, 362, 614, 360, 616, 357, 617, 353, 617, 349, 617, 345, 613, 342, 613, 340, 614, 340, 614, 333, 612, 332, 611, 331, 610, 329, 609, 328, 609, 324, 611, 324, 613, 325, 614, 326, 615, 328, 617, 330, 617, 334, 617, 337, 618, 338, 618, 341, 619, 343, 622, 344, 624, 345, 627, 344, 629, 343, 630, 342, 631, 341, 631, 338, 633, 337, 633, 332, 631, 334, 628, 335, 625, 335, 625, 332, 627, 331, 627, 323, 626, 319, 626, 313, 625, 311)
 
-[node name="label" type="Label" parent="map/flobo2/shape"]
+[node name="label" type="Label" parent="map/crab rangoon/shape"]
 modulate = Color(1, 0.996078, 1, 1)
 offset_left = 629.0
 offset_top = 351.0
 offset_right = 736.0
 offset_bottom = 374.0
 rotation = -0.270526
-text = "House of Flan"
+text = "Crab Rangoon"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="omnichad" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 77
 
 [node name="shape" type="Polygon2D" parent="map/omnichad"]
 position = Vector2(-634, -553)
@@ -1602,6 +1666,7 @@ vertical_alignment = 1
 
 [node name="swooce" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 78
 
 [node name="shape" type="Polygon2D" parent="map/swooce"]
 position = Vector2(26, 607)
@@ -1620,6 +1685,7 @@ vertical_alignment = 1
 
 [node name="soup1" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 79
 
 [node name="shape" type="Polygon2D" parent="map/soup1"]
 position = Vector2(-137, 678)
@@ -1637,6 +1703,7 @@ vertical_alignment = 1
 
 [node name="espuma" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 80
 
 [node name="shape" type="Polygon2D" parent="map/espuma"]
 position = Vector2(-769, -3)
@@ -1655,6 +1722,7 @@ vertical_alignment = 1
 
 [node name="senor_brap" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 81
 
 [node name="shape" type="Polygon2D" parent="map/senor_brap"]
 position = Vector2(-773, 187)
@@ -1673,6 +1741,7 @@ vertical_alignment = 1
 
 [node name="north_fart" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 82
 
 [node name="shape" type="Polygon2D" parent="map/north_fart"]
 position = Vector2(-684, 359)
@@ -1690,7 +1759,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="south_fart" type="Node" parent="map"]
-script = SubResource("GDScript_cl7oi")
+script = ExtResource("4_2iwvr")
+territory_id = 83
 
 [node name="shape" type="Polygon2D" parent="map/south_fart"]
 position = Vector2(-683, 416)
@@ -1709,6 +1779,7 @@ vertical_alignment = 1
 
 [node name="falafel" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 84
 
 [node name="shape" type="Polygon2D" parent="map/falafel"]
 position = Vector2(-777, 465)
@@ -1727,6 +1798,7 @@ vertical_alignment = 1
 
 [node name="pantaloon" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 85
 
 [node name="shape" type="Polygon2D" parent="map/pantaloon"]
 position = Vector2(-535, 673)
@@ -1745,6 +1817,7 @@ vertical_alignment = 1
 
 [node name="jatwogus" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 88
 
 [node name="shape" type="Polygon2D" parent="map/jatwogus"]
 position = Vector2(-816, 626)
@@ -1763,6 +1836,7 @@ vertical_alignment = 1
 
 [node name="cretuis1" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 87
 
 [node name="shape" type="Polygon2D" parent="map/cretuis1"]
 position = Vector2(266, 580)
@@ -1782,6 +1856,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="funnyville" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 22
 
 [node name="shape" type="Polygon2D" parent="map/funnyville"]
 position = Vector2(446, 650)
@@ -1801,6 +1876,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="arlen" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 23
 
 [node name="shape" type="Polygon2D" parent="map/arlen"]
 position = Vector2(471, 767)
@@ -1820,6 +1896,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="trollolol" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 24
 
 [node name="shape" type="Polygon2D" parent="map/trollolol"]
 position = Vector2(537, 770)
@@ -1837,6 +1914,7 @@ vertical_alignment = 1
 
 [node name="energylanda" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 86
 
 [node name="shape" type="Polygon2D" parent="map/energylanda"]
 position = Vector2(659, 951)
@@ -1854,6 +1932,7 @@ vertical_alignment = 1
 
 [node name="new_portland" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 18
 
 [node name="shape" type="Polygon2D" parent="map/new_portland"]
 position = Vector2(658, 565)
@@ -1865,12 +1944,13 @@ offset_left = 667.0
 offset_top = 259.0
 offset_right = 773.0
 offset_bottom = 282.0
-text = "New Portland"
+text = "Newport"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="dewoka" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 19
 
 [node name="shape" type="Polygon2D" parent="map/dewoka"]
 position = Vector2(811, 546)
@@ -1888,6 +1968,7 @@ vertical_alignment = 1
 
 [node name="manzana" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 21
 
 [node name="shape" type="Polygon2D" parent="map/manzana"]
 position = Vector2(816, 424)
@@ -1905,6 +1986,7 @@ vertical_alignment = 1
 
 [node name="kong_hong" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 20
 
 [node name="shape" type="Polygon2D" parent="map/kong_hong"]
 position = Vector2(895, 750)
@@ -1922,6 +2004,7 @@ vertical_alignment = 1
 
 [node name="cretuis2" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 89
 
 [node name="shape" type="Polygon2D" parent="map/cretuis2"]
 position = Vector2(581, 482)
@@ -1939,6 +2022,7 @@ vertical_alignment = 1
 
 [node name="cretuis3" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 90
 
 [node name="shape" type="Polygon2D" parent="map/cretuis3"]
 position = Vector2(718, 496)
@@ -1956,6 +2040,7 @@ vertical_alignment = 1
 
 [node name="cretuis4" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 91
 
 [node name="shape" type="Polygon2D" parent="map/cretuis4"]
 position = Vector2(518, 582)
@@ -1973,6 +2058,7 @@ vertical_alignment = 1
 
 [node name="cretuis5" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 92
 
 [node name="shape" type="Polygon2D" parent="map/cretuis5"]
 position = Vector2(453, 620)
@@ -1990,6 +2076,7 @@ vertical_alignment = 1
 
 [node name="dagrambra" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 93
 
 [node name="shape" type="Polygon2D" parent="map/dagrambra"]
 position = Vector2(-228, -793)
@@ -2008,6 +2095,7 @@ vertical_alignment = 1
 
 [node name="dasnapbra" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 94
 
 [node name="shape" type="Polygon2D" parent="map/dasnapbra"]
 position = Vector2(-329, -681)
@@ -2027,6 +2115,7 @@ vertical_alignment = 1
 
 [node name="cretuis6" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 95
 
 [node name="shape" type="Polygon2D" parent="map/cretuis6"]
 position = Vector2(605, 727)
@@ -2044,6 +2133,7 @@ vertical_alignment = 1
 
 [node name="cretuis7" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 96
 
 [node name="shape" type="Polygon2D" parent="map/cretuis7"]
 position = Vector2(795, 675)
@@ -2061,6 +2151,7 @@ vertical_alignment = 1
 
 [node name="soup2" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 97
 
 [node name="shape" type="Polygon2D" parent="map/soup2"]
 position = Vector2(-191, 321)
@@ -2079,6 +2170,7 @@ vertical_alignment = 1
 
 [node name="cretuis8" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 98
 
 [node name="shape" type="Polygon2D" parent="map/cretuis8"]
 position = Vector2(266, 580)
@@ -2098,6 +2190,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="uprot" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 100
 
 [node name="shape" type="Polygon2D" parent="map/uprot"]
 position = Vector2(143, 1171)
@@ -2116,6 +2209,7 @@ vertical_alignment = 1
 
 [node name="flobo3" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 99
 
 [node name="shape" type="Polygon2D" parent="map/flobo3"]
 position = Vector2(-626, -219)
@@ -2146,7 +2240,5 @@ editor_draw_limits = true
 script = ExtResource("16_xvdfb")
 
 [node name="HUD" parent="." instance=ExtResource("17_pfjmn")]
-visible = false
 
 [node name="popup" parent="." instance=ExtResource("29_bs6ov")]
-visible = false
