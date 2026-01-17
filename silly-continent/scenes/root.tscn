@@ -475,6 +475,7 @@ default_color = Color(0, 0, 0, 1)
 
 [node name="doofania" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
+territory_id = 1
 
 [node name="shape" type="Polygon2D" parent="map/doofania"]
 position = Vector2(300, 412)
@@ -2145,5 +2146,7 @@ editor_draw_limits = true
 script = ExtResource("16_xvdfb")
 
 [node name="HUD" parent="." instance=ExtResource("17_pfjmn")]
+visible = false
 
 [node name="popup" parent="." instance=ExtResource("29_bs6ov")]
+visible = false

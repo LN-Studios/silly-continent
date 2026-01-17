@@ -2,22 +2,13 @@ extends Node
 
 @export var camera: Camera2D
 
-var helpMenu = preload("res://menu/help.gd")
-
-var gameSpeed = {
-	"made in heaven": 1,
-	"flash": 10,
-	"fast": 30,
-	"med": 60,
-	"slow": 120,
-}
+var help_menu = preload("res://menu/help.gd")
 
 var tick: = 0
 var day = 1
 var year = 1
 var turn = 0
-var clockTicking = false
-var gameStarted = false
+var game_started = false
 
 func _ready() -> void:
 	SignalBus.game_start.connect(_start)
@@ -27,29 +18,10 @@ func _ready() -> void:
 	SignalBus.finish_ready.emit()
 	
 func _start(country):
-	gameStarted = true
+	game_started = true
 	SignalBus.pause.emit()
 	SignalBus.new_turn.emit(day)
 	SignalBus.new_year.emit(year)
-
-func _process(_delta: float) -> void:
-	#pause check
-	if (Input.is_action_just_pressed('space')):
-		if (clockTicking):
-			SignalBus.pause.emit()
-		else:
-			SignalBus.unpause.emit()
-	#game clock
-	if (clockTicking):
-		tick += 1
-		if (tick % gameSpeed["slow"] == 0):
-			tick = 0
-			day += 1
-			SignalBus.new_turn.emit(day)
-			if (day % 366 == 0):
-				day = 1
-				year += 1
-				SignalBus.new_year.emit(year)
 
 func save_state():
 	Lib.save_state()

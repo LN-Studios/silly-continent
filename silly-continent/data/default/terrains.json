@@ -1,0 +1,34 @@
+[
+    {
+        "id": 0,
+        "name": "default"
+    },
+    {
+        "id": 1,
+        "name": "grassland"
+    },
+    {
+        "id": 2,
+        "name": "forest"
+    },
+    {
+        "id": 3,
+        "name": "coastal"
+    },
+    {
+        "id": 4,
+        "name": "hills"
+    },
+    {
+        "id": 5,
+        "name": "mountains"
+    },
+    {
+        "id": 6,
+        "name": "desert"
+    },
+    {
+        "id": 7,
+        "name": "swamp"
+    }
+]

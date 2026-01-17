@@ -2,7 +2,8 @@ extends Node
 
 const data_path = "res://data"
 const default_name = "default"
-const ext = ".save"
+const save_ext = ".save"
+const json_ext = ".json"
 var default_path = "%s/%s" % [data_path, default_name]
 var save_path = default_path
 

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 SignalBus="*res://global/signal_bus.gd"
 Terms="*res://global/terms.gd"
 FileUtil="*res://util/file_util.gd"
+Lib="*res://library/lib.gd"
 
 [file_customization]
 
