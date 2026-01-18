@@ -176,10 +176,11 @@ layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.223816, 5.19812e-06, 0.978626, 1)
 
-[node name="country_menu" type="VBoxContainer" parent="Control/VBoxContainer/info boxes/left box"]
+[node name="country_menu" type="VBoxContainer" parent="Control/VBoxContainer/info boxes/left box" node_paths=PackedStringArray("color_box")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 script = ExtResource("1_mil85")
+color_box = NodePath("../country_box")
 
 [node name="close" type="Button" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
 layout_mode = 2

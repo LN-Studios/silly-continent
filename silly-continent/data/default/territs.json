@@ -10,105 +10,105 @@
         "id": 1,
         "name": "Doofania",
         "population": 12000,
-        "country_id": 0,
+        "country_id": 2,
         "terrain_id": 1
     },
     {
         "id": 2,
         "name": "Petoria",
         "population": 9500,
-        "country_id": 0,
+        "country_id": 3,
         "terrain_id": 1
     },
     {
         "id": 3,
         "name": "Worl Map",
         "population": 4800,
-        "country_id": 0,
+        "country_id": 2,
         "terrain_id": 1
     },
     {
         "id": 4,
         "name": "Pudopia",
         "population": 5200,
-        "country_id": 0,
+        "country_id": 2,
         "terrain_id": 1
     },
     {
         "id": 5,
         "name": "Cagliostro",
         "population": 6000,
-        "country_id": 0,
+        "country_id": 2,
         "terrain_id": 1
     },
     {
         "id": 6,
         "name": "Mudtown",
         "population": 2000,
-        "country_id": 0,
+        "country_id": 2,
         "terrain_id": 1
     },
     {
         "id": 7,
         "name": "HHGregg",
         "population": 0,
-        "country_id": 0,
+        "country_id": 1,
         "terrain_id": 3
     },
     {
         "id": 8,
         "name": "West Sandwich",
         "population": 850,
-        "country_id": 0,
+        "country_id": 4,
         "terrain_id": 4
     },
     {
         "id": 9,
         "name": "Central Sandwich",
         "population": 470,
-        "country_id": 0,
+        "country_id": 5,
         "terrain_id": 4
     },
     {
         "id": 10,
         "name": "East Sandwich",
         "population": 300,
-        "country_id": 0,
+        "country_id": 5,
         "terrain_id": 4
     },
     {
         "id": 11,
         "name": "Bumblyburg",
         "population": 4500,
-        "country_id": 0,
+        "country_id": 5,
         "terrain_id": 4
     },
     {
         "id": 12,
         "name": "Ja'Crispy Beach",
         "population": 650,
-        "country_id": 0,
+        "country_id": 5,
         "terrain_id": 3
     },
     {
         "id": 13,
         "name": "Autobot City",
         "population": 7900,
-        "country_id": 0,
+        "country_id": 5,
         "terrain_id": 4
     },
     {
         "id": 15,
         "name": "Mechia",
         "population": 3500,
-        "country_id": 0,
+        "country_id": 6,
         "terrain_id": 6
     },
     {
         "id": 16,
         "name": "Arentrabia",
         "population": 200,
-        "country_id": 0,
+        "country_id": 6,
         "terrain_id": 6
     },
     {
@@ -171,7 +171,7 @@
         "id": 25,
         "name": "Cunnington",
         "population": 8800,
-        "country_id": 0,
+        "country_id": 4,
         "terrain_id": 7
     },
     {

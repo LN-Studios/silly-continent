@@ -2,26 +2,26 @@ class_name Country extends Entity
 
 var country_data = {
 	name = "country",
-	color = Color.WHITE,
+	color_rgb = [0, 0, 0],
 	capital_id = 0,
 	govt_id = 0,
 	reputation = 0,
 	approval = 0,
 	balance = 0,
-	profit = 0,
-	population = 0,
 	army = 0,
 	is_cpu = true,
 }
 
 var mods = {
-	profit = Modifier.new(),
-	reputation = Modifier.new(),
-	approval = Modifier.new(),
-	army = Modifier.new(),
+	balance = ModifierList.new(),
+	reputation = ModifierList.new(),
+	approval = ModifierList.new(),
+	army = ModifierList.new(),
 }
 
 var territories: Array[Territory] = [] #territories add themselves
+var color: Color = Color.BLACK
+var population = 0
 
 const army_pop_scale = 0.2 
 
@@ -36,101 +36,102 @@ func _init(in_data = {}):
 func connect_entities():
 	data.capital = Lib.get_territ(data.capital_id)
 	data.govt = Lib.get_govt(data.govt_id)
+	color = ColorUtil.format_rgb(get_color_rgb())
 	
-func _turn(turn):
-	compile_terr_tax()
-	set_profit()
-	add_balance(get_profit())
+func turn_phase_a(_turn):
+	set_balance()
+	set_reputation()
+	set_approval()
 	set_army()
 
-func get_color():
-	return data.color
+func turn_phase_z(_turn):
+	pass
+
+func get_color() -> Color:
+	return color
+
+func get_color_rgb() -> Array:
+	return data.color_rgb
 
 func get_name():
 	return data.name
 	
 func get_govt():
 	return data.govt
-	
+
+func is_cpu():
+	return data.is_cpu
+
+#balance
 func get_balance(): 
 	return data.balance
 
-func is_cpu():
-	return data.is_cpu()
+func get_balance_mod(): 
+	return mods.balance
 
-#profit
-func get_profit(): 
-	return data.profit
-
-func get_profit_mod(): 
-	return mods.profit
-
-func set_profit():
-	if (is_unclaimed()): return 0.0
-	data.profit = get_profit_mod().compile()
-
-#population
-func get_population():
-	data.population = compile_pop()
-	return data.population
-
-func compile_pop():
-	var total = 0
-	for terr in territories:
-		total += terr.get_population()
-	return total
-	
-func compile_pop_change():
-	var total = 0
-	for terr in territories:
-		total += terr.get_popChange()
-	return total
+func set_balance():
+	if (is_unclaimed()): 
+		data.balance = 0.00
+	else:
+		data.balance += get_balance_mod().compile()
 
 func compile_terr_tax():
 	var total = 0.0
 	for terr in territories:
 		total += terr.get_profit()
-	get_profit_mod().set_const("Tax", total)
+	get_balance_mod().set_const("Tax", total)
+
+#population
+func get_population() -> int:
+	return population
+
+func set_population():
+	population = compile_pop()
+
+func compile_pop() -> int:
+	var total = 0
+	for terr in territories:
+		set_population()
+		total += terr.get_population()
+	return total
+	
+func compile_pop_change():
+	var total = 0
+	for terr in get_territories():
+		total += terr.get_pop_change()
+	return total
 	
 # reputation
 func get_reputation(): 
-	set_reputation()
 	return data.reputation
 
 func set_reputation():
-	data.reputation = get_rep_mod().compile()
-	if !is_cpu():
-		SignalBus.new_reputation.emit(get_reputation(), get_rep_mod())
+	data.reputation += get_rep_mod().compile()
 
 func get_rep_mod(): 
-	return data.reputation
+	return mods.reputation
 
 func get_reputation_mod():
 	return get_rep_mod()
 	
 #approval
 func get_approval(): 
-	set_approval()
 	return data.approval
 
 func set_approval():
-	data.approval = get_approval_mod().compile()
-	if !is_cpu():
-		SignalBus.new_approval.emit(data.approval, get_approval_mod())
+	data.approval += get_approval_mod().compile()
+	if (get_approval() > 100):
+		data.approval = 100
 		
 func get_approval_mod(): 
 	return mods.approval
 
 #army
 func get_army():
-	set_army()
 	return data.army
 
 func set_army():
-	get_army_mod().set_const("Population", get_population() * army_pop_scale)
-	data.army = round(get_army_mod().compile())
-	if !is_cpu():
-		SignalBus.new_army.emit(data.army, get_army_mod())
+	data.army += round(get_army_mod().compile())
 
 func get_army_mod(): 
 	return mods.army
@@ -140,24 +141,22 @@ func get_capital():
 	return data.capital
 
 func set_capital(t: Territory):
-	if (get_capital()):
-		data.capital.get_pop_mod().erase("Capital")
+	if (has_capital()):
+		get_capital().get_pop_mod().erase("Capital")
 	else:
-		t.get_pop_mod().set_mod("Capital", 0.15)
+		t.get_pop_mod().set_mult("Capital", 0.15)
 	data.capital = t
+
+func has_capital() -> bool:
+	return get_capital() != null
 
 func set_CPU(val: bool):
 	data.is_cpu = val
-	
-func add_balance(new):
-	data.balance += new
-	if !is_cpu() && new != 0 :
-		SignalBus.new_balance.emit(data.balance, get_profit_mod())
 
 func add_terr(terr: Territory):
 	territories.append(terr)
 
-func get_territories():
+func get_territories() -> Array:
 	return territories
 
 func get_largest_terr():
@@ -168,7 +167,7 @@ func get_largest_terr():
 	return largest
 
 func is_unclaimed():
-	return get_govt().get_name() == "Unclaimed"
+	return get_id() == 1
 	
 func mod_purge(name: String):
 	for mod in mods:

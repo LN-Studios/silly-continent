@@ -6,11 +6,22 @@ var data = {
 }
 
 func _init(lib_dict: Dictionary):
-	SignalBus.new_turn.connect(_turn)
+	SignalBus.turn_phase_a.connect(turn_phase_a)
+	SignalBus.turn_phase_m.connect(turn_phase_m)
+	SignalBus.turn_phase_z.connect(turn_phase_z)
 	SignalBus.finish_loading.connect(connect_entities)
-	#Lib.add_item(self, lib_dict)
 
-func _turn(_turn_number):
+#phase a: new values are compiled/set
+#phase m: modifiers are removed
+#phase z: modifiers are set
+
+func turn_phase_a(_turn_number):
+	pass
+
+func turn_phase_m(_turn_number):
+	pass
+
+func turn_phase_z(_turn_number):
 	pass
 
 func connect_entities():

@@ -1,52 +1,33 @@
 class_name Modifier extends Object
 
-const main = preload("res://main/main.gd")
+var mod_arr: Array
+var name: String
+var value: float
+var duration = -1
 
-var consts = {}
-var mods = {}
+func _init(new_arr: Array, new_name: String, new_value: float, new_duration = -1):
+	SignalBus.turn_phase_m.connect(turn_phase_m)
+	mod_arr = new_arr
+	name = new_name
+	value = new_value
+	duration = new_duration
 
-## adds consts together, then adds mods together separately, then multiplies the two
-func compile():
-	var val = 0.0
-	for con in consts.keys():
-		val += consts[con]
-	var modVal = 0.0
-	for mod in mods.keys():
-		modVal += mods[mod]
-	return val * (modVal + 1)
-	
-func get_consts(): return consts
+func get_name() -> String:
+	return name
 
-func set_const(name, val): consts[name] = val
+func get_value() -> float:
+	return value
 
-func get_mods(): return mods
+func get_duration() -> int:
+	return duration
 
-func set_mod(name, val): mods[name] = val
+func turn_phase_m(_turn):
+	duration -= 1
+	if (duration == 0):
+		remove_modifier()
 
-## returns a list of all consts and mods as a string separated by \n
-func get_list(useMoney: bool) -> String:
-	var str = ""
-	if (useMoney):
-		for con in consts.keys():
-			str += con + ": $" + main.format_float(consts[con]) + "\n"
-	else:
-		for con in consts.keys():
-			str += con + ": "
-			if consts[con] > 0.0: str += "+"
-			str += main.format_float(consts[con]) + "\n"
-	for mod in mods.keys():
-		str += mod + ": "
-		var pct = mods[mod]
-		if pct > 0.0: str += "+"
-		str += main.format_percent(pct) + "\n"
-	return str
+func remove_modifier():
+	mod_arr.erase(self)
 
-func set_tooltip(label: Label, useMoney: bool):
-	label.tooltip_text = get_list(useMoney)
-
-func erase(val):
-	consts.erase(val)
-	mods.erase(val)
-
-func contains(val):
-	return consts.has(val) || mods.has(val)
+func is_infinite() -> bool:
+	return (duration < 0)

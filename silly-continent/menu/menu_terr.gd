@@ -15,7 +15,7 @@ var today: int
 func _ready() -> void:
 	_on_close()
 	SignalBus.open_terr_menu.connect(_on_open)
-	SignalBus.new_turn.connect(_refresh)
+	SignalBus.turn_phase_z.connect(_refresh)
 
 func _process(_delta: float) -> void:
 	if (box.visible && Input.is_action_pressed('tab')):
@@ -40,7 +40,7 @@ func _refresh(day):
 		today = day
 		populationLabel.text = "\nPopulation: %.f\n" % territory.get_population()
 		taxLabel.text = "\nRevenue: $" + main.format_float(territory.get_profit()) + "/day\n"
-		territory.get_tax_mod().set_tooltip(taxLabel, true)
+		territory.get_profit_mod().set_tooltip(taxLabel, true)
 		populationLabel.tooltip_text = "Daily change: " + main.format_float(territory.get_pop_change())  + "\n" + territory.get_pop_mod().get_list(false)
 
 func _on_close():

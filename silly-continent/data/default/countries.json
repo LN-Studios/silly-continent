@@ -1,9 +1,58 @@
 [
     {
         "id": 0,
-        "name": "Unclaimed",
-        "color": "(1, 1, 1, 1)",
+        "name": "default",
+        "color_rgb": [0, 0, 0],
         "govt_id": 0,
+        "capital_id": 0,
+        "balance": 0.00
+    },
+    {
+        "id": 1,
+        "name": "Unclaimed",
+        "color_rgb": [40, 137, 56],
+        "govt_id": 0,
+        "capital_id": 0,
+        "balance": 0.00
+    },
+    {
+        "id": 2,
+        "name": "Doofania",
+        "color_rgb": [26, 148, 158],
+        "govt_id": 3,
+        "capital_id": 1,
+        "balance": 1000.00
+    },
+    {
+        "id": 3,
+        "name": "Petoria",
+        "color_rgb": [110, 61, 11],
+        "govt_id": 3,
+        "capital_id": 2,
+        "balance": 1200.00
+    },
+    {
+        "id": 4,
+        "name": "Cunnington",
+        "color_rgb": [24, 74, 224],
+        "govt_id": 3,
+        "capital_id": 25,
+        "balance": 1000.00
+    },
+    {
+        "id": 5,
+        "name": "Ja'Crispy",
+        "color_rgb": [86, 156, 234],
+        "govt_id": 1,
+        "capital_id": 13,
+        "balance": 700.00
+    },
+    {
+        "id": 6,
+        "name": "Arentrabia",
+        "color_rgb": [197, 35, 35],
+        "govt_id": 1,
+        "capital_id": 15,
         "balance": 0.00
     }
 ]

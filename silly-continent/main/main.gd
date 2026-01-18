@@ -20,7 +20,6 @@ func _start(country):
 	game_started = true
 	SignalBus.pause.emit()
 	SignalBus.new_turn.emit(day)
-	SignalBus.new_year.emit(year)
 
 func save_state():
 	Lib.save_state()
@@ -28,6 +27,13 @@ func save_state():
 func load_state():
 	Lib.load_state()
 	SignalBus.finish_loading.emit()
+	SignalBus.entities_connected.emit()
+
+func advance_turn():
+	turn += 1
+	SignalBus.turn_phase_a.emit(turn)
+	SignalBus.turn_phase_b.emit(turn)
+	SignalBus.turn_phase_z.emit(turn)
 	
 func get_camera():
 	return camera

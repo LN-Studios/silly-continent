@@ -4,8 +4,10 @@ extends Node
 signal open_country_menu(c: Country)
 signal open_terr_menu(t: Territory)
 
-#new turn
-signal new_turn(day)
+#new turn, carried out in phases in alphabet order
+signal turn_phase_a(turn)
+signal turn_phase_m(turn)
+signal turn_phase_z(turn)
 
 #top hud
 signal new_balance(new)
@@ -18,6 +20,7 @@ signal open_help()
 
 #game signals
 signal finish_loading()
+signal entities_connected()
 signal game_start(country)
 signal pause()
 signal unpause()

@@ -10,7 +10,7 @@ const main = preload("res://main/main.gd")
 @export var box: ColorRect
 
 func _ready():
-	SignalBus.new_turn.connect(_turn)
+	SignalBus.turn_phase_a.connect(new_turn)
 	SignalBus.new_balance.connect(_balance)
 	SignalBus.new_approval.connect(_approval)
 	SignalBus.new_reputation.connect(_reputation)
@@ -25,7 +25,7 @@ func _ready():
 func _start(country):
 	box.color = country.get_color()
 
-func _turn(turn):
+func new_turn(turn):
 	day_label.text = "Turn " + str(turn)
 
 func _balance(new, mod):
