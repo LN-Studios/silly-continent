@@ -21,7 +21,9 @@ func get_value() -> float:
 func get_duration() -> int:
 	return duration
 
-func turn_phase_m(_turn):
+func turn_phase_m(turn):
+	if (turn == 0):
+		pass
 	duration -= 1
 	if (duration == 0):
 		remove_modifier()

@@ -41,7 +41,7 @@ func _refresh(day):
 		populationLabel.text = "\nPopulation: %.f\n" % territory.get_population()
 		taxLabel.text = "\nRevenue: $" + main.format_float(territory.get_profit()) + "/day\n"
 		territory.get_profit_mod().set_tooltip(taxLabel, true)
-		populationLabel.tooltip_text = "Daily change: " + main.format_float(territory.get_pop_change())  + "\n" + territory.get_pop_mod().get_list(false)
+		populationLabel.tooltip_text = "Daily change: " + str(territory.get_pop_change()) + "\n" + territory.get_pop_mod().get_list(false)
 
 func _on_close():
 	box.set_visible(false)

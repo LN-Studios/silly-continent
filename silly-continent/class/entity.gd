@@ -10,6 +10,7 @@ func _init(lib_dict: Dictionary):
 	SignalBus.turn_phase_m.connect(turn_phase_m)
 	SignalBus.turn_phase_z.connect(turn_phase_z)
 	SignalBus.finish_loading.connect(connect_entities)
+	SignalBus.entities_connected.connect(entities_connected)
 
 #phase a: new values are compiled/set
 #phase m: modifiers are removed
@@ -25,6 +26,9 @@ func turn_phase_z(_turn_number):
 	pass
 
 func connect_entities():
+	pass
+
+func entities_connected():
 	pass
 	
 func get_id() -> int:

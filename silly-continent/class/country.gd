@@ -37,15 +37,20 @@ func connect_entities():
 	data.capital = Lib.get_territ(data.capital_id)
 	data.govt = Lib.get_govt(data.govt_id)
 	color = ColorUtil.format_rgb(get_color_rgb())
+
+func entities_connected():
+	set_population()
+	compile_terr_tax(true)
 	
 func turn_phase_a(_turn):
 	set_balance()
 	set_reputation()
 	set_approval()
 	set_army()
+	set_population()
 
 func turn_phase_z(_turn):
-	pass
+	compile_terr_tax(false)
 
 func get_color() -> Color:
 	return color
@@ -75,9 +80,11 @@ func set_balance():
 	else:
 		data.balance += get_balance_mod().compile()
 
-func compile_terr_tax():
+func compile_terr_tax(set_tax = false):
 	var total = 0.0
 	for terr in territories:
+		if (set_tax):
+			terr.set_profit()
 		total += terr.get_profit()
 	get_balance_mod().set_const("Tax", total)
 
@@ -91,15 +98,15 @@ func set_population():
 func compile_pop() -> int:
 	var total = 0
 	for terr in territories:
-		set_population()
+		terr.set_population()
 		total += terr.get_population()
 	return total
 	
-func compile_pop_change():
+func get_pop_change() -> int:
 	var total = 0
 	for terr in get_territories():
 		total += terr.get_pop_change()
-	return total
+	return round(total)
 	
 # reputation
 func get_reputation(): 

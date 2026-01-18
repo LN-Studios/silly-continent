@@ -1419,24 +1419,6 @@ closed = true
 width = 2.0
 default_color = Color(0, 0, 0, 1)
 
-[node name="default2" type="Node" parent="map"]
-script = ExtResource("4_2iwvr")
-
-[node name="shape" type="Polygon2D" parent="map/default2"]
-position = Vector2(-1133, 102)
-color = Color(0.156863, 0.537255, 0.219608, 1)
-polygon = PackedVector2Array(627, 301, 726, 300, 726, 355, 632, 359)
-
-[node name="label" type="Label" parent="map/default2/shape"]
-modulate = Color(1, 0.996078, 1, 1)
-offset_left = 646.0
-offset_top = 312.0
-offset_right = 702.0
-offset_bottom = 335.0
-text = "default"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="bruhzil" type="Node" parent="map"]
 script = ExtResource("4_2iwvr")
 territory_id = 68

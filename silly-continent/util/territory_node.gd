@@ -1,4 +1,4 @@
-class_name TerrainNode extends Node
+class_name TerritoryNode extends Node
 
 const default_color = Color(0.157, 0.537, 0.22) #288938
 
@@ -32,6 +32,7 @@ func _ready():
 
 func set_territory():
 	territory = Lib.get_territ(territory_id)
+	territory.set_node(self)
 	label.text = territory.get_name()
 	set_country_color()
 

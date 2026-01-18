@@ -21,15 +21,25 @@ func get_mults(): return mults
 
 func set_const(name: String, value: float, duration = -1): 
 	var mod = Modifier.new(mults, name, value, duration)
-	consts.append(mod)
+	add_mod(consts, mod)
 
 func set_mult(name: String, value: float, duration = -1): 
 	var mod = Modifier.new(mults, name, value, duration)
-	mults.append(mod)
+	add_mod(mults, mod)
 
 ## makes a const modifier with a duration of 1
 func set_event(name: String, value: float):
 	set_const(name, value, 1)
+
+func add_mod(arr: Array, mod: Modifier):
+	var dupe_mod: Modifier
+	for current_mod in arr:
+		if (current_mod.get_name() == mod.get_name()):
+			dupe_mod = current_mod
+			break
+	if (dupe_mod != null):
+		arr.erase(dupe_mod)
+	arr.append(mod)
 
 ## returns a list of all consts and mults as a string separated by \n
 func get_list(use_money: bool) -> String:
@@ -41,7 +51,7 @@ func get_list(use_money: bool) -> String:
 		for con in consts:
 			str += con.get_name() + ": "
 			if con.get_value() > 0.0: str += "+"
-			str += main.format_float(consts[con]) + "\n"
+			str += main.format_float(con.get_value()) + "\n"
 	for mult in mults:
 		str += mult.get_name() + ": "
 		var pct = mult.get_value()

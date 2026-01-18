@@ -7,7 +7,7 @@ var help_menu = preload("res://menu/help.gd")
 var tick: = 0
 var day = 1
 var year = 1
-var turn = 0
+var turn = -1
 var game_started = false
 
 func _ready() -> void:
@@ -18,8 +18,7 @@ func _ready() -> void:
 	
 func _start(country):
 	game_started = true
-	SignalBus.pause.emit()
-	SignalBus.new_turn.emit(day)
+
 
 func save_state():
 	Lib.save_state()
@@ -32,7 +31,7 @@ func load_state():
 func advance_turn():
 	turn += 1
 	SignalBus.turn_phase_a.emit(turn)
-	SignalBus.turn_phase_b.emit(turn)
+	SignalBus.turn_phase_m.emit(turn)
 	SignalBus.turn_phase_z.emit(turn)
 	
 func get_camera():
