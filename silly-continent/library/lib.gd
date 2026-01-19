@@ -5,12 +5,34 @@ var govts = {}
 var terrains = {}
 var territs = {}
 
-var Dicts = {
+var load_dicts = {
 	Countries = countries,
-	Govts = govts,
-	Terrains = terrains,
+	#Govts = govts,
+	#Terrains = terrains,
 	Territs = territs,
 }
+
+var govt_arr = [
+	DefaultGovt.new(),
+	Republic.new(),
+	Monarchy.new(),
+	CityState.new(),
+	Nomads.new(),
+	Pillagers.new(),
+	Theocracy.new(),
+	Pirates.new()
+]
+
+var terriain_arr = [
+	DefaultTerrain.new(),
+	Grassland.new(),
+	Forest.new(),
+	Coastal.new(),
+	Hills.new(),
+	Mountains.new(),
+	Desert.new(),
+	Swamp.new()
+]
 
 func add_item(item: Entity, dict: Dictionary, overwrite = false):
 	var key = item.get_id()
@@ -51,21 +73,25 @@ func get_entity_load_path(dict_name: String) -> String:
 	return FileUtil.get_save_path() + "/%s" % dict_name + FileUtil.json_ext
 
 func save_state():
-	for dict_name in Dicts.keys():
+	for dict_name in load_dicts.keys():
 		var entity_data_arr = []
-		for entity in Dicts[dict_name].values():
+		for entity in load_dicts[dict_name].values():
 			entity_data_arr.append(entity.get_data())
 		FileUtil.write_to_file(entity_data_arr, get_entity_save_path(dict_name))
 
 func load_state():
-	for dict_name in Dicts.keys():
+	for dict_name in load_dicts.keys():
 		var entities_arr = FileUtil.read_from_file(get_entity_load_path(dict_name))
 		#forgive me for using a match statement here :(
 		match dict_name:
 			"Countries": load_countries(entities_arr)
+			"Territs": load_territories(entities_arr)
 			"Govts": load_govt_types(entities_arr)
 			"Terrains": load_terrains(entities_arr)
-			"Territs": load_territories(entities_arr)
+	for govt_type in govt_arr:
+		add_item(govt_type, govts)
+	for terrain in terriain_arr:
+		add_item(terrain, terrains)
 
 func load_countries(entity_arr: Array):
 	for entity_data in entity_arr:

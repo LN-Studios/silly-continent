@@ -5,7 +5,7 @@ var data = {
 	name = "blank entity"
 }
 
-func _init(lib_dict: Dictionary):
+func _init(_lib_dict: Dictionary):
 	SignalBus.turn_phase_a.connect(turn_phase_a)
 	SignalBus.turn_phase_m.connect(turn_phase_m)
 	SignalBus.turn_phase_t.connect(turn_phase_t)

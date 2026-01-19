@@ -1,13 +1,15 @@
-extends Terrain
+class_name Coastal extends Terrain
 
-var effects = {
-	tax = 0.05,
-	pop = 0.05
+var default_data = {
+	id = 3,
+	name = "coastal",
+	effects = {
+		tax = 0.05,
+		pop = 0.05
+	},
 }
 
-func _init():
-	set_name("Coastal")
-
-func set_effects(ty: Territory):
-	ty.get_tax_mod().set_mod(get_name(), effects.tax)
-	ty.get_pop_pod().set_mod(get_name(), effects.pop)
+func _init(in_data = {}):
+	data.merge(default_data, true)
+	data.merge(in_data, true)
+	super(data)

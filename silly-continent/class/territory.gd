@@ -53,7 +53,7 @@ func turn_phase_t(_turn):
 
 func connect_entities():
 	set_country(Lib.get_country(data.country_id))
-	data.terrain = Lib.get_terrain(data.terrain_id)
+	set_terrain(Lib.get_terrain(data.terrain_id))
 	
 func get_name() -> String: 
 	return data.name
@@ -66,6 +66,10 @@ func get_terrain_name() -> String:
 
 func get_country() -> Country: 
 	return data.get("country", null)
+
+func set_terrain(terr: Terrain):
+	data.terrain = terr
+	terr.set_effects(self)
 
 # population modifiers
 func get_pop() -> int:

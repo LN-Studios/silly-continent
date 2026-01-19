@@ -5,11 +5,11 @@ var govt_data = {
 }
 
 func _init(in_data = {}):
-	data.merge(govt_data, true)
-	data.merge(in_data, true)
-	super(Lib.govts)
+	#data.merge(govt_data, true)
+	#data.merge(in_data, true)
+	super({})
 	
-func set_effects(c: Country):
+func set_effects(_c: Country):
 	pass
 	
 func switch_type(c: Country, new: GovtType):

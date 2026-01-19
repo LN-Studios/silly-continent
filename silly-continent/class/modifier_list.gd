@@ -30,6 +30,8 @@ func set_event(name: String, value: float):
 	set_const(name, value, 1)
 
 func add_mod(arr: Array, mod: Modifier):
+	if (is_zero_approx(mod.get_value())):
+		return
 	var dupe_mod: Modifier
 	for current_mod in arr:
 		if (current_mod.get_name() == mod.get_name()):
@@ -44,14 +46,14 @@ func get_list(use_money: bool) -> String:
 	var str = ""
 	if (use_money):
 		for con in consts:
-			str += con.get_name() + ": $" + Main.format_float(con.get_value()) + "\n"
+			str += con.get_name().capitalize() + ": $" + Main.format_float(con.get_value()) + "\n"
 	else:
 		for con in consts:
-			str += con.get_name() + ": "
+			str += con.get_name().capitalize() + ": "
 			if con.get_value() > 0.0: str += "+"
 			str += Main.format_float(con.get_value()) + "\n"
 	for mult in mults:
-		str += mult.get_name() + ": "
+		str += mult.get_name().capitalize() + ": "
 		var pct = mult.get_value()
 		if pct > 0.0: str += "+"
 		str += Main.format_percent(pct) + "\n"

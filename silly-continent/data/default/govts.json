@@ -25,14 +25,14 @@
     },
     {
         "id": 6,
-        "name": "nomads"
+        "name": "UNUSED"
     },
     {
         "id": 7,
         "name": "theocracy"
     },
     {
-        "id": 9,
+        "id": 8,
         "name": "pirates"
     }
 ]
