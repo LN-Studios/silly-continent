@@ -25,15 +25,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="top hud" type="PanelContainer" parent="Control/VBoxContainer" node_paths=PackedStringArray("balance_label", "day_label", "approval_label", "rep_label", "army_label", "box")]
+[node name="top hud" type="PanelContainer" parent="Control/VBoxContainer" node_paths=PackedStringArray("balance_label", "turn_label", "approval_label", "rep_label", "army_label", "box")]
 layout_mode = 2
 script = ExtResource("3_6ywyt")
 balance_label = NodePath("top_hud/balance")
-day_label = NodePath("top_hud/day")
+turn_label = NodePath("top_hud/day")
 approval_label = NodePath("top_hud/approval")
 rep_label = NodePath("top_hud/rep")
 army_label = NodePath("top_hud/army")
-box = NodePath("../info boxes/left box/country_box")
+box = NodePath("top_hud_box")
 
 [node name="top_hud_box" type="ColorRect" parent="Control/VBoxContainer/top hud"]
 layout_mode = 2
@@ -282,7 +282,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Declare War"
 
-[connection signal="pressed" from="Control/VBoxContainer/top hud/top_hud/HBoxContainer/help button" to="Control/VBoxContainer/top hud/top_hud" method="open_help"]
+[connection signal="pressed" from="Control/VBoxContainer/top hud/top_hud/HBoxContainer/next turn button" to="Control/VBoxContainer/top hud" method="next_turn"]
+[connection signal="pressed" from="Control/VBoxContainer/top hud/top_hud/HBoxContainer/help button" to="Control/VBoxContainer/top hud" method="open_help"]
 [connection signal="pressed" from="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu/Button" to="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu" method="_on_close"]
 [connection signal="pressed" from="Control/VBoxContainer/info boxes/left box/country_menu/close" to="Control/VBoxContainer/info boxes/left box/country_menu" method="_on_close"]
 [connection signal="pressed" from="Control/VBoxContainer/info boxes/left box/country_menu/select" to="Control/VBoxContainer/info boxes/left box/country_menu" method="_on_country_selected"]

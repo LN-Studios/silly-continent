@@ -1,55 +1,64 @@
 extends Container
 
-const main = preload("res://main/main.gd")
-
 @export var balance_label: Label
-@export var day_label: Label
+@export var turn_label: Label
 @export var approval_label: Label
 @export var rep_label: Label
 @export var army_label: Label
 @export var box: ColorRect
 
 func _ready():
-	SignalBus.turn_phase_a.connect(new_turn)
-	SignalBus.new_balance.connect(_balance)
-	SignalBus.new_approval.connect(_approval)
-	SignalBus.new_reputation.connect(_reputation)
-	SignalBus.new_army.connect(_army)
 	SignalBus.game_start.connect(_start)
-	_balance(0, null)
-	_approval(0, null)
-	_reputation(0, null)
-	_army(0, null)
+	SignalBus.turn_phase_z.connect(turn_phase_z)
+	update_values(null)
 	visible = true
 
-func _start(country):
+func _start(country: Country):
 	box.color = country.get_color()
+	update_values(country)
 
-func new_turn(turn):
-	day_label.text = "Turn " + str(turn)
+func turn_phase_z(_turn):
+	update_values(Main.get_user_country())
 
-func _balance(new, mod):
-	balance_label.text = "$" + main.format_float(new)
+func update_values(country: Country):
+	set_turn(Main.get_turn())
+	if (country == null):
+		set_balance(0, null)
+		set_approval(0, null)
+		set_reputation(0, null)
+		set_army(0, null)
+	else:
+		set_balance(country.get_balance(), country.get_balance_mod())
+		set_approval(country.get_approval(), country.get_approval_mod())
+		set_reputation(country.get_reputation(), country.get_reputation_mod())
+		set_army(country.get_army(), country.get_army_mod())
+
+func set_turn(turn):
+	turn_label.text = "Turn " + str(turn)
+
+func set_balance(new, mod):
+	balance_label.text = "$" + Main.format_float(new)
 	if (mod):
 		mod.set_tooltip(balance_label, true)
 
-func _approval(new, mod):
-	approval_label.text = "Approval: " + main.format_percent(new)
+func set_approval(new, mod):
+	approval_label.text = "Approval: " + Main.format_percent(new)
 	if (mod):
 		mod.set_tooltip(approval_label, false)
 
-func _reputation(new, mod):
+func set_reputation(new, mod):
 	rep_label.text = "Reputation: " + str(new)
 	if (mod):
 		mod.set_tooltip(rep_label, false)
 
-func _army(new, mod):
+func set_army(new, mod):
 	army_label.text = "Army size: " + str(new)
 	if (mod):
 		mod.set_tooltip(army_label, false)
 
 func next_turn():
-	SignalBus.next_turn.emit()
+	if (Main.game_is_started()):
+		Main.advance_turn()
 
 func open_help():
 	SignalBus.open_help.emit()

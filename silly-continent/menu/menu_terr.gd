@@ -1,7 +1,5 @@
 extends VBoxContainer
 
-const main = preload("res://main/main.gd")
-
 @export var close: Button
 @export var nameLabel: Label
 @export var terrainLabel: Label
@@ -39,7 +37,7 @@ func _refresh(day):
 	if (box.visible):
 		today = day
 		populationLabel.text = "\nPopulation: %.f\n" % territory.get_population()
-		taxLabel.text = "\nRevenue: $" + main.format_float(territory.get_profit()) + "/day\n"
+		taxLabel.text = "\nRevenue: $" + Main.format_float(territory.get_profit()) + "/day\n"
 		territory.get_profit_mod().set_tooltip(taxLabel, true)
 		populationLabel.tooltip_text = "Daily change: " + str(territory.get_pop_change()) + "\n" + territory.get_pop_mod().get_list(false)
 

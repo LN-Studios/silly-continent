@@ -28,7 +28,6 @@ const army_pop_scale = 0.2
 func _init(in_data = {}):
 	data.merge(country_data, true)
 	data.merge(in_data, true)
-	mods.approval.set_const("Base", 0.5)
 	#if (!get_capital()): set_capital(get_largest_terr())
 	#get_govt().set_effects(self)
 	super(Lib.countries)
@@ -41,6 +40,7 @@ func connect_entities():
 func entities_connected():
 	set_population()
 	compile_terr_tax(true)
+	compile_pop_change(true)
 	
 func turn_phase_a(_turn):
 	set_balance()
@@ -49,8 +49,9 @@ func turn_phase_a(_turn):
 	set_army()
 	set_population()
 
-func turn_phase_z(_turn):
-	compile_terr_tax(false)
+func turn_phase_t(_turn):
+	compile_terr_tax(true)
+	compile_pop_change(true)
 
 func get_color() -> Color:
 	return color
@@ -93,18 +94,21 @@ func get_population() -> int:
 	return population
 
 func set_population():
-	population = compile_pop()
+	population = compile_pop(true)
 
-func compile_pop() -> int:
+func compile_pop(set_pop = false) -> int:
 	var total = 0
-	for terr in territories:
-		terr.set_population()
+	for terr in get_territories():
+		if (set_pop):
+			terr.set_population()
 		total += terr.get_population()
 	return total
 	
-func get_pop_change() -> int:
+func compile_pop_change(set_change = false) -> int:
 	var total = 0
 	for terr in get_territories():
+		if (set_change):
+			terr.set_economy_pop_mod()
 		total += terr.get_pop_change()
 	return round(total)
 	

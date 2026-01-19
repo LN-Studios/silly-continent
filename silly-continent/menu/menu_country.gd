@@ -1,7 +1,5 @@
 extends VBoxContainer
 
-const main = preload("res://main/main.gd")
-
 @onready var parent_box = get_parent()
 @onready var close = $close
 @onready var name_label = $name
@@ -66,11 +64,11 @@ func _on_close():
 func _refresh(day):
 	if (parent_box.visible):
 		today = day
-		balance_label.text = "\nBalance: $" + main.format_float(country.get_balance())
-		profit_label.text = "\nProfit: $" + main.format_float(country.get_balance_mod().compile()) + "/turn"
+		balance_label.text = "\nBalance: $" + Main.format_float(country.get_balance())
+		profit_label.text = "\nProfit: $" + Main.format_float(country.get_balance_mod().compile()) + "/turn"
 		pop_label.text = "\nPopulation: %.f" % country.get_population()
-		pop_label.tooltip_text = "Daily change: " + str(country.get_pop_change())
-		approval_label.text = "\nApproval rating: " + main.format_percent(country.get_approval())
+		pop_label.tooltip_text = "Daily change: " + str(country.compile_pop_change())
+		approval_label.text = "\nApproval rating: " + Main.format_percent(country.get_approval())
 		rep_label.text = "\nReputation: %.f" % country.get_reputation()
 		army_label.text = "\nArmy size: %.f" % country.get_army()
 		country.get_balance_mod().set_tooltip(profit_label, true)

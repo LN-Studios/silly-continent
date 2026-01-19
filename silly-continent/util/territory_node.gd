@@ -29,6 +29,7 @@ func _ready():
 	border.width = 2.25
 	border.default_color = Color.BLACK
 	border.points = shape.polygon
+	set_territory()
 
 func set_territory():
 	territory = Lib.get_territ(territory_id)
@@ -43,7 +44,6 @@ func set_country_color(c = territory.get_country()):
 		shape.color = default_color
 
 func _on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
-	
 	if (Input.is_action_pressed('click-left')):
 		SignalBus.open_terr_menu.emit(self.territory)
 	if (Input.is_action_pressed('click-right')):

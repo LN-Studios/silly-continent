@@ -1,7 +1,5 @@
 class_name ModifierList extends Object
 
-const main = preload("res://main/main.gd")
-
 var consts = []
 var mults = []
 
@@ -46,17 +44,17 @@ func get_list(use_money: bool) -> String:
 	var str = ""
 	if (use_money):
 		for con in consts:
-			str += con.get_name() + ": $" + main.format_float(con.get_value()) + "\n"
+			str += con.get_name() + ": $" + Main.format_float(con.get_value()) + "\n"
 	else:
 		for con in consts:
 			str += con.get_name() + ": "
 			if con.get_value() > 0.0: str += "+"
-			str += main.format_float(con.get_value()) + "\n"
+			str += Main.format_float(con.get_value()) + "\n"
 	for mult in mults:
 		str += mult.get_name() + ": "
 		var pct = mult.get_value()
 		if pct > 0.0: str += "+"
-		str += main.format_percent(pct) + "\n"
+		str += Main.format_percent(pct) + "\n"
 	return str
 
 func set_tooltip(label: Label, useMoney: bool):

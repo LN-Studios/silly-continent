@@ -7,8 +7,9 @@ var help_menu = preload("res://menu/help.gd")
 var tick: = 0
 var day = 1
 var year = 1
-var turn = -1
+var turn = 0
 var game_started = false
+var user: User
 
 func _ready() -> void:
 	SignalBus.game_start.connect(_start)
@@ -17,8 +18,9 @@ func _ready() -> void:
 	load_state()
 	
 func _start(country):
+	turn = 1
 	game_started = true
-
+	user = User.new(country)
 
 func save_state():
 	Lib.save_state()
@@ -32,12 +34,25 @@ func advance_turn():
 	turn += 1
 	SignalBus.turn_phase_a.emit(turn)
 	SignalBus.turn_phase_m.emit(turn)
+	SignalBus.turn_phase_t.emit(turn)
 	SignalBus.turn_phase_z.emit(turn)
+
+func game_is_started() -> bool:
+	return game_started
 	
 func get_camera():
 	return camera
+
+func get_turn():
+	return turn
+
+func get_user() -> User:
+	return user
+
+func get_user_country() -> Country:
+	return get_user().get_country()
 	
-static func format_float(amt: float):
+func format_float(amt: float):
 	var av_amt = abs(amt)
 	if (av_amt < 1000.0): #0 to 1,000
 		return "%.2f" % amt
@@ -54,7 +69,7 @@ static func format_float(amt: float):
 	else: #>1t
 		return "way too much"
 
-static func format_percent(amt: float):
+func format_percent(amt: float):
 	var pct = amt * 100
 	if (round(pct) == 0):
 		return "0%"

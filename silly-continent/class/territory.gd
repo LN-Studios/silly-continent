@@ -48,9 +48,7 @@ func _init(in_data = {}):
 		terr.set_effects(self)
 	super(Lib.territs)
 
-##called from country
-func turn_phase_z(_turn): 
-	set_tax_profit_mod()
+func turn_phase_t(_turn): 
 	set_economy_pop_mod()
 
 func connect_entities():
