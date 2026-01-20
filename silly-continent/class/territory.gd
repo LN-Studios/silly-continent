@@ -1,22 +1,6 @@
-class_name Territory extends Node
+class_name Territory extends Entity
 
-const default_color = Color(0.157, 0.537, 0.22) #288938
-
-@export_group("data")
-@export var territ_name = ""
-@export_range(0, 100000) var population = 100
-@export var country: Country
-@export var terrain: Terrain
-
-@export_group("ui")
-@export var shape: Polygon2D
-@export var label: Label
-var border: Line2D
-
-var mouseSelected = false
-var popChange: float
-var taxMod: Modifier
-var popMod: Modifier
+var pop_change: float
 
 const tax_pop_scale = .0003
 const cost_dist_scale = .0001
@@ -24,129 +8,138 @@ const cost_pop_scale = .005
 const pop_local_econ_scale = 0.1
 const pop_natl_econ_scale = 0.15
 
-var data = {
-	name = territ_name,
-	population = population,
-	country = country,
-	terrain = terrain,
+var territ_data = {
+	name = "territory",
+	population = 0,
+	country_id = 0,
+	terrain_id = 0,
 }
 
-func get_size():
+var mods = {
+	profit = ModifierList.new(),
+	pop = ModifierList.new(),
+}
+
+var profit: float
+var node: TerritoryNode
+
+func get_size() -> String:
 	var size = ""
-	if (population < 250): #0-249
+	#var pop_mod = get_pop_mod()
+	if (get_population() < 400):	#0-399
 		size = "Wilderness"
-		popMod.set_mod(size, -0.2)
-	elif(population < 1000): #250-999
+		#pop_mod.set_mult(size, -0.2)
+	elif(get_population() < 1000):	#400-999
 		size = "Outskirts"
-		popMod.set_mod(size, -0.1)
-	elif(population < 10000): #1000-9999
+		#pop_mod.set_mult(size, -0.1)
+	elif(get_population() < 10000):	#1000-9999
 		size = "Village"
-		popMod.set_mod(size, 0.1)
+		#pop_mod.set_mult(size, 0.1)
 	else: 
-		size = "City" #10,000+
-		popMod.set_mod(size, 0.2)
+		size = "City"				#10,000+
+		#pop_mod.set_mult(size, 0.2)
 	return size.to_lower()
 
-func _ready():
-	#add collision area
-	var area = Area2D.new()
-	var collisionShape = CollisionPolygon2D.new()
-	add_child(area)
-	area.add_child(collisionShape)
-	area.input_event.connect(_on_input_event)
-	if (collisionShape):
-		collisionShape.polygon = shape.polygon
-		collisionShape.position = shape.position
-	
-	border = Line2D.new()
-	shape.add_child(border)
-	border.closed = true
-	border.width = 2.25
-	border.default_color = Color.BLACK
-	border.points = shape.polygon
-		
-	#connect signals
-	SignalBus.new_turn.connect(_turn)
-	
-	#set values
-	set_country(country)
-	territ_name = label.text.c_unescape()
-	taxMod = Modifier.new()
-	popMod = Modifier.new()
-	terrain.set_effects(self)
-	
-func _turn(turn): 
-	set_population()
-	
-func get_terrName(): return territ_name
+func _init(in_data = {}):
+	data.merge(territ_data, true)
+	data.merge(in_data, true)
+	var terr = data.get("terrain")
+	if (terr):
+		terr.set_effects(self)
+	super(Lib.territs)
 
-func get_terrain(): return terrain.get_terrainName()
+func turn_phase_t(_turn): 
+	set_economy_pop_mod()
 
-func get_country(): return country
+func connect_entities():
+	set_country(Lib.get_country(data.country_id))
+	set_terrain(Lib.get_terrain(data.terrain_id))
+	
+func get_name() -> String: 
+	return data.name
+
+func get_terrain() -> Terrain: 
+	return data.terrain
+
+func get_terrain_name() -> String:
+	return get_terrain().get_name()
+
+func get_country() -> Country: 
+	return data.get("country", null)
+
+func set_terrain(terr: Terrain):
+	data.terrain = terr
+	terr.set_effects(self)
 
 # population modifiers
-func get_popMod(): return popMod
+func get_pop() -> int:
+	return data.population
 
-func get_population(): return population
-
-func get_popChange(): return popMod.compile()
+func get_population() -> int: 
+	return get_pop()
 
 func set_population():
-	popMod.set_const("National economy", country.get_profit() * pop_natl_econ_scale)
-	popMod.set_const("Local economy", get_profit() * pop_local_econ_scale)
-	population += popMod.compile()
-	if population < 0: population = 0
+	data.population += get_pop_change()
+	if (get_population() < 0): 
+		data.population = 0
 
-# tax modifiers
-func get_taxMod(): return taxMod
+func get_pop_mod() -> ModifierList: 
+	return mods.pop
+
+func get_pop_change() -> float:
+	return get_pop_mod().compile()
+
+func set_economy_pop_mod():
+	var pop_mod = get_pop_mod()
+	pop_mod.set_const("National economy", get_country().get_balance() * pop_natl_econ_scale)
+	pop_mod.set_const("Local economy", get_profit() * pop_local_econ_scale)
+	
+# profit modifiers
 
 func get_profit():
-	set_tax()
-	return taxMod.compile()
+	return profit
 	
-func set_tax():
-	taxMod.set_const("Population", population * tax_pop_scale)
-	taxMod.set_const("Distance to capital", -(get_capital_distance() * cost_dist_scale * (population * cost_pop_scale)))
+func set_profit():
+	set_tax_profit_mod()
+	profit = get_profit_mod().compile()
 
+func get_profit_mod(): 
+	return mods.profit	
 
-func get_position(): return shape.position
+func set_tax_profit_mod():
+	var tax_mod = get_profit_mod()
+	tax_mod.set_const("Population", get_population() * tax_pop_scale)
+	if (!is_unclaimed() && get_country().has_capital()):
+		tax_mod.set_const("Distance to capital", -(get_capital_distance() * cost_dist_scale * (get_population() * cost_pop_scale)))
+
+func get_position(): 
+	return node.get_position()
 
 func get_capital_distance():
-	if (country.is_unclaimed()): return 0
-	return get_position().distance_to(country.get_capital().get_position())
-		
+	if (!has_country()): return 0
+	return get_position().distance_to(get_country().get_capital().get_position())
 	
 func set_country(c):
+	if (node):
+		node.set_country_color(c)
+	data.country = c
 	if (c):
-		shape.color = c.get_color()
 		c.add_terr(self)
-	else:
-		shape.color = default_color
-	country = c
 
-func is_capital():
-	if (country.is_unclaimed()): return false
-	return country.get_capital() == self
+func set_node(terr_node: TerritoryNode):
+	node = terr_node
 	
-func mod_purge(name: String):
-	taxMod.erase(name)
-	popMod.erase(name)
+func has_country() -> bool:
+	if (get_country() == null): return false
+	return get_country().is_unclaimed()
 	
-func _on_camera_label_switch():
-	if (label.visible):
-		label.visible = false
-	else:
-		label.visible = true
+func is_capital() -> bool:
+	if (!has_country()): return false
+	return get_country().get_capital() == self
 
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if (Input.is_action_pressed('click-left')):
-		SignalBus.open_terr_menu.emit(self)
-	if (Input.is_action_pressed('click-right')):
-		SignalBus.open_country_menu.emit(country)
-		
-#events
-func spawn_exodus(rate):
-	popMod.set_const("Spawn Exodus", rate)
-
-func end_spawn_exodus():
-	popMod.get_consts().erase("Spawn Exodus")
+func is_unclaimed() -> bool:
+	return get_country().is_unclaimed()
+	
+func mod_purge(effect_name: String):
+	for mod in mods:
+		mod.erase(effect_name)

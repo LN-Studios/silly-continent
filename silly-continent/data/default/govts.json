@@ -1,0 +1,38 @@
+[
+    {
+        "id": 0,
+        "name": ""
+    },
+    {
+        "id": 1,
+        "name": "republic"
+    },
+    {
+        "id": 2,
+        "name": "monarchy"
+    },
+    {
+        "id": 3,
+        "name": "city-state"
+    },
+    {
+        "id": 4,
+        "name": "nomads"
+    },
+    {
+        "id": 5,
+        "name": "pillagers"
+    },
+    {
+        "id": 6,
+        "name": "UNUSED"
+    },
+    {
+        "id": 7,
+        "name": "theocracy"
+    },
+    {
+        "id": 8,
+        "name": "pirates"
+    }
+]

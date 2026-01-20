@@ -1,8 +1,15 @@
-extends Terrain
+class_name Coastal extends Terrain
 
-func _ready() -> void:
-	set_terrainName("Coastal")
+var default_data = {
+	id = 3,
+	name = "coastal",
+	effects = {
+		tax = 0.05,
+		pop = 0.05
+	},
+}
 
-func set_effects(t: Territory):
-	t.get_taxMod().set_mod(terrainName, 0.05)
-	t.get_popMod().set_mod(terrainName, 0.05)
+func _init(in_data = {}):
+	data.merge(default_data, true)
+	data.merge(in_data, true)
+	super(data)

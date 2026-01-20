@@ -25,14 +25,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="top hud" type="PanelContainer" parent="Control/VBoxContainer" node_paths=PackedStringArray("balance_label", "day_label", "approval_label", "rep_label", "army_label")]
+[node name="top hud" type="PanelContainer" parent="Control/VBoxContainer" node_paths=PackedStringArray("balance_label", "turn_label", "approval_label", "rep_label", "army_label", "box")]
 layout_mode = 2
 script = ExtResource("3_6ywyt")
 balance_label = NodePath("top_hud/balance")
-day_label = NodePath("top_hud/day")
+turn_label = NodePath("top_hud/day")
 approval_label = NodePath("top_hud/approval")
 rep_label = NodePath("top_hud/rep")
 army_label = NodePath("top_hud/army")
+box = NodePath("top_hud_box")
 
 [node name="top_hud_box" type="ColorRect" parent="Control/VBoxContainer/top hud"]
 layout_mode = 2
@@ -90,13 +91,14 @@ text = ">>"
 layout_mode = 2
 text = " ? "
 
-[node name="info boxes" type="PanelContainer" parent="Control/VBoxContainer"]
+[node name="info boxes" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="right box" type="PanelContainer" parent="Control/VBoxContainer/info boxes"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 
 [node name="terr_box" type="ColorRect" parent="Control/VBoxContainer/info boxes/right box"]
 custom_minimum_size = Vector2(200, 0)
@@ -165,7 +167,7 @@ vertical_alignment = 1
 
 [node name="left box" type="PanelContainer" parent="Control/VBoxContainer/info boxes"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 10
 size_flags_vertical = 3
 
 [node name="country_box" type="ColorRect" parent="Control/VBoxContainer/info boxes/left box"]
@@ -174,10 +176,11 @@ layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.223816, 5.19812e-06, 0.978626, 1)
 
-[node name="country_menu" type="VBoxContainer" parent="Control/VBoxContainer/info boxes/left box"]
+[node name="country_menu" type="VBoxContainer" parent="Control/VBoxContainer/info boxes/left box" node_paths=PackedStringArray("color_box")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 script = ExtResource("1_mil85")
+color_box = NodePath("../country_box")
 
 [node name="close" type="Button" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
 layout_mode = 2
@@ -279,7 +282,8 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Declare War"
 
-[connection signal="pressed" from="Control/VBoxContainer/top hud/top_hud/HBoxContainer/help button" to="Control/VBoxContainer/top hud/top_hud" method="open_help"]
+[connection signal="pressed" from="Control/VBoxContainer/top hud/top_hud/HBoxContainer/next turn button" to="Control/VBoxContainer/top hud" method="next_turn"]
+[connection signal="pressed" from="Control/VBoxContainer/top hud/top_hud/HBoxContainer/help button" to="Control/VBoxContainer/top hud" method="open_help"]
 [connection signal="pressed" from="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu/Button" to="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu" method="_on_close"]
 [connection signal="pressed" from="Control/VBoxContainer/info boxes/left box/country_menu/close" to="Control/VBoxContainer/info boxes/left box/country_menu" method="_on_close"]
 [connection signal="pressed" from="Control/VBoxContainer/info boxes/left box/country_menu/select" to="Control/VBoxContainer/info boxes/left box/country_menu" method="_on_country_selected"]

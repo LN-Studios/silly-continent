@@ -1,14 +1,15 @@
-class_name GovtType extends Node
+class_name GovtType extends Entity
 
-var gt_name: String
+var govt_data = {
+	name = "govt type"
+}
 
-func get_gtName():
-	return gt_name
-
-func set_gtName(name):
-	gt_name = name
+func _init(_in_data = {}):
+	#data.merge(govt_data, true)
+	#data.merge(in_data, true)
+	super({})
 	
-func set_effects(c: Country):
+func set_effects(_c: Country):
 	pass
 	
 func switch_type(c: Country, new: GovtType):

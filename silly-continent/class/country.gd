@@ -1,146 +1,180 @@
-class_name Country extends Node
+class_name Country extends Entity
 
-@export var countryName = ""
-@export var color: Color
-@export var govtType: GovtType
-@export var reputation = 0
-@export var approval = 0
-@export var capital: Territory
+var country_data = {
+	name = "country",
+	color_rgb = [0, 0, 0],
+	capital_id = 0,
+	govt_id = 0,
+	reputation = 0,
+	approval = 0,
+	balance = 0,
+	army = 0,
+	is_cpu = true,
+}
 
-var isCPU = true
+var mods = {
+	balance = ModifierList.new(),
+	reputation = ModifierList.new(),
+	approval = ModifierList.new(),
+	army = ModifierList.new(),
+}
+
 var territories: Array[Territory] = [] #territories add themselves
-var balance = 0
-var profit = 0
+var color: Color = Color.BLACK
 var population = 0
-var army = 0
-
-var profitMod: Modifier
-var repMod: Modifier
-var approvalMod: Modifier
-var armyMod: Modifier
 
 const army_pop_scale = 0.2 
 
-func _ready() -> void:
-	SignalBus.new_turn.connect(_turn)
-	profitMod = Modifier.new()
-	repMod = Modifier.new()
-	approvalMod = Modifier.new()
-	armyMod = Modifier.new()
-	approvalMod.set_const("Base", 0.5)
-	if (!capital): set_capital(get_largest_terr())
-	govtType.set_effects(self)
-	
-func _turn(turn):
-	compile_terr_tax()
-	set_profit()
-	add_balance(profit)
-	set_army()
+func _init(in_data = {}):
+	data.merge(country_data, true)
+	data.merge(in_data, true)
+	#if (!get_capital()): set_capital(get_largest_terr())
+	#get_govt().set_effects(self)
+	super(Lib.countries)
 
-func get_color():
+func connect_entities():
+	data.capital = Lib.get_territ(data.capital_id)
+	set_govt(Lib.get_govt(data.govt_id))
+	color = ColorUtil.format_rgb(get_color_rgb())
+
+func entities_connected():
+	set_population()
+	
+	compile_terr_tax(true)
+	compile_pop_change(true)
+	
+func turn_phase_a(_turn):
+	set_balance()
+	set_reputation()
+	set_approval()
+	set_army()
+	set_population()
+
+func turn_phase_t(_turn):
+	compile_terr_tax(true)
+	compile_pop_change(true)
+
+func get_color() -> Color:
 	return color
 
-func get_countryName():
-	return countryName
+func get_color_rgb() -> Array:
+	return data.color_rgb
+
+func get_name() -> String:
+	return data.name
 	
-func get_govtType():
-	if (govtType): return govtType
-	
-func get_balance(): return balance
+func get_govt() -> GovtType:
+	return data.get("govt", null)
 
-#profit
-func get_profit(): return profit
+func set_govt(new_govt: GovtType):
+	if (get_govt()):
+		get_govt().remove_effects(self)
+	data.govt = new_govt
+	new_govt.set_effects(self)
 
-func get_profitMod(): return profitMod
+func is_cpu() -> bool:
+	return data.is_cpu
 
-func set_profit():
-	if (is_unclaimed()): return 0.0
-	profit = profitMod.compile()
+#balance
+func get_balance(): 
+	return data.balance
 
-func compile_pop():
-	var total = 0
-	for terr in territories:
-		total += terr.get_population()
-	return total
+func get_balance_mod(): 
+	return mods.balance
 
-#population
-func get_population():
-	population = compile_pop()
-	return population
-	
-func compile_popChange():
-	var total = 0
-	for terr in territories:
-		total += terr.get_popChange()
-	return total
+func set_balance():
+	if (is_unclaimed()): 
+		data.balance = 0.00
+	else:
+		data.balance += get_balance_mod().compile()
 
-func compile_terr_tax():
+func compile_terr_tax(set_tax = false):
 	var total = 0.0
 	for terr in territories:
+		if (set_tax):
+			terr.set_profit()
 		total += terr.get_profit()
-	profitMod.set_const("Tax", total)
+	get_balance_mod().set_const("Tax", total)
+
+#population
+func get_population() -> int:
+	return population
+
+func set_population():
+	population = compile_pop(true)
+
+func compile_pop(set_pop = false) -> int:
+	var total = 0
+	for terr in get_territories():
+		if (set_pop):
+			terr.set_population()
+		total += terr.get_population()
+	return total
+	
+func compile_pop_change(set_change = false) -> int:
+	var total = 0
+	for terr in get_territories():
+		if (set_change):
+			terr.set_economy_pop_mod()
+		total += terr.get_pop_change()
+	return round(total)
 	
 # reputation
 func get_reputation(): 
-	set_reputation()
-	return reputation
+	return data.reputation
 
 func set_reputation():
-	reputation = repMod.compile()
-	if !isCPU:
-		SignalBus.new_reputation.emit(reputation, repMod)
+	data.reputation += get_rep_mod().compile()
 
-func get_repMod(): return repMod
+func get_rep_mod(): 
+	return mods.reputation
+
+func get_reputation_mod():
+	return get_rep_mod()
 	
 #approval
-func get_approval(): 
-	set_approval()
-	return approval
+func get_approval() -> int: 
+	return round(data.approval)
 
 func set_approval():
-	approval = approvalMod.compile()
-	if !isCPU:
-		SignalBus.new_approval.emit(approval, approvalMod)
+	data.approval += get_approval_mod().compile()
+	if (get_approval() > 100):
+		data.approval = 100
 		
-func get_approvalMod(): return approvalMod
-
+func get_approval_mod(): 
+	return mods.approval
 
 #army
 func get_army():
-	set_army()
-	return army
+	return data.army
 
 func set_army():
-	armyMod.set_const("Population", population * army_pop_scale)
-	army = round(armyMod.compile())
-	if !isCPU:
-		SignalBus.new_army.emit(army, armyMod)
+	data.army += round(get_army_mod().compile())
 
-func get_armyMod(): return armyMod
+func get_army_mod(): 
+	return mods.army
 
 # capital
 func get_capital(): 
-	return capital
+	return data.capital
 
 func set_capital(t: Territory):
-	if (capital):
-		capital.get_popMod().erase("Capital")
+	if (has_capital()):
+		get_capital().get_pop_mod().erase("Capital")
 	else:
-		t.get_popMod().set_mod("Capital", 0.15)
-	capital = t
+		t.get_pop_mod().set_mult("Capital", 0.15)
+	data.capital = t
 
-func set_CPU(val):
-	isCPU = val
-	
-func add_balance(new):
-	balance += new
-	if !isCPU && new != 0 :
-		SignalBus.new_balance.emit(balance, profitMod)
+func has_capital() -> bool:
+	return get_capital() != null
+
+func set_CPU(val: bool):
+	data.is_cpu = val
 
 func add_terr(terr: Territory):
 	territories.append(terr)
 
-func get_territories():
+func get_territories() -> Array:
 	return territories
 
 func get_largest_terr():
@@ -151,10 +185,8 @@ func get_largest_terr():
 	return largest
 
 func is_unclaimed():
-	return get_govtType().get_gtName() == "Unclaimed"
+	return get_id() == 1
 	
 func mod_purge(name: String):
-	profitMod.erase(name)
-	approvalMod.erase(name)
-	repMod.erase(name)
-	armyMod.erase(name)
+	for mod in mods:
+		mod.erase(name)

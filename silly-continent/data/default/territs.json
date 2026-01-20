@@ -1,0 +1,702 @@
+[
+    {
+        "id": 0,
+        "name": "default",
+        "population": 0,
+        "country_id": 0,
+        "terrain_id": 0
+    },
+    {
+        "id": 1,
+        "name": "Doofania",
+        "population": 12000,
+        "country_id": 2,
+        "terrain_id": 1
+    },
+    {
+        "id": 2,
+        "name": "Petoria",
+        "population": 9500,
+        "country_id": 3,
+        "terrain_id": 1
+    },
+    {
+        "id": 3,
+        "name": "Worl Map",
+        "population": 480,
+        "country_id": 2,
+        "terrain_id": 1
+    },
+    {
+        "id": 4,
+        "name": "Pudopia",
+        "population": 1200,
+        "country_id": 2,
+        "terrain_id": 1
+    },
+    {
+        "id": 5,
+        "name": "Cagliostro",
+        "population": 1000,
+        "country_id": 2,
+        "terrain_id": 1
+    },
+    {
+        "id": 6,
+        "name": "Mudtown",
+        "population": 100,
+        "country_id": 2,
+        "terrain_id": 1
+    },
+    {
+        "id": 7,
+        "name": "HHGregg",
+        "population": 0,
+        "country_id": 1,
+        "terrain_id": 3
+    },
+    {
+        "id": 8,
+        "name": "West Sandwich",
+        "population": 550,
+        "country_id": 4,
+        "terrain_id": 4
+    },
+    {
+        "id": 9,
+        "name": "Central Sandwich",
+        "population": 270,
+        "country_id": 5,
+        "terrain_id": 4
+    },
+    {
+        "id": 10,
+        "name": "East Sandwich",
+        "population": 300,
+        "country_id": 5,
+        "terrain_id": 4
+    },
+    {
+        "id": 11,
+        "name": "Bumblyburg",
+        "population": 4500,
+        "country_id": 5,
+        "terrain_id": 4
+    },
+    {
+        "id": 12,
+        "name": "Ja'Crispy Beach",
+        "population": 650,
+        "country_id": 5,
+        "terrain_id": 3
+    },
+    {
+        "id": 13,
+        "name": "Autobot City",
+        "population": 7900,
+        "country_id": 5,
+        "terrain_id": 4
+    },
+    {
+        "id": 15,
+        "name": "Mechia",
+        "population": 3500,
+        "country_id": 6,
+        "terrain_id": 6
+    },
+    {
+        "id": 16,
+        "name": "Arentrabia",
+        "population": 250,
+        "country_id": 6,
+        "terrain_id": 6
+    },
+    {
+        "id": 17,
+        "name": "Quahog",
+        "population": 1550,
+        "country_id": 1,
+        "terrain_id": 3
+    },
+    {
+        "id": 18,
+        "name": "Newport",
+        "population": 2600,
+        "country_id": 1,
+        "terrain_id": 1
+    },
+    {
+        "id": 19,
+        "name": "Dewoka",
+        "population": 510,
+        "country_id": 1,
+        "terrain_id": 1
+    },
+    {
+        "id": 20,
+        "name": "Kong Hong",
+        "population": 750,
+        "country_id": 1,
+        "terrain_id": 1
+    },
+    {
+        "id": 21,
+        "name": "Manzana",
+        "population": 290,
+        "country_id": 1,
+        "terrain_id": 3
+    },
+    {
+        "id": 22,
+        "name": "Funnyville",
+        "population": 1050,
+        "country_id": 10,
+        "terrain_id": 2
+    },
+    {
+        "id": 23,
+        "name": "Arlen",
+        "population": 630,
+        "country_id": 10,
+        "terrain_id": 1
+    },
+    {
+        "id": 24,
+        "name": "Trollolol",
+        "population": 400,
+        "country_id": 27,
+        "terrain_id": 1
+    },
+    {
+        "id": 25,
+        "name": "Cunnington",
+        "population": 8800,
+        "country_id": 4,
+        "terrain_id": 7
+    },
+    {
+        "id": 26,
+        "name": "Morbidska",
+        "population": 900,
+        "country_id": 4,
+        "terrain_id": 2
+    },
+    {
+        "id": 27,
+        "name": "Busyville",
+        "population": 750,
+        "country_id": 4,
+        "terrain_id": 1
+    },
+    {
+        "id": 28,
+        "name": "Ocupavilla",
+        "population": 300,
+        "country_id": 12,
+        "terrain_id": 6
+    },
+    {
+        "id": 29,
+        "name": "Slexico City",
+        "population": 6800,
+        "country_id": 12,
+        "terrain_id": 6
+    },
+    {
+        "id": 30,
+        "name": "Bajookieland",
+        "population": 510,
+        "country_id": 20,
+        "terrain_id": 3
+    },
+    {
+        "id": 31,
+        "name": "Whackopolis",
+        "population": 1800,
+        "country_id": 12,
+        "terrain_id": 1
+    },
+    {
+        "id": 32,
+        "name": "Zazaland",
+        "population": 200,
+        "country_id": 12,
+        "terrain_id": 3
+    },
+    {
+        "id": 33,
+        "name": "Sprinklspram",
+        "population": 5600,
+        "country_id": 14,
+        "terrain_id": 3
+    },
+    {
+        "id": 34,
+        "name": "Yurnom",
+        "population": 180,
+        "country_id": 28,
+        "terrain_id": 3
+    },
+    {
+        "id": 35,
+        "name": "Uppercunn",
+        "population": 450,
+        "country_id": 4,
+        "terrain_id": 1
+    },
+    {
+        "id": 36,
+        "name": "Flexville",
+        "population": 6000,
+        "country_id": 29,
+        "terrain_id": 6
+    },
+    {
+        "id": 37,
+        "name": "Aauugghh",
+        "population": 280,
+        "country_id": 7,
+        "terrain_id": 1
+    },
+    {
+        "id": 38,
+        "name": "Fleshuis",
+        "population": 1190,
+        "country_id": 13,
+        "terrain_id": 2
+    },
+    {
+        "id": 39,
+        "name": "Underton",
+        "population": 360,
+        "country_id": 7,
+        "terrain_id": 1
+    },
+    {
+        "id": 40,
+        "name": "North Gumball",
+        "population": 1500,
+        "country_id": 1,
+        "terrain_id": 4
+    },
+    {
+        "id": 41,
+        "name": "South Gumball",
+        "population": 1600,
+        "country_id": 1,
+        "terrain_id": 4
+    },
+    {
+        "id": 42,
+        "name": "Idiot",
+        "population": 300,
+        "country_id": 1,
+        "terrain_id": 1
+    },
+    {
+        "id": 43,
+        "name": "Hartuget",
+        "population": 230,
+        "country_id": 16,
+        "terrain_id": 3
+    },
+    {
+        "id": 44,
+        "name": "Shapoopi",
+        "population": 400,
+        "country_id": 16,
+        "terrain_id": 6
+    },
+    {
+        "id": 45,
+        "name": "Robin",
+        "population": 440,
+        "country_id": 26,
+        "terrain_id": 4
+    },
+    {
+        "id": 46,
+        "name": "Galahad",
+        "population": 200,
+        "country_id": 1,
+        "terrain_id": 4
+    },
+    {
+        "id": 47,
+        "name": "Dunce",
+        "population": 270,
+        "country_id": 1,
+        "terrain_id": 6
+    },
+    {
+        "id": 48,
+        "name": "Brunclo",
+        "population": 1250,
+        "country_id": 17,
+        "terrain_id": 4
+    },
+    {
+        "id": 49,
+        "name": "Pukisti",
+        "population": 2250,
+        "country_id": 19,
+        "terrain_id": 6
+    },
+    {
+        "id": 50,
+        "name": "Ekki Ekki Ptang",
+        "population": 5000,
+        "country_id": 18,
+        "terrain_id": 3
+    },
+    {
+        "id": 51,
+        "name": "Hooligan",
+        "population": 320,
+        "country_id": 1,
+        "terrain_id": 4
+    },
+    {
+        "id": 52,
+        "name": "Camelot",
+        "population": 750,
+        "country_id": 17,
+        "terrain_id": 1
+    },
+    {
+        "id": 53,
+        "name": "Bedevere",
+        "population": 220,
+        "country_id": 18,
+        "terrain_id": 4
+    },
+    {
+        "id": 54,
+        "name": "Wonkadonk",
+        "population": 1400,
+        "country_id": 23,
+        "terrain_id": 3
+    },
+    {
+        "id": 55,
+        "name": "Armagedda",
+        "population": 250,
+        "country_id": 11,
+        "terrain_id": 6
+    },
+    {
+        "id": 56,
+        "name": "Cheddizona",
+        "population": 200,
+        "country_id": 11,
+        "terrain_id": 4
+    },
+    {
+        "id": 57,
+        "name": "Jeb",
+        "population": 700,
+        "country_id": 11,
+        "terrain_id": 6
+    },
+    {
+        "id": 58,
+        "name": "taxes1",
+        "population": 10,
+        "country_id": 11,
+        "terrain_id": 6
+    },
+    {
+        "id": 59,
+        "name": "taxes2",
+        "population": 10,
+        "country_id": 11,
+        "terrain_id": 6
+    },
+    {
+        "id": 60,
+        "name": "Slamong City",
+        "population": 10500,
+        "country_id": 8,
+        "terrain_id": 1
+    },
+    {
+        "id": 61,
+        "name": "Aimes Gettin",
+        "population": 800,
+        "country_id": 9,
+        "terrain_id": 7
+    },
+    {
+        "id": 62,
+        "name": "Casa Zola",
+        "population": 480,
+        "country_id": 8,
+        "terrain_id": 5
+    },
+    {
+        "id": 63,
+        "name": "Hottenredi",
+        "population": 200,
+        "country_id": 9,
+        "terrain_id": 1
+    },
+    {
+        "id": 64,
+        "name": "Earl Sweatshirt",
+        "population": 7500,
+        "country_id": 9,
+        "terrain_id": 3
+    },
+    {
+        "id": 65,
+        "name": "Viva Rock Vegas",
+        "population": 370,
+        "country_id": 9,
+        "terrain_id": 1
+    },
+    {
+        "id": 66,
+        "name": "Kirby Griffin",
+        "population": 200,
+        "country_id": 1,
+        "terrain_id": 2
+    },
+    {
+        "id": 67,
+        "name": "Laurflo",
+        "population": 200,
+        "country_id": 1,
+        "terrain_id": 1
+    },
+    {
+        "id": 68,
+        "name": "Bruhzil",
+        "population": 300,
+        "country_id": 1,
+        "terrain_id": 1
+    },
+    {
+        "id": 69,
+        "name": "taxes3",
+        "population": 0,
+        "country_id": 11,
+        "terrain_id": 6
+    },
+    {
+        "id": 70,
+        "name": "Dinosaurus",
+        "population": 2000,
+        "country_id": 21,
+        "terrain_id": 2
+    },
+    {
+        "id": 71,
+        "name": "Comaba",
+        "population": 180,
+        "country_id": 7,
+        "terrain_id": 5
+    },
+    {
+        "id": 72,
+        "name": "Squam",
+        "population": 9000,
+        "country_id": 7,
+        "terrain_id": 3
+    },
+    {
+        "id": 73,
+        "name": "Cybertron",
+        "population": 280,
+        "country_id": 5,
+        "terrain_id": 4
+    },
+    {
+        "id": 74,
+        "name": "flobo1",
+        "population": 200,
+        "country_id": 25,
+        "terrain_id": 1
+    },
+    {
+        "id": 75,
+        "name": "Jaboogus",
+        "population": 3000,
+        "country_id": 22,
+        "terrain_id": 1
+    },
+    {
+        "id": 76,
+        "name": "Crab Rangoon",
+        "population": 1200,
+        "country_id": 24,
+        "terrain_id": 5
+    },
+    {
+        "id": 77,
+        "name": "Omnichad",
+        "population": 310,
+        "country_id": 9,
+        "terrain_id": 2
+    },
+    {
+        "id": 78,
+        "name": "Swooce",
+        "population": 1300,
+        "country_id": 7,
+        "terrain_id": 5
+    },
+    {
+        "id": 79,
+        "name": "soup1",
+        "population": 100,
+        "country_id": 7,
+        "terrain_id": 2
+    },
+    {
+        "id": 80,
+        "name": "Espuma",
+        "population": 2900,
+        "country_id": 8,
+        "terrain_id": 2
+    },
+    {
+        "id": 81,
+        "name": "Senor Brap",
+        "population": 1750,
+        "country_id": 8,
+        "terrain_id": 1
+    },
+    {
+        "id": 82,
+        "name": "North Fort Fardt",
+        "population": 700,
+        "country_id": 1,
+        "terrain_id": 2
+    },
+    {
+        "id": 83,
+        "name": "South Fort Fardt",
+        "population": 700,
+        "country_id": 1,
+        "terrain_id": 2
+    },
+    {
+        "id": 84,
+        "name": "Falafel",
+        "population": 1030,
+        "country_id": 22,
+        "terrain_id": 5
+    },
+    {
+        "id": 85,
+        "name": "Pantaloon",
+        "population": 1140,
+        "country_id": 22,
+        "terrain_id": 1
+    },
+    {
+        "id": 88,
+        "name": "Jatwogus",
+        "population": 560,
+        "country_id": 22,
+        "terrain_id": 1
+    },
+    {
+        "id": 87,
+        "name": "cretuis1",
+        "population": 0,
+        "country_id": 1,
+        "terrain_id": 2
+    },
+    {
+        "id": 86,
+        "name": "Energylanda",
+        "population": 200,
+        "country_id": 1,
+        "terrain_id": 1
+    },
+    {
+        "id": 89,
+        "name": "cretuis2",
+        "population": 0,
+        "country_id": 1,
+        "terrain_id": 2
+    },
+    {
+        "id": 90,
+        "name": "cretuis3",
+        "population": 0,
+        "country_id": 1,
+        "terrain_id": 5
+    },
+    {
+        "id": 91,
+        "name": "cretuis4",
+        "population": 0,
+        "country_id": 1,
+        "terrain_id": 2
+    },
+    {
+        "id": 92,
+        "name": "cretuis5",
+        "population": 0,
+        "country_id": 1,
+        "terrain_id": 5
+    },
+    {
+        "id": 93,
+        "name": "Dagrambra",
+        "population": 250,
+        "country_id": 1,
+        "terrain_id": 4
+    },
+    {
+        "id": 94,
+        "name": "Dasnapbra",
+        "population": 150,
+        "country_id": 1,
+        "terrain_id": 3
+    },
+    {
+        "id": 95,
+        "name": "cretuis6",
+        "population": 0,
+        "country_id": 1,
+        "terrain_id": 5
+    },
+    {
+        "id": 96,
+        "name": "cretuis7",
+        "population": 0,
+        "country_id": 1,
+        "terrain_id": 1
+    },
+    {
+        "id": 97,
+        "name": "soup2",
+        "population": 0,
+        "country_id": 7,
+        "terrain_id": 2
+    },
+    {
+        "id": 98,
+        "name": "cretuis8",
+        "population": 0,
+        "country_id": 1,
+        "terrain_id": 2
+    },
+    {
+        "id": 99,
+        "name": "flobo3",
+        "population": 0,
+        "country_id": 9,
+        "terrain_id": 5
+    },
+    {
+        "id": 100,
+        "name": "Uprot",
+        "population": 3500,
+        "country_id": 15,
+        "terrain_id": 2
+    }
+]

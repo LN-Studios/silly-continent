@@ -1,8 +1,15 @@
-extends GovtType
+class_name Pillagers extends GovtType
 
-func _ready() -> void:
-	set_gtName("Pillagers")
+var default_data = {
+	id = 5,
+	name = "pillagers"
+}
+
+func _init(in_data = {}):
+	data.merge(default_data, true)
+	data.merge(in_data, true)
+	super(data)
 
 func set_effects(c: Country):
-	c.get_repMod().set_const(gt_name, -30)
-	c.get_armyMod().set_mod(gt_name, 0.2)
+	c.get_rep_mod().set_mult(get_name(), -0.1)
+	c.get_army_mod().set_mult(get_name(), 0.2)

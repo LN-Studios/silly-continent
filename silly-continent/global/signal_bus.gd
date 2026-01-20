@@ -4,8 +4,11 @@ extends Node
 signal open_country_menu(c: Country)
 signal open_terr_menu(t: Territory)
 
-#new turn
-signal new_turn(day)
+#new turn, carried out in phases in alphabet order
+signal turn_phase_a(turn) #update country/territ vars
+signal turn_phase_m(turn) #tick down modifier duration, erase expired mods
+signal turn_phase_t(turn) #recompile incoming changes for next turn
+signal turn_phase_z(turn) #display new data
 
 #top hud
 signal new_balance(new)
@@ -17,8 +20,11 @@ signal new_army(new)
 signal open_help()
 
 #game signals
-signal finish_ready()
+signal finish_loading()
+signal entities_connected()
 signal game_start(country)
+signal pause()
+signal unpause()
 
 #scripted events
 signal spawn_exodus(rate)

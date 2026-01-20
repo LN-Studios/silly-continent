@@ -2,66 +2,57 @@ extends Node
 
 @export var camera: Camera2D
 
-var helpMenu = preload("res://menu/help.gd")
-
-var gameSpeed = {
-	"made in heaven": 1,
-	"flash": 10,
-	"fast": 30,
-	"med": 60,
-	"slow": 120,
-}
+var help_menu = preload("res://menu/help.gd")
 
 var tick: = 0
 var day = 1
 var year = 1
-var clockTicking = false
-var gameStarted = false
+var turn = 0
+var game_started = false
+var user: User
 
 func _ready() -> void:
 	SignalBus.game_start.connect(_start)
-	SignalBus.pause.connect(_pause)
-	SignalBus.unpause.connect(_unpause)
-	
-	SignalBus.new_turn.emit(day)
-	SignalBus.new_year.emit(year)
-	SignalBus.finish_ready.emit()
+	#Lib.add_defaults()
+	save_state()
+	load_state()
 	
 func _start(country):
-	gameStarted = true
-	SignalBus.pause.emit()
-	SignalBus.new_turn.emit(day)
-	SignalBus.new_year.emit(year)
+	turn = 1
+	game_started = true
+	user = User.new(country)
 
-func _process(_delta: float) -> void:
-	#pause check
-	if (Input.is_action_just_pressed('space')):
-		if (clockTicking):
-			SignalBus.pause.emit()
-		else:
-			SignalBus.unpause.emit()
-	#game clock
-	if (clockTicking):
-		tick += 1
-		if (tick % gameSpeed["slow"] == 0):
-			tick = 0
-			day += 1
-			SignalBus.new_turn.emit(day)
-			if (day % 366 == 0):
-				day = 1
-				year += 1
-				SignalBus.new_year.emit(year)
+func save_state():
+	Lib.save_state()
 
-func _pause():
-	clockTicking = false
+func load_state():
+	Lib.load_state()
+	SignalBus.finish_loading.emit()
+	SignalBus.entities_connected.emit()
 
-func _unpause():
-	clockTicking = true
+func advance_turn():
+	turn += 1
+	SignalBus.turn_phase_a.emit(turn)
+	SignalBus.turn_phase_m.emit(turn)
+	SignalBus.turn_phase_t.emit(turn)
+	SignalBus.turn_phase_z.emit(turn)
+
+func game_is_started() -> bool:
+	return game_started
 	
 func get_camera():
 	return camera
+
+func get_turn():
+	return turn
+
+func get_user() -> User:
+	return user
+
+func get_user_country() -> Country:
+	return get_user().get_country()
 	
-static func format_float(amt: float):
+func format_float(amt: float):
 	var av_amt = abs(amt)
 	if (av_amt < 1000.0): #0 to 1,000
 		return "%.2f" % amt
@@ -78,7 +69,7 @@ static func format_float(amt: float):
 	else: #>1t
 		return "way too much"
 
-static func format_percent(amt: float):
+func format_percent(amt: float):
 	var pct = amt * 100
 	if (round(pct) == 0):
 		return "0%"

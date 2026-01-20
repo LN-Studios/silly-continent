@@ -1,8 +1,16 @@
-extends Terrain
+class_name Forest extends Terrain
 
-func _ready() -> void:
-	set_terrainName("Forest")
-	
-func set_effects(t:Territory):
-	#t.get_taxMod().set_mod(terrainName, 0.0)
-	t.get_popMod().set_mod(terrainName, 0.05)
+
+var default_data = {
+	id = 2,
+	name = "forest",
+	effects = {
+		tax = 0.0,
+		pop = 0.05
+	},
+}
+
+func _init(in_data = {}):
+	data.merge(default_data, true)
+	data.merge(in_data, true)
+	super(data)

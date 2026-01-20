@@ -1,7 +1,15 @@
-extends Terrain
+class_name Swamp extends Terrain
 
-func _ready() -> void:
-	set_terrainName("Swamp")
+var default_data = {
+	id = 7,
+	name = "swamp",
+	effects = {
+		tax = -0.05,
+		pop = 0.0
+	},
+}
 
-func set_effects(t:Territory):
-	t.get_taxMod().set_mod(terrainName, -0.05)
+func _init(in_data = {}):
+	data.merge(default_data, true)
+	data.merge(in_data, true)
+	super(data)
