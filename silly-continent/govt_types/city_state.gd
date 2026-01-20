@@ -11,7 +11,7 @@ func _init(in_data = {}):
 	super(data)
 
 func set_effects(c: Country):
-	c.get_approval_mod().set_const(get_name(), .05)
+	c.get_approval_mod().set_mult(get_name(), .05)
 	for t in c.get_territories():
 		if (t.is_capital()):
 			t.get_pop_mod().set_const(get_name(), (c.get_territories().size() - 1.0) / 10.0)

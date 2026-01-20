@@ -120,10 +120,10 @@ color = Color(0.156863, 0.537255, 0.219608, 1)
 polygon = PackedVector2Array(564, 395, 526, 399, 521, 391, 515, 385, 506, 381, 493, 377, 486, 372, 485, 360, 492, 344, 493, 336, 496, 331, 501, 329, 503, 322, 508, 320, 511, 322, 518, 325, 522, 331, 526, 335, 530, 339, 532, 341, 536, 345, 536, 349, 541, 351, 542, 355, 541, 361, 545, 365, 550, 365, 553, 362, 553, 352, 555, 347, 560, 343, 563, 342, 565, 334, 564, 327, 557, 326, 560, 322, 564, 318, 566, 314, 562, 308, 558, 303, 559, 296, 555, 291, 554, 278, 558, 270, 563, 265, 564, 256, 566, 251, 585, 251, 595, 272, 604, 275, 612, 262, 626, 264, 641, 262, 659, 263, 671, 274, 677, 272, 680, 268, 682, 264, 686, 259, 689, 258, 692, 261, 693, 265, 695, 270, 699, 269, 704, 266, 706, 270, 706, 276, 704, 283, 705, 287, 710, 289, 715, 293, 715, 305, 718, 307, 723, 307, 726, 306, 723, 314, 729, 316, 723, 328, 715, 337, 702, 338, 688, 361, 651, 370, 632, 371, 579, 376)
 
 [node name="label" type="Label" parent="map/sexico_city/shape"]
-offset_left = 595.0
-offset_top = 289.0
-offset_right = 678.0
-offset_bottom = 312.0
+offset_left = 585.0
+offset_top = 310.0
+offset_right = 668.0
+offset_bottom = 333.0
 text = "Sexico City"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1615,10 +1615,10 @@ polygon = PackedVector2Array(624, 309, 618, 309, 617, 310, 615, 310, 613, 310, 6
 
 [node name="label" type="Label" parent="map/crab rangoon/shape"]
 modulate = Color(1, 0.996078, 1, 1)
-offset_left = 629.0
-offset_top = 351.0
-offset_right = 736.0
-offset_bottom = 374.0
+offset_left = 643.0
+offset_top = 338.0
+offset_right = 752.0
+offset_bottom = 361.0
 rotation = -0.270526
 text = "Crab Rangoon"
 horizontal_alignment = 1
@@ -1729,10 +1729,10 @@ polygon = PackedVector2Array(630, 318, 634, 317, 638, 312, 639, 306, 643, 303, 6
 
 [node name="label" type="Label" parent="map/north_fart/shape"]
 modulate = Color(1, 0.996078, 1, 1)
-offset_left = 646.0
-offset_top = 297.0
-offset_right = 713.0
-offset_bottom = 346.0
+offset_left = 629.0
+offset_top = 307.0
+offset_right = 696.0
+offset_bottom = 356.0
 text = "Fort"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1748,10 +1748,10 @@ polygon = PackedVector2Array(602, 300, 766, 300, 767, 317, 762, 337, 748, 354, 7
 
 [node name="label" type="Label" parent="map/south_fart/shape"]
 modulate = Color(1, 0.996078, 1, 1)
-offset_left = 652.0
-offset_top = 302.0
-offset_right = 719.0
-offset_bottom = 351.0
+offset_left = 630.0
+offset_top = 303.0
+offset_right = 697.0
+offset_bottom = 352.0
 text = "Fart"
 horizontal_alignment = 1
 vertical_alignment = 1

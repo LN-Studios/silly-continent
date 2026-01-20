@@ -34,11 +34,12 @@ func _init(in_data = {}):
 
 func connect_entities():
 	data.capital = Lib.get_territ(data.capital_id)
-	data.govt = Lib.get_govt(data.govt_id)
+	set_govt(Lib.get_govt(data.govt_id))
 	color = ColorUtil.format_rgb(get_color_rgb())
 
 func entities_connected():
 	set_population()
+	
 	compile_terr_tax(true)
 	compile_pop_change(true)
 	
@@ -59,13 +60,19 @@ func get_color() -> Color:
 func get_color_rgb() -> Array:
 	return data.color_rgb
 
-func get_name():
+func get_name() -> String:
 	return data.name
 	
-func get_govt():
-	return data.govt
+func get_govt() -> GovtType:
+	return data.get("govt", null)
 
-func is_cpu():
+func set_govt(new_govt: GovtType):
+	if (get_govt()):
+		get_govt().remove_effects(self)
+	data.govt = new_govt
+	new_govt.set_effects(self)
+
+func is_cpu() -> bool:
 	return data.is_cpu
 
 #balance
@@ -126,8 +133,8 @@ func get_reputation_mod():
 	return get_rep_mod()
 	
 #approval
-func get_approval(): 
-	return data.approval
+func get_approval() -> int: 
+	return round(data.approval)
 
 func set_approval():
 	data.approval += get_approval_mod().compile()

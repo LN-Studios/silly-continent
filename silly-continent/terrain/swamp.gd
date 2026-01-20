@@ -2,7 +2,7 @@ class_name Swamp extends Terrain
 
 var default_data = {
 	id = 7,
-	name = "mountains",
+	name = "swamp",
 	effects = {
 		tax = -0.05,
 		pop = 0.0

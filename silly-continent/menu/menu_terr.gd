@@ -25,7 +25,7 @@ func _on_open(ty: Territory):
 		nameLabel.text = "\n" + ty.get_name()
 		if (ty.is_capital()):
 			nameLabel.text += "\nCapital of " + ty.get_country().get_countryName()
-		terrainLabel.text = "\n" + ty.get_terrain_name() + " " + ty.get_size()
+		terrainLabel.text = "\n" + ty.get_terrain_name().capitalize() + " " + ty.get_size()
 		territory = ty
 		box.set_visible(true)
 		_refresh(today)

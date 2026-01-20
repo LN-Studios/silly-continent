@@ -11,4 +11,4 @@ func _init(in_data = {}):
 	super(data)
 
 func set_effects(c: Country):
-	c.get_profit_mod().set_mult(get_name(), -1.0)
+	c.get_balance_mod().set_mult(get_name(), -1.0)

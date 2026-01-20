@@ -4,7 +4,7 @@ var govt_data = {
 	name = "govt type"
 }
 
-func _init(in_data = {}):
+func _init(_in_data = {}):
 	#data.merge(govt_data, true)
 	#data.merge(in_data, true)
 	super({})

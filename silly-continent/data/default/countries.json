@@ -5,7 +5,9 @@
         "color_rgb": [0, 0, 0],
         "govt_id": 0,
         "capital_id": 0,
-        "balance": 0.00
+        "balance": 0.00,
+        "approval": 0,
+        "reputation": 0
     },
     {
         "id": 1,
@@ -13,7 +15,9 @@
         "color_rgb": [40, 137, 56],
         "govt_id": 0,
         "capital_id": 0,
-        "balance": 0.00
+        "balance": 0.00,
+        "approval": 0,
+        "reputation": 0
     },
     {
         "id": 2,
@@ -21,7 +25,9 @@
         "color_rgb": [26, 148, 158],
         "govt_id": 3,
         "capital_id": 1,
-        "balance": 1000.00
+        "balance": 100.00,
+        "approval": 55,
+        "reputation": 10
     },
     {
         "id": 3,
@@ -29,7 +35,9 @@
         "color_rgb": [110, 61, 11],
         "govt_id": 3,
         "capital_id": 2,
-        "balance": 1200.00
+        "balance": 120.00,
+        "approval": 50,
+        "reputation": 10
     },
     {
         "id": 4,
@@ -37,7 +45,9 @@
         "color_rgb": [24, 74, 224],
         "govt_id": 3,
         "capital_id": 25,
-        "balance": 1000.00
+        "balance": 100.00,
+        "approval": 65,
+        "reputation": 20
     },
     {
         "id": 5,
@@ -45,7 +55,9 @@
         "color_rgb": [86, 156, 234],
         "govt_id": 1,
         "capital_id": 13,
-        "balance": 700.00
+        "balance": 75.00,
+        "approval": 60,
+        "reputation": 25
     },
     {
         "id": 6,
@@ -53,6 +65,238 @@
         "color_rgb": [197, 35, 35],
         "govt_id": 1,
         "capital_id": 15,
-        "balance": 0.00
+        "balance": 25.00,
+        "approval": 50,
+        "reputation": 5
+    },
+    {
+        "id": 7,
+        "name": "Soup",
+        "color_rgb": [52, 22, 114],
+        "govt_id": 1,
+        "capital_id": 72,
+        "balance": 100.00,
+        "approval": 50,
+        "reputation": 15
+    },
+    {
+        "id": 8,
+        "name": "Slamong",
+        "color_rgb": [109, 10, 203],
+        "govt_id": 2,
+        "capital_id": 60,
+        "balance": 90.00,
+        "approval": 50,
+        "reputation": 10
+    },
+    {
+        "id": 9,
+        "name": "Flobo",
+        "color_rgb": [180, 169, 50],
+        "govt_id": 1,
+        "capital_id": 64,
+        "balance": 90.00,
+        "approval": 50,
+        "reputation": 10
+    },
+    {
+        "id": 10,
+        "name": "Kailus",
+        "color_rgb": [180, 169, 50],
+        "govt_id": 1,
+        "capital_id": 22,
+        "balance": 35.00,
+        "approval": 40,
+        "reputation": 5
+    },
+    {
+        "id": 11,
+        "name": "Fiesta Taxes",
+        "color_rgb": [158, 102, 34],
+        "govt_id": 4,
+        "capital_id": 11,
+        "balance": 10.00,
+        "approval": 10,
+        "reputation": 10
+    },
+    {
+        "id": 12,
+        "name": "Slexico",
+        "color_rgb": [182, 138, 55],
+        "govt_id": 2,
+        "capital_id": 29,
+        "balance": 50.00,
+        "approval": 45,
+        "reputation": 5
+    },
+    {
+        "id": 13,
+        "name": "Fleshuis",
+        "color_rgb": [147, 19, 62],
+        "govt_id": 3,
+        "capital_id": 38,
+        "balance": 20.00,
+        "approval": 50,
+        "reputation": 15
+    },
+    {
+        "id": 14,
+        "name": "Greg",
+        "color_rgb": [22, 102, 27],
+        "govt_id": 2,
+        "capital_id": 33,
+        "balance": 50.00,
+        "approval": 50,
+        "reputation": 5
+    },
+    {
+        "id": 15,
+        "name": "Uprot",
+        "color_rgb": [153, 26, 26],
+        "govt_id": 1,
+        "capital_id": 100,
+        "balance": 60.00,
+        "approval": 50,
+        "reputation": 10
+    },
+    {
+        "id": 16,
+        "name": "Shapoopi",
+        "color_rgb": [176, 35, 150],
+        "govt_id": 4,
+        "capital_id": 44,
+        "balance": 15.00,
+        "approval": 50,
+        "reputation": 5
+    },
+    {
+        "id": 17,
+        "name": "Monty Order",
+        "color_rgb": [183, 191, 65],
+        "govt_id": 7,
+        "capital_id": 52,
+        "balance": 33.00,
+        "approval": 50,
+        "reputation": 5
+    },
+    {
+        "id": 18,
+        "name": "Knights of Ni",
+        "color_rgb": [22, 98, 158],
+        "govt_id": 7,
+        "capital_id": 50,
+        "balance": 12.00,
+        "approval": 50,
+        "reputation": -15
+    },
+    {
+        "id": 19,
+        "name": "Pukisti",
+        "color_rgb": [72, 22, 106],
+        "govt_id": 7,
+        "capital_id": 49,
+        "balance": 30.00,
+        "approval": 50,
+        "reputation": 5
+    },
+    {
+        "id": 20,
+        "name": "Bajookieland",
+        "color_rgb": [24, 184, 123],
+        "govt_id": 3,
+        "capital_id": 30,
+        "balance": 20.00,
+        "approval": 50,
+        "reputation": 5
+    },
+    {
+        "id": 21,
+        "name": "Dinosaurus",
+        "color_rgb": [22, 172, 165],
+        "govt_id": 3,
+        "capital_id": 70,
+        "balance": 20.00,
+        "approval": 50,
+        "reputation": 5
+    },
+    {
+        "id": 22,
+        "name": "Salad",
+        "color_rgb": [123, 164, 21],
+        "govt_id": 2,
+        "capital_id": 75,
+        "balance": 40.00,
+        "approval": 40,
+        "reputation": -10
+    },
+    {
+        "id": 23,
+        "name": "Winkaplink",
+        "color_rgb": [135, 63, 166],
+        "govt_id": 1,
+        "capital_id": 54,
+        "balance": 20.00,
+        "approval": 50,
+        "reputation": 5
+    },
+    {
+        "id": 24,
+        "name": "Crab Rangoon",
+        "color_rgb": [126, 50, 50],
+        "govt_id": 1,
+        "capital_id": 76,
+        "balance": 50.00,
+        "approval": 50,
+        "reputation": 10
+    },
+    {
+        "id": 25,
+        "name": "Orcish Spies",
+        "color_rgb": [32, 71, 20],
+        "govt_id": 5,
+        "capital_id": 74,
+        "balance": 25.00,
+        "approval": 50,
+        "reputation": -10
+    },
+    {
+        "id": 26,
+        "name": "Pogpost",
+        "color_rgb": [41, 74, 149],
+        "govt_id": 5,
+        "capital_id": 45,
+        "balance": 20.00,
+        "approval": 50,
+        "reputation": -10
+    },
+	{
+        "id": 27,
+        "name": "Trollolol",
+        "color_rgb": [48, 150, 172],
+        "govt_id": 5,
+        "capital_id": 24,
+        "balance": 20.00,
+        "approval": 50,
+        "reputation": -10
+    },
+	{
+        "id": 28,
+        "name": "Pucebeard",
+        "color_rgb": [116, 122, 29],
+        "govt_id": 8,
+        "capital_id": 34,
+        "balance": 20.00,
+        "approval": 50,
+        "reputation": -10
+    },
+	{
+        "id": 29,
+        "name": "Flexville",
+        "color_rgb": [133, 91, 22],
+        "govt_id": 3,
+        "capital_id": 36,
+        "balance": 30.00,
+        "approval": 50,
+        "reputation": 5
     }
 ]

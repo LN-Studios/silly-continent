@@ -12,4 +12,4 @@ func _init(in_data = {}):
 
 func set_effects(c: Country):
 	c.get_rep_mod().set_mult(get_name(), -0.07)
-	c.get_armyMod().set_mod(get_name(), 0.2)
+	c.get_army_mod().set_mult(get_name(), 0.2)
