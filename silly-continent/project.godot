@@ -17,11 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Main="*res://main/main.gd"
 SignalBus="*res://global/signal_bus.gd"
 Terms="*res://global/terms.gd"
 FileUtil="*res://util/file_util.gd"
 Lib="*res://library/lib.gd"
+Filter="*res://util/filter.gd"
+Main="*res://main/main.gd"
 
 [file_customization]
 

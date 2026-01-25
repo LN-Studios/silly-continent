@@ -36,12 +36,6 @@ func connect_entities():
 	data.capital = Lib.get_territ(data.capital_id)
 	set_govt(Lib.get_govt(data.govt_id))
 	color = ColorUtil.format_rgb(get_color_rgb())
-
-func entities_connected():
-	set_population()
-	
-	compile_terr_tax(true)
-	compile_pop_change(true)
 	
 func turn_phase_a(_turn):
 	set_balance()
@@ -185,7 +179,7 @@ func get_largest_terr():
 	return largest
 
 func is_unclaimed():
-	return get_id() == 1
+	return get_id() <= 1
 	
 func mod_purge(name: String):
 	for mod in mods:

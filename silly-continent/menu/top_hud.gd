@@ -18,7 +18,8 @@ func _start(country: Country):
 	update_values(country)
 
 func turn_phase_z(_turn):
-	update_values(Main.get_user_country())
+	if (Main.game_is_started()):
+		update_values(Main.get_user_country())
 
 func update_values(country: Country):
 	set_turn(Main.get_turn())

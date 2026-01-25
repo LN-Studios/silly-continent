@@ -18,7 +18,7 @@ func get_consts(): return consts
 func get_mults(): return mults
 
 func set_const(name: String, value: float, duration = -1): 
-	var mod = Modifier.new(mults, name, value, duration)
+	var mod = Modifier.new(consts, name, value, duration)
 	add_mod(consts, mod)
 
 func set_mult(name: String, value: float, duration = -1): 
@@ -26,7 +26,7 @@ func set_mult(name: String, value: float, duration = -1):
 	add_mod(mults, mod)
 
 ## makes a const modifier with a duration of 1
-func set_event(name: String, value: float):
+func set_action(name: String, value: float):
 	set_const(name, value, 1)
 
 func add_mod(arr: Array, mod: Modifier):

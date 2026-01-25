@@ -43,6 +43,9 @@ func set_country_color(c = territory.get_country()):
 	else:
 		shape.color = default_color
 
+func get_position():
+	return shape.get_position()
+
 func _on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
 	if (Input.is_action_pressed('click-left')):
 		SignalBus.open_terr_menu.emit(self.territory)

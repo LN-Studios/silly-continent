@@ -22,14 +22,15 @@ func get_duration() -> int:
 	return duration
 
 func turn_phase_m(turn):
-	if (turn == 0):
-		pass
+	if (turn == 0 || is_infinite()):
+		return
 	duration -= 1
 	if (duration == 0):
 		remove_modifier()
 
 func remove_modifier():
-	mod_arr.erase(self)
+	if (mod_arr.has(self)):
+		mod_arr.erase(self)
 
 func is_infinite() -> bool:
 	return (duration < 0)

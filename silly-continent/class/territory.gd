@@ -5,7 +5,7 @@ var pop_change: float
 const tax_pop_scale = .0003
 const cost_dist_scale = .0001
 const cost_pop_scale = .005
-const pop_local_econ_scale = 0.1
+const pop_local_econ_scale = 0.333
 const pop_natl_econ_scale = 0.15
 
 var territ_data = {
@@ -116,7 +116,7 @@ func get_position():
 	return node.get_position()
 
 func get_capital_distance():
-	if (!has_country()): return 0
+	if (is_unclaimed()): return 0
 	return get_position().distance_to(get_country().get_capital().get_position())
 	
 func set_country(c):
@@ -131,14 +131,16 @@ func set_node(terr_node: TerritoryNode):
 	
 func has_country() -> bool:
 	if (get_country() == null): return false
-	return get_country().is_unclaimed()
-	
+	return !is_unclaimed()
+
+func is_unclaimed() -> bool:
+	return get_country().is_unclaimed()	
+
 func is_capital() -> bool:
 	if (!has_country()): return false
 	return get_country().get_capital() == self
 
-func is_unclaimed() -> bool:
-	return get_country().is_unclaimed()
+
 	
 func mod_purge(effect_name: String):
 	for mod in mods:

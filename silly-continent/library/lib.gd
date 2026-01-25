@@ -34,6 +34,11 @@ var terriain_arr = [
 	Swamp.new()
 ]
 
+var event_arr = [
+	SpawnExodus.new(),
+	PopBoom.new()
+]
+
 func add_item(item: Entity, dict: Dictionary, overwrite = false):
 	var key = item.get_id()
 	if dict.has(key):
@@ -47,16 +52,19 @@ func get_item(id: int, dict: Dictionary) -> Entity:
 		print("Entity with ID %d not found" % id)
 	return item
 
-func get_country(id):
+func has_item(id: int, dict: Dictionary) -> bool:
+	return dict.has(id)
+
+func get_country(id) -> Country:
 	return get_item(id, countries)
 
-func get_govt(id):
+func get_govt(id) -> GovtType:
 	return get_item(id, govts)
 
-func get_terrain(id):
+func get_terrain(id) -> Terrain:
 	return get_item(id, terrains)
 
-func get_territ(id):
+func get_territ(id) -> Territory:
 	return get_item(id, territs)
 
 ##creates a default of each entity

@@ -13,12 +13,12 @@ var user: User
 
 func _ready() -> void:
 	SignalBus.game_start.connect(_start)
+	SignalBus.all_nodes_loaded.connect(advance_turn)
 	#Lib.add_defaults()
 	save_state()
 	load_state()
 	
 func _start(country):
-	turn = 1
 	game_started = true
 	user = User.new(country)
 

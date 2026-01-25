@@ -43,3 +43,6 @@ func get_name() -> String:
 
 func get_data() -> Dictionary:
 	return data
+
+func get_description(alt_desc = "no description provided") -> String:
+	return data.get("description", alt_desc)
