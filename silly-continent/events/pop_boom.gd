@@ -17,8 +17,8 @@ func _init(in_data = {}):
 	data.merge(in_data, true)
 	super(data)
 
-func can_activate(_turn: int) -> bool:
-	return (randi_range(0, 3) == 0)
+func can_activate(turn: int) -> bool:
+	return (turn > 1 && randi_range(0, 3) == 0)
 
 func activate():
 	var valid_territs = Filter.filter_array(Lib.territs.values(), is_valid)

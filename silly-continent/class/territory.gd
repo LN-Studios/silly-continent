@@ -2,11 +2,11 @@ class_name Territory extends Entity
 
 var pop_change: float
 
-const tax_pop_scale = .0003
-const cost_dist_scale = .0001
-const cost_pop_scale = .005
-const pop_local_econ_scale = 0.333
-const pop_natl_econ_scale = 0.15
+const tax_pop_scale = .003
+const cost_dist_scale = .001
+const cost_pop_scale = .0005
+const pop_local_econ_scale = 0.5
+const pop_natl_econ_scale = 0.12
 
 var territ_data = {
 	name = "territory",
