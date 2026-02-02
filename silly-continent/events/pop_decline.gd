@@ -1,16 +1,16 @@
-class_name PopBoom extends Event
+class_name PopDecline extends Event
 
 
 var default_data = {
-	id = 2,
-	name = "Population Boom",
-	description = "The word has spread that this territory is the place to be!"
+	id = 3,
+	name = "Population Decline",
+	description = "Less people are moving into this territory than usual"
 }
 
 const duration_min = 3
 const duration_max = 5
-const profit_min = 1.0
-const mult = 0.5
+const profit_max = -0.5
+const mult = -0.5
 
 func _init(in_data = {}):
 	data.merge(default_data, true)
@@ -26,7 +26,7 @@ func activate():
 		target.get_pop_mod().set_mult(get_name(), mult, random_duration())
 
 func is_valid(territ: Territory) -> bool:
-	return (territ.has_country() && territ.get_profit() > profit_min)
+	return (territ.has_country() && territ.get_profit() < profit_max)
 
 func random_duration() -> int:
 	return randi_range(duration_min, duration_max)

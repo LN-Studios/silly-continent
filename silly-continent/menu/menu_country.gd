@@ -68,7 +68,7 @@ func _refresh(day):
 		profit_label.text = "\nProfit: $" + Main.format_float(country.get_balance_mod().compile()) + "/turn"
 		pop_label.text = "\nPopulation: %.f" % country.get_population()
 		pop_label.tooltip_text = "Daily change: " + str(country.compile_pop_change())
-		approval_label.text = "\nApproval rating: %d%" % country.get_approval()
+		approval_label.text = "\nApproval rating: %d%%" % country.get_approval()
 		rep_label.text = "\nReputation: %.f" % country.get_reputation()
 		army_label.text = "\nArmy size: %.f" % country.get_army()
 		country.get_balance_mod().set_tooltip(profit_label, true)

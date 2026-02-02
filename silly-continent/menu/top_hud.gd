@@ -43,7 +43,7 @@ func set_balance(new, mod):
 		mod.set_tooltip(balance_label, true)
 
 func set_approval(new, mod):
-	approval_label.text = "Approval: %d%" % int(new)
+	approval_label.text = "Approval: %d%%" % int(new)
 	if (mod):
 		mod.set_tooltip(approval_label, false)
 

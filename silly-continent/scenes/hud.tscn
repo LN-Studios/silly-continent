@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://nkcjwbsh84yu"]
+[gd_scene load_steps=6 format=3 uid="uid://nkcjwbsh84yu"]
 
 [ext_resource type="Script" path="res://menu/menu_country.gd" id="1_mil85"]
 [ext_resource type="Script" path="res://main/hud_main.gd" id="1_ra61j"]
 [ext_resource type="Script" path="res://menu/menu_terr.gd" id="2_cg82t"]
 [ext_resource type="Script" path="res://menu/top_hud.gd" id="3_6ywyt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qb15f"]
+bg_color = Color(0.6, 0.184314, 0.6, 1)
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -96,17 +99,17 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="right box" type="PanelContainer" parent="Control/VBoxContainer/info boxes"]
+[node name="left panel" type="PanelContainer" parent="Control/VBoxContainer/info boxes"]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="terr_box" type="ColorRect" parent="Control/VBoxContainer/info boxes/right box"]
+[node name="terr_box" type="ColorRect" parent="Control/VBoxContainer/info boxes/left panel"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.223816, 5.19812e-06, 0.978626, 1)
 
-[node name="terr_menu" type="VBoxContainer" parent="Control/VBoxContainer/info boxes/right box/terr_box" node_paths=PackedStringArray("close", "nameLabel", "terrainLabel", "populationLabel", "taxLabel", "box")]
+[node name="terr_menu" type="VBoxContainer" parent="Control/VBoxContainer/info boxes/left panel/terr_box" node_paths=PackedStringArray("close", "nameLabel", "terrainLabel", "populationLabel", "taxLabel", "box")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 11
@@ -124,11 +127,11 @@ populationLabel = NodePath("population")
 taxLabel = NodePath("tax")
 box = NodePath("..")
 
-[node name="Button" type="Button" parent="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu"]
+[node name="Button" type="Button" parent="Control/VBoxContainer/info boxes/left panel/terr_box/terr_menu"]
 layout_mode = 2
 text = "Close"
 
-[node name="name" type="Label" parent="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu"]
+[node name="name" type="Label" parent="Control/VBoxContainer/info boxes/left panel/terr_box/terr_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "
@@ -138,7 +141,7 @@ Cummington
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="terrain" type="Label" parent="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu"]
+[node name="terrain" type="Label" parent="Control/VBoxContainer/info boxes/left panel/terr_box/terr_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "Swamp City
@@ -147,7 +150,7 @@ text = "Swamp City
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="population" type="Label" parent="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu"]
+[node name="population" type="Label" parent="Control/VBoxContainer/info boxes/left panel/terr_box/terr_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "Population: 11000
@@ -156,7 +159,7 @@ text = "Population: 11000
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="tax" type="Label" parent="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu"]
+[node name="tax" type="Label" parent="Control/VBoxContainer/info boxes/left panel/terr_box/terr_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "Revenue: $11/day
@@ -165,29 +168,37 @@ text = "Revenue: $11/day
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="left box" type="PanelContainer" parent="Control/VBoxContainer/info boxes"]
+[node name="notif box" type="PanelContainer" parent="Control/VBoxContainer/info boxes"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qb15f")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/VBoxContainer/info boxes/notif box"]
+
+[node name="right panel" type="PanelContainer" parent="Control/VBoxContainer/info boxes"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 3
 
-[node name="country_box" type="ColorRect" parent="Control/VBoxContainer/info boxes/left box"]
+[node name="country_box" type="ColorRect" parent="Control/VBoxContainer/info boxes/right panel"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.223816, 5.19812e-06, 0.978626, 1)
 
-[node name="country_menu" type="VBoxContainer" parent="Control/VBoxContainer/info boxes/left box" node_paths=PackedStringArray("color_box")]
+[node name="country_menu" type="VBoxContainer" parent="Control/VBoxContainer/info boxes/right panel" node_paths=PackedStringArray("color_box")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 script = ExtResource("1_mil85")
 color_box = NodePath("../country_box")
 
-[node name="close" type="Button" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="close" type="Button" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 action_mode = 0
 text = "Close"
 
-[node name="name" type="Label" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="name" type="Label" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "
@@ -196,7 +207,7 @@ Cummington
 "
 horizontal_alignment = 1
 
-[node name="govt" type="Label" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="govt" type="Label" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "City-State
@@ -204,7 +215,7 @@ text = "City-State
 "
 horizontal_alignment = 1
 
-[node name="balance" type="Label" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="balance" type="Label" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "Balance: $10000
@@ -212,7 +223,7 @@ text = "Balance: $10000
 "
 horizontal_alignment = 1
 
-[node name="profit" type="Label" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="profit" type="Label" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "Profit: $100/day
@@ -220,7 +231,7 @@ text = "Profit: $100/day
 "
 horizontal_alignment = 1
 
-[node name="pop" type="Label" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="pop" type="Label" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "Population: 15000
@@ -228,7 +239,7 @@ text = "Population: 15000
 "
 horizontal_alignment = 1
 
-[node name="approval" type="Label" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="approval" type="Label" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "Approval rating: 100%
@@ -236,7 +247,7 @@ text = "Approval rating: 100%
 "
 horizontal_alignment = 1
 
-[node name="rep" type="Label" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="rep" type="Label" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "Reputation: -100
@@ -244,7 +255,7 @@ text = "Reputation: -100
 "
 horizontal_alignment = 1
 
-[node name="army" type="Label" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="army" type="Label" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 mouse_filter = 0
 text = "Army size: 10000
@@ -252,15 +263,15 @@ text = "Army size: 10000
 "
 horizontal_alignment = 1
 
-[node name="select" type="Button" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="select" type="Button" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 text = "Play as this country"
 
-[node name="diplo" type="Tree" parent="Control/VBoxContainer/info boxes/left box/country_menu"]
+[node name="diplo" type="Tree" parent="Control/VBoxContainer/info boxes/right panel/country_menu"]
 layout_mode = 2
 allow_rmb_select = true
 
-[node name="Button" type="Button" parent="Control/VBoxContainer/info boxes/left box/country_menu/diplo"]
+[node name="Button" type="Button" parent="Control/VBoxContainer/info boxes/right panel/country_menu/diplo"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -270,7 +281,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Alliance"
 
-[node name="Button2" type="Button" parent="Control/VBoxContainer/info boxes/left box/country_menu/diplo"]
+[node name="Button2" type="Button" parent="Control/VBoxContainer/info boxes/right panel/country_menu/diplo"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -284,6 +295,6 @@ text = "Declare War"
 
 [connection signal="pressed" from="Control/VBoxContainer/top hud/top_hud/HBoxContainer/next turn button" to="Control/VBoxContainer/top hud" method="next_turn"]
 [connection signal="pressed" from="Control/VBoxContainer/top hud/top_hud/HBoxContainer/help button" to="Control/VBoxContainer/top hud" method="open_help"]
-[connection signal="pressed" from="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu/Button" to="Control/VBoxContainer/info boxes/right box/terr_box/terr_menu" method="_on_close"]
-[connection signal="pressed" from="Control/VBoxContainer/info boxes/left box/country_menu/close" to="Control/VBoxContainer/info boxes/left box/country_menu" method="_on_close"]
-[connection signal="pressed" from="Control/VBoxContainer/info boxes/left box/country_menu/select" to="Control/VBoxContainer/info boxes/left box/country_menu" method="_on_country_selected"]
+[connection signal="pressed" from="Control/VBoxContainer/info boxes/left panel/terr_box/terr_menu/Button" to="Control/VBoxContainer/info boxes/left panel/terr_box/terr_menu" method="_on_close"]
+[connection signal="pressed" from="Control/VBoxContainer/info boxes/right panel/country_menu/close" to="Control/VBoxContainer/info boxes/right panel/country_menu" method="_on_close"]
+[connection signal="pressed" from="Control/VBoxContainer/info boxes/right panel/country_menu/select" to="Control/VBoxContainer/info boxes/right panel/country_menu" method="_on_country_selected"]

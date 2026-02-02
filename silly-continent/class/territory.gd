@@ -96,15 +96,15 @@ func set_economy_pop_mod():
 	
 # profit modifiers
 
-func get_profit():
+func get_profit() -> float:
 	return profit
-	
+
+func get_profit_mod() -> ModifierList: 
+	return mods.profit	
+
 func set_profit():
 	set_tax_profit_mod()
 	profit = get_profit_mod().compile()
-
-func get_profit_mod(): 
-	return mods.profit	
 
 func set_tax_profit_mod():
 	var tax_mod = get_profit_mod()

@@ -19,6 +19,10 @@ func sort_array(arr: Array, filter: Callable) -> Array:
 	sorted.sort_custom(filter)
 	return sorted
 
+## selects a random element from `arr`, or null if array is empty
 func select_random(arr: Array) -> Variant:
-	var index = randi_range(0, arr.size() - 1)
-	return arr[index]
+	if (arr.is_empty()):
+		return null
+	else:
+		var index = randi_range(0, arr.size() - 1)
+		return arr[index]

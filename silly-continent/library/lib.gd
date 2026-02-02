@@ -36,7 +36,9 @@ var terriain_arr = [
 
 var event_arr = [
 	SpawnExodus.new(),
-	PopBoom.new()
+	PopBoom.new(),
+	PopDecline.new(),
+	Plague.new(),
 ]
 
 func add_item(item: Entity, dict: Dictionary, overwrite = false):
